@@ -11,6 +11,9 @@ export interface EventItem {
   femaleFee: string;
   maleSeats: number;
   femaleSeats: number;
+  /** 残席数の代わりに表示する文言（例：抽選）。設定すると maleSeats の数値は表示しない */
+  maleStatus?: string;
+  femaleStatus?: string;
   totalSeats: number;
   tag: string;
   tagColor: string;
@@ -39,9 +42,10 @@ export const events: EventItem[] = [
     ageRange: "20〜49歳",
     maleFee: "12,000円",
     femaleFee: "2,000円",
-    maleSeats: 4,
-    femaleSeats: 7,
-    totalSeats: 11,
+    maleSeats: 0,
+    maleStatus: "抽選",
+    femaleSeats: 5,
+    totalSeats: 5,
     tag: "受付中",
     tagColor: "bg-rose-500",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3244.0!2d139.9226!3d35.3748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022a3b0b0b0b0b1%3A0x0!2sY's+Table!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp",

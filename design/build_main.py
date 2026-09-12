@@ -142,7 +142,7 @@ def hero():
 
 EVENTS = [
     dict(date="10月18日", dow="日", time="13:00〜16:00", title="木更津40人街コン", venue="Y's Table",
-         address="木更津市富士見1丁目12-32", age="20〜49歳", male="12,000円", female="2,000円", ms=4, fs=7, tag="受付中"),
+         address="木更津市富士見1丁目12-32", age="20〜49歳", male="12,000円", female="2,000円", ms=0, ms_status="抽選", fs=5, tag="受付中"),
     dict(date="1月某日", dow="日", time="13:00〜16:00", title="木更津40人街コン", venue="Y's Table",
          address="木更津市富士見1丁目12-32", age="20〜49歳", male="12,000円", female="2,000円", ms=20, fs=20, tag="受付中"),
 ]
@@ -154,10 +154,13 @@ PAST = [
     ("2026年8月2日", "木更津街コン vol.5", "Y's Table", 37, 4, "夏祭り前で夏祭りのお約束をするカップルも！それ以外にもアフターパーティーでも更に追加カップリングも！"),
 ]
 
-def seat(label_, n):
+def seat(label_, n, status=None):
+    head = f'<div style="text-align: center;"><p style="margin: 0 0 4px 0; font-size: 12px; line-height: 16px; color: {C["gray500"]};">{label_}</p>'
+    if status:  # 抽選など、残席数の代わりの文言
+        return (head + f'<p style="margin: 0; font-size: 24px; line-height: 32px; font-weight: 900; color: {C["amber500"]};">{status}</p>'
+                f'<p style="margin: 2px 0 0 0; font-size: 12px; line-height: 16px; color: {C["gray500"]};">※応募可能</p></div>')
     color = C["rose500"] if n <= 5 else C["emerald500"]
-    return (f'<div style="text-align: center;"><p style="margin: 0 0 4px 0; font-size: 12px; line-height: 16px; color: {C["gray500"]};">{label_}</p>'
-            f'<p style="margin: 0; font-size: 24px; line-height: 32px; font-weight: 900; color: {color};">残り{n}名</p></div>')
+    return head + f'<p style="margin: 0; font-size: 24px; line-height: 32px; font-weight: 900; color: {color};">残り{n}名</p></div>'
 
 def event_card(e):
     return f'''
@@ -185,7 +188,7 @@ def event_card(e):
     </div>
     <div style="background: {C["gray50"]}; border-radius: 12px; padding: 16px; margin-bottom: 20px;">
       <p style="margin: 0 0 12px 0; font-size: 12px; line-height: 16px; color: {C["gray500"]}; font-weight: 500;">開催状況</p>
-      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">{seat("男性", e["ms"])}{seat("女性", e["fs"])}</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">{seat("男性", e["ms"], e.get("ms_status"))}{seat("女性", e["fs"], e.get("fs_status"))}</div>
     </div>
     <div style="display: flex; gap: 8px;">
       {btn("公式LINEから申し込む", C["gray900"], "#fff", py=10, radius=12, extra="flex: 1;")}

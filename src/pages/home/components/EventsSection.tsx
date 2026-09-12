@@ -105,7 +105,12 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                     <div className="grid grid-cols-2 gap-3">
                       <div className="text-center">
                         <p className="text-xs text-gray-500 mb-1">男性</p>
-                        {event.maleSeats > 0 ? (
+                        {event.maleStatus ? (
+                          <div>
+                            <p className="text-2xl font-black text-amber-500">{event.maleStatus}</p>
+                            <p className="text-xs text-gray-500 mt-0.5">※応募可能</p>
+                          </div>
+                        ) : event.maleSeats > 0 ? (
                           <p className={`text-2xl font-black ${event.maleSeats <= 5 ? "text-rose-500" : "text-emerald-500"}`}>
                             残り{event.maleSeats}名
                           </p>
@@ -117,7 +122,12 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                       </div>
                       <div className="text-center">
                         <p className="text-xs text-gray-500 mb-1">女性</p>
-                        {event.femaleSeats > 0 ? (
+                        {event.femaleStatus ? (
+                          <div>
+                            <p className="text-2xl font-black text-amber-500">{event.femaleStatus}</p>
+                            <p className="text-xs text-gray-500 mt-0.5">※応募可能</p>
+                          </div>
+                        ) : event.femaleSeats > 0 ? (
                           <p className={`text-2xl font-black ${event.femaleSeats <= 5 ? "text-rose-500" : "text-emerald-500"}`}>
                             残り{event.femaleSeats}名
                           </p>
