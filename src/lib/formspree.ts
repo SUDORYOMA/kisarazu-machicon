@@ -1,10 +1,10 @@
 // Formspree（https://formspree.io）へのフォーム送信
 //
 // フォームIDは Formspree の管理画面で作成したフォームの "f/xxxxxxxx" の部分。
-// 2つ別々に作っておくと、受信メールの件名や管理画面で用途を分けられる。
+// 現在は1つのフォームで兼用（受信メールの件名 _subject で用途を区別）。分けたくなったら別IDにする。
 export const FORMSPREE_FORMS = {
-  apply: "REPLACE_WITH_APPLY_FORM_ID", // イベント申し込み
-  line: "REPLACE_WITH_LINE_FORM_ID", // LINE 空席確認・お問い合わせ
+  apply: "mbgjerjy", // イベント申し込み
+  line: "mbgjerjy", // LINE 空席確認・お問い合わせ
 } as const;
 
 type FormKey = keyof typeof FORMSPREE_FORMS;
