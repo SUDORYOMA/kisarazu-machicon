@@ -1,0 +1,9 @@
+node_modules
+out
+dist
+*.local
+.env
+.env.*
+!.env.example
+auto-imports.d.ts
+.DS_Store
