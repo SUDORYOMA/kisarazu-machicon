@@ -1,7 +1,5 @@
 import { useState } from "react";
-
-// TODO: Readdy のフォーム受信エンドポイント。Readdy 解約後は動かなくなるため、自前API等へ差し替える
-const LINE_FORM_ENDPOINT = "https://readdy.ai/api/form/d7nnlc75qk5pqai6ctkg";
+import { submitToFormspree } from "@/lib/formspree";
 
 interface LineModalProps {
   open: boolean;
@@ -20,20 +18,9 @@ export default function LineModal({ open, onClose }: LineModalProps) {
     setSubmitting(true);
     setError("");
 
-    const form = e.currentTarget;
-    const data = new URLSearchParams();
-    const formData = new FormData(form);
-    formData.forEach((value, key) => {
-      data.append(key, value.toString());
-    });
-
     try {
-      const res = await fetch(LINE_FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: data.toString(),
-      });
-      if (res.ok) {
+      const ok = await submitToFormspree("line", e.currentTarget, "【木更津街コン】LINE空席確認・お問い合わせ");
+      if (ok) {
         setSubmitted(true);
       } else {
         setError("送信に失敗しました。もう一度お試しください。");

@@ -24,11 +24,12 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
 - `src/mocks/instagram.ts` — Instagram 投稿の埋め込み URL
 - `public/images/` — ロゴ・OGP・ヒーロー画像など（Readdy から退避済み）
 
-## 残っている Readdy 依存（要対応）
+## フォーム送信（Formspree）
 
-- **フォーム送信先**：`ApplyModal.tsx` / `LineModal.tsx` の `*_FORM_ENDPOINT` が
-  `https://readdy.ai/api/form/...` を向いている。Readdy 解約後は申し込みが届かなくなるので、
-  自前 API・Google Forms・Formspree 等へ差し替える
+- 申し込み（`ApplyModal.tsx`）と LINE 空席確認（`LineModal.tsx`）は `src/lib/formspree.ts` 経由で
+  Formspree（https://formspree.io）へ送る。フォーム ID は `FORMSPREE_FORMS` に持つ
+- 送信先メールアドレスや通知設定は Formspree の管理画面側で行う（コードには持たない）
+- 無料プランは月50件まで。超えるようなら有料化かフォーム集約を検討
 - i18n（`src/i18n/`）は Readdy テンプレの名残で翻訳ファイルが無く、実質未使用
 
 ## デプロイ（GitHub Pages）

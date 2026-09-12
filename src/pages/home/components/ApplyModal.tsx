@@ -1,8 +1,6 @@
 import { useState, useRef } from "react";
 import { events } from "@/mocks/events";
-
-// TODO: Readdy のフォーム受信エンドポイント。Readdy 解約後は動かなくなるため、自前API等へ差し替える
-const APPLY_FORM_ENDPOINT = "https://readdy.ai/api/form/d7p3gcvh9rdmu8dsta20";
+import { submitToFormspree } from "@/lib/formspree";
 
 interface ApplyModalProps {
   open: boolean;
@@ -23,20 +21,9 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
     setSubmitting(true);
     setError("");
 
-    const form = e.currentTarget;
-    const data = new URLSearchParams();
-    const formData = new FormData(form);
-    formData.forEach((value, key) => {
-      data.append(key, value.toString());
-    });
-
     try {
-      const res = await fetch(APPLY_FORM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: data.toString(),
-      });
-      if (res.ok) {
+      const ok = await submitToFormspree("apply", e.currentTarget, "【木更津街コン】イベント申し込み");
+      if (ok) {
         setSubmitted(true);
         // LINE登録ページへ遷移
         window.open("https://lin.ee/9pu5Slg", "_blank", "noopener,noreferrer");
