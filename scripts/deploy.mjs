@@ -3,8 +3,8 @@ import { execSync } from "node:child_process";
 import { copyFileSync } from "node:fs";
 
 const REPO_NAME = "kisarazu-machicon";
-// 独自ドメイン（public/CNAME）に切り替えたら "/" にする
-const BASE_PATH = process.env.BASE_PATH ?? `/${REPO_NAME}/`;
+// 独自ドメイン kazusacon.com（public/CNAME）で配信するためルート。github.io のサブパスに戻す場合は `/${REPO_NAME}/`
+const BASE_PATH = process.env.BASE_PATH ?? "/";
 
 const run = (cmd, env = {}) =>
   execSync(cmd, { stdio: "inherit", env: { ...process.env, ...env } });

@@ -35,6 +35,5 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
 
 - `npm run deploy` でビルド → `out/` を `gh-pages` ブランチへ push → GitHub Pages が配信する
   （`scripts/deploy.mjs`。GitHub Actions は使わない。ソースの `master` push だけでは公開されない）
-- 公開 URL：https://sudoryoma.github.io/kisarazu-machicon/
-- サブパス配信のため、画像は `src/assets/` から import する（`public/` の絶対パス参照は base が付かず 404 になる）
-- 独自ドメインへ切り替える場合：`public/CNAME` を置き、`scripts/deploy.mjs` の `BASE_PATH` を `/` にする
+- 公開 URL：https://kazusacon.com/（`public/CNAME`。DNS はムームードメインで GitHub Pages の A レコード4本＋www CNAME）
+- 画像は `src/assets/` から import する（base が変わっても壊れないように）
