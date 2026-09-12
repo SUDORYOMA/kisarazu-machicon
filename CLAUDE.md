@@ -38,3 +38,10 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
   （`scripts/deploy.mjs`。GitHub Actions は使わない。ソースの `master` push だけでは公開されない）
 - 公開 URL：https://kazusacon.com/（`public/CNAME`。DNS はムームードメインで GitHub Pages の A レコード4本＋www CNAME）
 - 画像は `src/assets/` から import する（base が変わっても壊れないように）
+
+## デザインキャンバス（Claude Design）
+
+- `design/build_main.py` が `design/Main.dc.html`（PC 幅 1440 のアートボード）を生成する。
+  文言や値を変えたら `python3 design/build_main.py` で再生成。Tailwind の値はコンポーネントから写している
+- `design/hero.jpg` `safety.jpg` `logo.png` はキャンバス用に軽量化した画像（本番は `src/assets/`）
+- Instagram 埋め込みと Google マップは外部読み込みのため、キャンバス上ではプレースホルダー
