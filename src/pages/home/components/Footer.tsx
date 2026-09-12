@@ -1,3 +1,4 @@
+import logo from "@/assets/logo.png";
 interface FooterProps {
   onApply: () => void;
   onLine: () => void;
@@ -15,7 +16,7 @@ export default function Footer({ onApply, onLine }: FooterProps) {
           {/* Brand */}
           <div className="md:col-span-1">
             <img
-              src="/images/logo.png"
+              src={logo}
               alt="木更津街コン"
               className="h-10 w-auto object-contain mb-4 brightness-0 invert"
             />

@@ -1,3 +1,4 @@
+import safetyImg from "@/assets/safety.jpg";
 interface SafetySectionProps {
   onLine: () => void;
 }
@@ -56,7 +57,7 @@ export default function SafetySection({ onLine }: SafetySectionProps) {
             {/* Image */}
             <div className="mt-8 rounded-2xl overflow-hidden">
               <img
-                src="/images/safety.jpg"
+                src={safetyImg}
                 alt="スタッフサポート"
                 className="w-full h-48 object-cover object-top"
               />

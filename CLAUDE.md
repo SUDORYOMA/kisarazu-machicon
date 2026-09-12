@@ -30,3 +30,11 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
   `https://readdy.ai/api/form/...` を向いている。Readdy 解約後は申し込みが届かなくなるので、
   自前 API・Google Forms・Formspree 等へ差し替える
 - i18n（`src/i18n/`）は Readdy テンプレの名残で翻訳ファイルが無く、実質未使用
+
+## デプロイ（GitHub Pages）
+
+- `npm run deploy` でビルド → `out/` を `gh-pages` ブランチへ push → GitHub Pages が配信する
+  （`scripts/deploy.mjs`。GitHub Actions は使わない。ソースの `master` push だけでは公開されない）
+- 公開 URL：https://sudoryoma.github.io/kisarazu-machicon/
+- サブパス配信のため、画像は `src/assets/` から import する（`public/` の絶対パス参照は base が付かず 404 になる）
+- 独自ドメインへ切り替える場合：`public/CNAME` を置き、`scripts/deploy.mjs` の `BASE_PATH` を `/` にする

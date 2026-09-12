@@ -1,3 +1,4 @@
+import heroImg from "@/assets/hero.jpg";
 import { useEffect, useState } from "react";
 
 interface HeroSectionProps {
@@ -18,7 +19,7 @@ export default function HeroSection({ onLine, onScrollToEvents }: HeroSectionPro
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="/images/hero.jpg"
+          src={heroImg}
           alt="木更津街コン"
           className="w-full h-full object-cover object-top"
         />

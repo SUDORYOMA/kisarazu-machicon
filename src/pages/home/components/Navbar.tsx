@@ -1,3 +1,4 @@
+import logo from "@/assets/logo.png";
 import { useState, useEffect } from "react";
 
 interface NavbarProps {
@@ -31,7 +32,7 @@ export default function Navbar({ onApply, onLine, onScrollToEvents }: NavbarProp
         {/* Logo */}
         <a href="/" className="flex items-center gap-2 cursor-pointer">
           <img
-            src="/images/logo.png"
+            src={logo}
             alt="木更津街コン"
             className="h-9 w-auto object-contain"
           />
