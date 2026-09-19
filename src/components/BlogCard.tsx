@@ -6,6 +6,7 @@ const CATEGORY_TONE: Record<string, string> = {
   開催レポート: "from-rose-100 via-rose-50 to-amber-50",
   イベント情報: "from-amber-100 via-amber-50 to-rose-50",
   初めての方へ: "from-sky-100 via-sky-50 to-rose-50",
+  コラム: "from-purple-100 via-purple-50 to-rose-50",
 };
 
 export default function BlogCard({ post }: { post: BlogPost }) {
