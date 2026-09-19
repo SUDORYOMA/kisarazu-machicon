@@ -8,7 +8,7 @@ import { readdirSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 
 const SITE_URL = "https://kazusacon.com";
-const OUT = "out";
+const OUT = process.env.OUT_DIR ?? "out";
 const CONTENT = "src/content/blog";
 
 const escapeHtml = (s) =>

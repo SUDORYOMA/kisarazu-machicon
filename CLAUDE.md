@@ -48,8 +48,11 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
 
 ## デプロイ（GitHub Pages）
 
-- `npm run deploy` でビルド → `out/` を `gh-pages` ブランチへ push → GitHub Pages が配信する
+- `npm run deploy` でビルド → 成果物を `gh-pages` ブランチへ push → GitHub Pages が配信する
   （`scripts/deploy.mjs`。GitHub Actions は使わない。ソースの `master` push だけでは公開されない）
+- デプロイ時の成果物は OneDrive の外（OS の一時フォルダ `kisarazu-machicon-out`）に出す。
+  プロジェクトが OneDrive 配下にあり、`out/` へ書いている最中に同期がファイルを掴んで失敗することがあったため。
+  `npm run build` 単体は従来どおり `out/` に出る（ローカル確認用）
 - 公開 URL：https://kazusacon.com/（`public/CNAME`。DNS はムームードメインで GitHub Pages の A レコード4本＋www CNAME）
 - 画像は `src/assets/` から import する（base が変わっても壊れないように）
 
