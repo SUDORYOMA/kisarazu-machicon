@@ -146,7 +146,7 @@ def hero():
 EVENTS = [
     dict(date="10月18日", dow="日", time="13:00〜16:00", title="木更津40人街コン", venue="Y's Table",
          address="木更津市富士見1丁目12-32", age="20〜49歳", male="12,000円", female="2,000円", ms=0, ms_status="抽選", fs=5, tag="受付中",
-         highlights=[("sparkle", "会場内で占い師による占いを実施！", None), ("goblet", "同会場でアフターパーティー開催！16:00〜18:00", "※街コン参加者のみ")]),
+         highlights=[("sparkle", "会場内で占い師による占いを実施！", None), ("goblet", "同会場でアフターパーティー(16:00〜18:00)開催！", "※街コン参加者のみ")]),
     dict(date="1月某日", dow="日", time="13:00〜16:00", title="木更津40人街コン", venue="Y's Table",
          address="木更津市富士見1丁目12-32", age="20〜49歳", male="12,000円", female="2,000円", ms=20, fs=20, tag="受付中"),
 ]

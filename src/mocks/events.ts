@@ -51,7 +51,7 @@ export const events: EventItem[] = [
     tag: "受付中",
     highlights: [
       { icon: "ri-sparkling-2-line", text: "会場内で占い師による占いを実施！" },
-      { icon: "ri-goblet-line", text: "同会場でアフターパーティー開催！16:00〜18:00", note: "※街コン参加者のみ" },
+      { icon: "ri-goblet-line", text: "同会場でアフターパーティー(16:00〜18:00)開催！", note: "※街コン参加者のみ" },
     ],
     tagColor: "bg-rose-500",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3244.0!2d139.9226!3d35.3748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022a3b0b0b0b0b1%3A0x0!2sY's+Table!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp",
