@@ -1,4 +1,5 @@
 import logo from "@/assets/logo.png";
+import { Link } from "react-router-dom";
 interface FooterProps {
   onApply: () => void;
   onLine: () => void;
@@ -6,7 +7,9 @@ interface FooterProps {
 
 export default function Footer({ onApply, onLine }: FooterProps) {
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+    else window.location.href = `/#${id}`; // トップ以外のページから
   };
 
   return (
@@ -45,6 +48,11 @@ export default function Footer({ onApply, onLine }: FooterProps) {
                   </button>
                 </li>
               ))}
+              <li>
+                <Link to="/blog" className="whitespace-nowrap text-white/60 hover:text-white text-sm transition-colors cursor-pointer">
+                  ブログ・お知らせ
+                </Link>
+              </li>
             </ul>
           </div>
 

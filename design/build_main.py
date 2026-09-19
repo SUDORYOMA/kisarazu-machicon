@@ -291,6 +291,47 @@ def instagram():
   """)}
 </section>'''
 
+
+BLOG_POSTS = [
+    ("初めての方へ", "2026.09.10", "初めての街コン、当日はこんな流れです｜受付からお開きまで",
+     "「街コンってどんな感じ？」という方向けに、木更津街コンの当日の流れを受付から順番に紹介します。", (C["sky50"], C["rose50"])),
+    ("イベント情報", "2026.09.01", "10月18日（日）木更津40人街コン 参加者募集中！男性枠は抽選受付",
+     "10月18日（日）13:00〜16:00、Y's Table にて40人規模の街コンを開催します。女性枠は残りわずか。", (C["amber50"], C["rose50"])),
+    ("開催レポート", "2026.08.05", "木更津街コン vol.5 開催レポート｜37名参加・4組のカップルが誕生しました",
+     "8月2日（日）に開催した vol.5 は37名にご参加いただき、4組のカップルが誕生しました。", (C["rose100"], C["amber50"])),
+]
+
+def blog_card(cat, date, title, excerpt, tone):
+    # サムネイル未設定の記事は、カテゴリ色のグラデーションにタイトルを載せる（本番と同じ）
+    return f'''
+<a href="#" style="display: block; background: #fff; border: 1px solid {C["gray200"]}; border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit;">
+  <div style="aspect-ratio: 16 / 9; background: linear-gradient(to bottom right, {tone[0]}, {tone[1]}); display: flex; align-items: center; justify-content: center; padding: 24px;">
+    <p style="margin: 0; font-family: {SERIF}; font-size: 18px; line-height: 1.375; font-weight: 900; color: {C["gray900"]}; text-align: center;">{title}</p>
+  </div>
+  <div style="padding: 20px;">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+      <span style="background: {C["rose50"]}; color: {C["rose500"]}; font-size: 12px; line-height: 16px; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">{cat}</span>
+      <span style="font-size: 12px; line-height: 16px; color: {C["gray400"]};">{date}</span>
+    </div>
+    <h3 style="margin: 0 0 8px 0; font-size: 16px; line-height: 1.375; font-weight: 900; color: {C["gray900"]};">{title}</h3>
+    <p style="margin: 0; color: {C["gray500"]}; font-size: 14px; line-height: 1.625;">{excerpt}</p>
+    <div style="margin-top: 16px; display: inline-flex; align-items: center; gap: 4px; color: {C["rose500"]}; font-size: 12px; line-height: 16px; font-weight: 700;"><span>続きを読む</span>{icon("arrow-right", 12)}</div>
+  </div>
+</a>'''
+
+def blog():
+    cards = "".join(blog_card(*p) for p in BLOG_POSTS)
+    return f'''
+<section style="padding: 80px 0; background: #fafaf9;">
+  {container(f"""
+    <div style="display: flex; flex-direction: row; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; gap: 16px;">
+      <div>{label("Blog")}{h2("お知らせ・ブログ")}<p style="margin: 12px 0 0 0; color: {C["gray500"]}; font-size: 14px; line-height: 20px;">開催レポートや次回のご案内、初めての方向けの情報をお届けします。</p></div>
+      <a href="#" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; line-height: 20px; font-weight: 700; color: {C["gray700"]}; text-decoration: none; white-space: nowrap;"><span>ブログ一覧を見る</span>{icon("arrow-right", 16)}</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">{cards}</div>
+  """)}
+</section>'''
+
 def result_stat(t, n, u):
     return (f'<div style="text-align: center;"><p style="margin: 0 0 4px 0; color: rgba(255,255,255,0.6); font-size: 14px; line-height: 20px;">{t}</p>'
             f'<p style="margin: 0; font-size: 128px; line-height: 1; font-weight: 900; color: #fff;">{n}</p>'
@@ -475,6 +516,7 @@ PAGE = f'''<!doctype html>
 {events()}
 {past_events()}
 {instagram()}
+{blog()}
 {results()}
 {empathy()}
 {safety()}

@@ -20,9 +20,18 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
 ## 構成
 
 - `src/pages/home/page.tsx` — トップページ。セクションは `components/` に分割。JSON-LD もここで注入
+- `src/pages/blog/page.tsx`（一覧 `/blog`）／`src/pages/blog/post.tsx`（記事 `/blog/:slug`）
+- `src/components/` — ナビ・フッター・モーダル・ブログカードなど全ページ共通の部品。下層ページは `SubPageLayout` で包む
+- `src/lib/blog.ts` — ブログ記事の読み込み（frontmatter 解析・Markdown 変換）。`src/lib/seo.ts` — 下層ページの title/OGP 差し替え
 - `src/mocks/events.ts` — 開催予定・過去イベントのデータ（現状はハードコード）
 - `src/mocks/instagram.ts` — Instagram 投稿の埋め込み URL
 - `public/images/` — ロゴ・OGP・ヒーロー画像など（Readdy から退避済み）
+
+## ブログ記事の追加
+
+`src/content/blog/YYYY-MM-DD-slug.md` を作るだけ（ファイル名が URL になる）。先頭の frontmatter に
+`title` / `date` / `category` / `excerpt` / `thumbnail`（任意、`public/images/blog/` に置く）を書き、本文は Markdown。
+日付の新しい順に、トップ（最新3件）・一覧・記事ページへ自動で反映される。追加後は `npm run deploy`。
 
 ## フォーム送信（Formspree）
 

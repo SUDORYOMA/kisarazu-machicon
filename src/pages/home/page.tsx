@@ -1,16 +1,17 @@
 import { useState, useRef, useEffect } from "react";
-import Navbar from "./components/Navbar";
+import Navbar from "@/components/Navbar";
 import HeroSection from "./components/HeroSection";
 import EventsSection from "./components/EventsSection";
 import InstagramSection from "./components/InstagramSection";
+import BlogSection from "./components/BlogSection";
 import EmpathySection from "./components/EmpathySection";
 import SafetySection from "./components/SafetySection";
 import CharmSection from "./components/CharmSection";
 import ResultsSection from "./components/ResultsSection";
-import ApplyModal from "./components/ApplyModal";
-import LineModal from "./components/LineModal";
-import FixedCTA from "./components/FixedCTA";
-import Footer from "./components/Footer";
+import ApplyModal from "@/components/ApplyModal";
+import LineModal from "@/components/LineModal";
+import FixedCTA from "@/components/FixedCTA";
+import Footer from "@/components/Footer";
 
 // 本番サイトのURL（canonical / JSON-LD / OGP画像の解決に使う）
 const SITE_URL = "https://kazusacon.com";
@@ -239,6 +240,9 @@ export default function Home() {
 
       {/* ③ Instagram */}
       <InstagramSection />
+
+      {/* ③' ブログ最新3件 */}
+      <BlogSection />
 
       {/* ④ 実績 */}
       <div id="results">

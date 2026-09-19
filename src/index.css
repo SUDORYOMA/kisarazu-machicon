@@ -1,3 +1,55 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* ブログ記事本文（Markdown → HTML）の見た目。サイトのトーンに合わせる */
+@layer components {
+  .prose-blog {
+    @apply text-gray-700 text-[15px] md:text-base leading-[1.9];
+  }
+  .prose-blog > * + * {
+    @apply mt-5;
+  }
+  .prose-blog h2 {
+    @apply text-xl md:text-2xl font-black text-gray-900 mt-12 mb-4 pb-2 border-b-2 border-rose-100 leading-snug;
+    font-family: 'Noto Serif JP', serif;
+  }
+  .prose-blog h3 {
+    @apply text-lg font-black text-gray-900 mt-8 mb-3 leading-snug;
+  }
+  .prose-blog p {
+    @apply my-5;
+  }
+  .prose-blog a {
+    @apply text-rose-500 font-medium underline underline-offset-4 decoration-rose-200 hover:decoration-rose-500 transition-colors;
+  }
+  .prose-blog strong {
+    @apply font-bold text-gray-900;
+  }
+  .prose-blog ul {
+    @apply list-disc pl-6 my-5 space-y-1.5;
+  }
+  .prose-blog ol {
+    @apply list-decimal pl-6 my-5 space-y-1.5;
+  }
+  .prose-blog blockquote {
+    @apply border-l-4 border-rose-200 bg-rose-50/50 rounded-r-xl pl-5 pr-4 py-3 my-6 text-gray-600;
+  }
+  .prose-blog hr {
+    @apply border-0 h-px bg-gray-200 my-10;
+  }
+  .prose-blog img {
+    @apply rounded-2xl my-8 w-full;
+  }
+  .prose-blog table {
+    @apply w-full text-sm my-6 border-collapse;
+  }
+  .prose-blog th {
+    @apply bg-gray-50 text-left font-bold text-gray-700 px-4 py-2.5 border border-gray-200 whitespace-nowrap;
+  }
+  .prose-blog td {
+    @apply px-4 py-2.5 border border-gray-200 align-top;
+  }
+  .prose-blog code {
+    @apply bg-gray-100 text-gray-800 rounded px-1.5 py-0.5 text-[0.9em];
+  }
+}
