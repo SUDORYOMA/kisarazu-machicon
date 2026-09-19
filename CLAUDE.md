@@ -31,7 +31,10 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
 
 `src/content/blog/YYYY-MM-DD-slug.md` を作るだけ（ファイル名が URL になる）。先頭の frontmatter に
 `title` / `date` / `category` / `excerpt` / `thumbnail`（任意、`public/images/blog/` に置く）を書き、本文は Markdown。
-日付の新しい順に、トップ（最新3件）・一覧・記事ページへ自動で反映される。追加後は `npm run deploy`。
+日付の新しい順に、トップ（最新3件）・一覧・記事ページへ自動で反映される。
+サムネイルが無い記事は `python3 scripts/make_thumbnails.py` で生成する（カテゴリ色＋明朝タイトルの 1200x675 画像を
+`public/images/blog/` に出力し、frontmatter に `thumbnail` を書き込む。写真を使う記事は `thumbnail` を手で指定すれば触らない）。
+追加後は `npm run deploy`。
 `scripts/prerender.mjs` がデプロイ時に `/blog` と各記事の `index.html`（title/OGP 差し替え済み）と `sitemap.xml` を生成する
 （GitHub Pages で深いリンクが 404 ステータスにならないようにするため。`public/sitemap.xml` は置かない）。
 

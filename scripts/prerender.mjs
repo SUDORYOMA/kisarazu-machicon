@@ -33,11 +33,20 @@ const posts = readdirSync(CONTENT)
 
 const template = readFileSync(join(OUT, "index.html"), "utf8");
 
-function pageHtml({ title, description, path }) {
+function pageHtml({ title, description, path, image }) {
   const url = `${SITE_URL}${path}`;
   const t = escapeHtml(title);
   const d = escapeHtml(description);
-  return template
+  let html = template;
+  if (image) {
+    const img = `${SITE_URL}${image}`;
+    html = html
+      .replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${img}$2`)
+      .replace(/(<meta property="og:image:width" content=")[^"]*(")/, `$11200$2`)
+      .replace(/(<meta property="og:image:height" content=")[^"]*(")/, `$1675$2`)
+      .replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${img}$2`);
+  }
+  return html
     .replace(/<title>[^<]*<\/title>/, `<title>${t}</title>`)
     .replace(/(<meta name="description" content=")[^"]*(")/, `$1${d}$2`)
     .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${url}$2`)
@@ -67,6 +76,7 @@ for (const p of posts) {
     title: `${p.title}｜木更津街コン`,
     description: p.excerpt ?? "",
     path: `/blog/${p.slug}`,
+    image: p.thumbnail,
   }));
 }
 
