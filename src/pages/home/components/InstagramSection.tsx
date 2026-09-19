@@ -1,8 +1,45 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { instagramPosts } from "@/mocks/instagram";
 
 export default function InstagramSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  // 投稿の縦横比（1:1 / 4:5）で埋め込みの高さが変わるため、一番低いものに揃えて残りは下部をフェードで隠す
+  const [uniformHeight, setUniformHeight] = useState<number | null>(null);
+  const [clipped, setClipped] = useState<boolean[]>([]); // 各カードが切り詰められているか（フェード表示用）
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const measure = () => {
+      // 1列表示（スマホ）では揃える必要がない
+      if (getComputedStyle(container).gridTemplateColumns.split(" ").length < 2) {
+        setUniformHeight(null);
+        setClipped([]);
+        return;
+      }
+      const heights = Array.from(container.querySelectorAll<HTMLIFrameElement>("iframe.instagram-media"))
+        .map((f) => f.getBoundingClientRect().height);
+      if (heights.length < instagramPosts.length || heights.some((h) => h < 200)) return; // 全部読み込まれてから
+      const min = Math.round(Math.min(...heights));
+      setUniformHeight(min);
+      setClipped(heights.map((h) => h > min + 8));
+    };
+
+    // Instagram のスクリプトが iframe の高さを後から何度も変えるので、監視して追従する
+    const ro = new ResizeObserver(measure);
+    const mo = new MutationObserver(() => {
+      container.querySelectorAll("iframe.instagram-media").forEach((f) => ro.observe(f));
+      measure();
+    });
+    mo.observe(container, { childList: true, subtree: true });
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      mo.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
 
   useEffect(() => {
     // Load Instagram embed script
@@ -56,8 +93,21 @@ export default function InstagramSection() {
 
         {/* Instagram Embed Grid */}
         <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {instagramPosts.map((post) => (
-            <div key={post.id} className="flex justify-center">
+          {instagramPosts.map((post, i) => (
+            <div
+              key={post.id}
+              className="relative overflow-hidden"
+              style={uniformHeight ? { height: uniformHeight } : undefined}
+            >
+              {/* はみ出した分を白でフェード。Instagram のスクリプトが中身を差し替えるため、
+                  要素の追加・削除はせず class の切り替えだけで表示を制御する */}
+              <div
+                className={`pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent z-10 rounded-b-xl transition-opacity ${
+                  uniformHeight && clipped[i] ? "opacity-100" : "opacity-0"
+                }`}
+              />
+              {/* この div の中は Instagram が書き換える。React はここに何も挿入しない */}
+              <div className="flex justify-center">
               <blockquote
                 className="instagram-media"
                 data-instgrm-permalink={`https://www.instagram.com/p/${post.shortcode}/`}
@@ -351,6 +401,7 @@ export default function InstagramSection() {
                   </p>
                 </div>
               </blockquote>
+              </div>
             </div>
           ))}
         </div>
