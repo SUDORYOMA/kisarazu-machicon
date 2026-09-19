@@ -140,6 +140,9 @@ def render(meta, out_path):
 
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     img.save(out_path, "JPEG", quality=85, optimize=True, progressive=True)
+    # カード表示用の軽量版（幅 640px）。OGP には上の 1200px 版を使う
+    small = img.resize((640, 360), Image.LANCZOS)
+    small.save(out_path.replace(".jpg", ".card.jpg"), "JPEG", quality=80, optimize=True, progressive=True)
 
 
 def main():

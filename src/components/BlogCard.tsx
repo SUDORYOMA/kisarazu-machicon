@@ -9,6 +9,11 @@ const CATEGORY_TONE: Record<string, string> = {
   コラム: "from-purple-100 via-purple-50 to-rose-50",
 };
 
+// 生成サムネイル（/images/blog/*.jpg）にはカード用の軽量版 *.card.jpg がある。手で置いた写真はそのまま
+function cardImage(src: string): string {
+  return /^\/images\/blog\/[^/]+\.jpg$/.test(src) ? src.replace(/\.jpg$/, ".card.jpg") : src;
+}
+
 export default function BlogCard({ post }: { post: BlogPost }) {
   const tone = CATEGORY_TONE[post.category] ?? "from-gray-100 via-gray-50 to-rose-50";
 
@@ -21,8 +26,12 @@ export default function BlogCard({ post }: { post: BlogPost }) {
       <div className="aspect-[16/9] overflow-hidden">
         {post.thumbnail ? (
           <img
-            src={post.thumbnail}
+            src={cardImage(post.thumbnail)}
             alt={post.title}
+            loading="lazy"
+            decoding="async"
+            width={640}
+            height={360}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (

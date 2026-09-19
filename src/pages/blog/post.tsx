@@ -52,7 +52,7 @@ export default function BlogPost() {
         {/* Thumbnail */}
         {post.thumbnail && (
           <div className="max-w-3xl mx-auto px-6 -mt-8 md:-mt-10">
-            <img src={post.thumbnail} alt={post.title} className="w-full rounded-2xl object-cover aspect-[16/9]" />
+            <img src={post.thumbnail} alt={post.title} width={1200} height={675} className="w-full rounded-2xl object-cover aspect-[16/9]" />
           </div>
         )}
 
