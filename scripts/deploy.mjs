@@ -10,6 +10,8 @@ const run = (cmd, env = {}) =>
   execSync(cmd, { stdio: "inherit", env: { ...process.env, ...env } });
 
 run("npm run build", { BASE_PATH });
+// ブログ各 URL の HTML と sitemap.xml を生成（GitHub Pages で 200 を返すため）
+run("node scripts/prerender.mjs");
 // SPA（react-router）のため、直リンク・リロード時も index.html を返す
 copyFileSync("out/index.html", "out/404.html");
 // -t: .nojekyll などドットファイルも含める
