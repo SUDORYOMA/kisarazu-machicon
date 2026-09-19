@@ -99,6 +99,29 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                     </div>
                   </div>
 
+                  {/* Highlights（その回だけの企画） */}
+                  {event.highlights && event.highlights.length > 0 && (
+                    <div className="mb-4 rounded-xl border border-amber-200 bg-gradient-to-r from-amber-50 to-rose-50 p-4">
+                      <p className="text-xs font-bold text-amber-600 mb-2 tracking-wide flex items-center gap-1">
+                        <i className="ri-gift-line" />
+                        今回のお楽しみ
+                      </p>
+                      <ul className="space-y-1.5">
+                        {event.highlights.map((h, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm">
+                            <span className="w-6 h-6 flex items-center justify-center rounded-full bg-white text-rose-500 flex-shrink-0 mt-px">
+                              <i className={`${h.icon} text-sm`} />
+                            </span>
+                            <span>
+                              <span className="font-bold text-gray-900">{h.text}</span>
+                              {h.note && <span className="block text-xs text-gray-500 mt-0.5">{h.note}</span>}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
                   {/* Seats */}
                   <div className="bg-gray-50 rounded-xl p-4 mb-5">
                     <p className="text-xs text-gray-500 mb-3 font-medium">開催状況</p>

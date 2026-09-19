@@ -57,6 +57,9 @@ ICON_PATHS = {
     "instagram": '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
     "mail": '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
     "menu": '<path d="M4 7h16M4 12h16M4 17h16"/>',
+    "gift": '<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12M12 8c-2-3-6-3-6-1s3 1 6 1zM12 8c2-3 6-3 6-1s-3 1-6 1z"/>',
+    "sparkle": '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/>',
+    "goblet": '<path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3zM12 14v6M8 21h8"/>',
 }
 
 def icon(name, size=16, color="currentColor", extra=""):
@@ -142,7 +145,8 @@ def hero():
 
 EVENTS = [
     dict(date="10月18日", dow="日", time="13:00〜16:00", title="木更津40人街コン", venue="Y's Table",
-         address="木更津市富士見1丁目12-32", age="20〜49歳", male="12,000円", female="2,000円", ms=0, ms_status="抽選", fs=5, tag="受付中"),
+         address="木更津市富士見1丁目12-32", age="20〜49歳", male="12,000円", female="2,000円", ms=0, ms_status="抽選", fs=5, tag="受付中",
+         highlights=[("sparkle", "会場内で占い師による占いを実施！", None), ("goblet", "同会場でアフターパーティー開催！16:00〜18:00", "※街コン参加者のみ")]),
     dict(date="1月某日", dow="日", time="13:00〜16:00", title="木更津40人街コン", venue="Y's Table",
          address="木更津市富士見1丁目12-32", age="20〜49歳", male="12,000円", female="2,000円", ms=20, fs=20, tag="受付中"),
 ]
@@ -161,6 +165,20 @@ def seat(label_, n, status=None):
                 f'<p style="margin: 2px 0 0 0; font-size: 12px; line-height: 16px; color: {C["gray500"]};">※応募可能</p></div>')
     color = C["rose500"] if n <= 5 else C["emerald500"]
     return head + f'<p style="margin: 0; font-size: 24px; line-height: 32px; font-weight: 900; color: {color};">残り{n}名</p></div>'
+
+def highlights_block(items):
+    if not items:
+        return ""
+    rows = "".join(
+        f'<li style="display: flex; align-items: flex-start; gap: 8px; font-size: 14px; line-height: 20px;">'
+        f'<span style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 9999px; background: #fff; color: {C["rose500"]}; flex-shrink: 0;">{icon(ic, 14)}</span>'
+        f'<span><span style="font-weight: 700; color: {C["gray900"]};">{t}</span>'
+        + (f'<span style="display: block; font-size: 12px; line-height: 16px; color: {C["gray500"]}; margin-top: 2px;">{n}</span>' if n else "")
+        + '</span></li>'
+        for ic, t, n in items)
+    return (f'<div style="margin-bottom: 16px; border-radius: 12px; border: 1px solid #fde68a; background: linear-gradient(to right, {C["amber50"]}, {C["rose50"]}); padding: 16px;">'
+            f'<p style="margin: 0 0 8px 0; font-size: 12px; line-height: 16px; font-weight: 700; color: #d97706; letter-spacing: 0.025em; display: flex; align-items: center; gap: 4px;">{icon("gift", 12)}<span>今回のお楽しみ</span></p>'
+            f'<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px;">{rows}</ul></div>')
 
 def event_card(e):
     return f'''
@@ -186,6 +204,7 @@ def event_card(e):
       <div style="display: flex; align-items: center; gap: 6px;">{icon("user", 14, C["gray400"])}<span>{e["age"]}</span></div>
       <div style="display: flex; align-items: center; gap: 6px;">{icon("coin", 14, C["gray400"])}<span>男{e["male"]} / 女{e["female"]}</span></div>
     </div>
+    {highlights_block(e.get("highlights"))}
     <div style="background: {C["gray50"]}; border-radius: 12px; padding: 16px; margin-bottom: 20px;">
       <p style="margin: 0 0 12px 0; font-size: 12px; line-height: 16px; color: {C["gray500"]}; font-weight: 500;">開催状況</p>
       <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">{seat("男性", e["ms"], e.get("ms_status"))}{seat("女性", e["fs"], e.get("fs_status"))}</div>
