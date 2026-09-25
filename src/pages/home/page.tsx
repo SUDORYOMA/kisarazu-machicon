@@ -12,6 +12,7 @@ import ApplyModal from "@/components/ApplyModal";
 import LineModal from "@/components/LineModal";
 import FixedCTA from "@/components/FixedCTA";
 import Footer from "@/components/Footer";
+import AlertBanner from "@/components/AlertBanner";
 
 // 本番サイトのURL（canonical / JSON-LD / OGP画像の解決に使う）
 const SITE_URL = "https://kazusacon.com";
@@ -230,6 +231,9 @@ export default function Home() {
         onLine={() => setLineOpen(true)}
         onScrollToEvents={scrollToEvents}
       />
+
+      {/* 緊急のお知らせ（不要になったら AlertBanner の ALERT を null に） */}
+      <AlertBanner />
 
       {/* ② イベント一覧 */}
       <div ref={eventsRef}>

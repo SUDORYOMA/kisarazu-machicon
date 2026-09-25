@@ -38,6 +38,11 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
 `scripts/prerender.mjs` がデプロイ時に `/blog` と各記事の `index.html`（title/OGP 差し替え済み）と `sitemap.xml` を生成する
 （GitHub Pages で深いリンクが 404 ステータスにならないようにするため。`public/sitemap.xml` は置かない）。
 
+## 緊急のお知らせバナー
+
+`src/components/AlertBanner.tsx` の `ALERT` に文言を入れると、トップのヒーロー直下（募集中イベントの上）に
+赤枠＋点滅ランプのバナーが出る。不要になったら `ALERT` を `null` にして `npm run deploy`。
+
 ## フォーム送信（Formspree）
 
 - 申し込み（`ApplyModal.tsx`）と LINE 空席確認（`LineModal.tsx`）は `src/lib/formspree.ts` 経由で
