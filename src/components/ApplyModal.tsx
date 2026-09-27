@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { events } from "@/mocks/events";
 import { submitToFormspree } from "@/lib/formspree";
+import AlertNotice from "@/components/AlertNotice";
 
 interface ApplyModalProps {
   open: boolean;
@@ -53,6 +54,9 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
         </div>
 
         <div className="p-6">
+          {/* 公式LINE障害中などの緊急のお知らせ（src/lib/alert.ts） */}
+          <AlertNotice />
+
           {submitted ? (
             <div className="text-center py-8">
               <div className="w-16 h-16 flex items-center justify-center bg-rose-100 rounded-full mx-auto mb-4">

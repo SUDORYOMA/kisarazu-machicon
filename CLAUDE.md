@@ -40,8 +40,9 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
 
 ## 緊急のお知らせバナー
 
-`src/components/AlertBanner.tsx` の `ALERT` に文言を入れると、トップのヒーロー直下（募集中イベントの上）に
-赤枠＋点滅ランプのバナーが出る。不要になったら `ALERT` を `null` にして `npm run deploy`。
+`src/lib/alert.ts` の `ALERT` に文言を入れると、次の2か所に赤枠＋点滅ランプで表示される：
+トップのヒーロー直下（`AlertBanner`。募集中イベントの上）と、LINE・申し込みモーダルの冒頭（`AlertNotice`）。
+不要になったら `ALERT` を `null` にして `npm run deploy`。
 
 ## フォーム送信（Formspree）
 

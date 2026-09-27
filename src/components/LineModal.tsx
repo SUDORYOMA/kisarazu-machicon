@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { submitToFormspree } from "@/lib/formspree";
+import AlertNotice from "@/components/AlertNotice";
 
 interface LineModalProps {
   open: boolean;
@@ -53,6 +54,9 @@ export default function LineModal({ open, onClose }: LineModalProps) {
         </div>
 
         <div className="p-6">
+          {/* 公式LINE障害中などの緊急のお知らせ（src/lib/alert.ts） */}
+          <AlertNotice />
+
           {submitted ? (
             <div className="text-center py-6">
               <div className="w-14 h-14 flex items-center justify-center bg-emerald-100 rounded-full mx-auto mb-4">

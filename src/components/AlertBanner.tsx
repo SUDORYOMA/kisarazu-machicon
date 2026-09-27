@@ -1,14 +1,6 @@
-// 緊急のお知らせ（障害・中止など）。不要になったら ALERT を null にする
-const ALERT: {
-  title: string;
-  body: string;
-} | null = {
-  title: "9/25 18時頃〜9/27 15時現在 - 公式LINEが一時的に利用できない状況でございます",
-  body: "お問合せは公式Instagram又はメールアドレスまでお願い致します。",
-};
+import { ALERT, INSTAGRAM_URL, EMAIL } from "@/lib/alert";
 
-const INSTAGRAM_URL = "https://www.instagram.com/kazusacon?igsh=MTNwZ3NqeXQ2bjVm&utm_source=qr";
-const EMAIL = "info@kazusacon.com";
+// トップのヒーロー直下に出す緊急のお知らせ。文言は src/lib/alert.ts
 
 export default function AlertBanner() {
   if (!ALERT) return null;
