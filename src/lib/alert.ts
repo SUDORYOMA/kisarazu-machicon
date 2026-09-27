@@ -5,7 +5,7 @@ export const ALERT: {
   title: string;
   body: string;
 } | null = {
-  title: "9/25 18時頃〜9/27 15時現在 - 公式LINEが一時的に利用できない状況でございます",
+  title: "9/25 18時頃〜9/28 9時現在 - 公式LINEが一時的に利用できない状況でございます",
   body: "お問合せは公式Instagram又はメールアドレスまでお願い致します。",
 };
 
