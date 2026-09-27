@@ -1,5 +1,6 @@
 import logo from "@/assets/logo.png";
 import { Link } from "react-router-dom";
+import LineLink from "@/components/LineLink";
 interface FooterProps {
   onApply: () => void;
   onLine: () => void;
@@ -80,17 +81,12 @@ export default function Footer({ onApply, onLine }: FooterProps) {
                 </div>
                 <span className="text-sm">Instagram</span>
               </a>
-              <a
-                href="https://lin.ee/9pu5Slg"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                className="flex items-center gap-3 text-white/60 hover:text-white transition-colors cursor-pointer"
-              >
+              <LineLink className="flex items-center gap-3 text-white/60 hover:text-white transition-colors cursor-pointer">
                 <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full">
                   <i className="ri-chat-smile-2-line" />
                 </div>
                 <span className="text-sm">LINE公式</span>
-              </a>
+              </LineLink>
             </div>
           </div>
 

@@ -42,7 +42,9 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
 
 `src/lib/alert.ts` の `ALERT` に文言を入れると、次の2か所に赤枠＋点滅ランプで表示される：
 トップのヒーロー直下（`AlertBanner`。募集中イベントの上）と、LINE・申し込みモーダルの冒頭（`AlertNotice`）。
-不要になったら `ALERT` を `null` にして `npm run deploy`。
+さらに `ALERT` が設定されている間は、サイト内の LINE 友だち追加リンク（`LineLink`）が
+LINE へ飛ばず、問い合わせ先を案内する小窓を出す。申し込み送信後の LINE 自動遷移も止まる。
+不要になったら `ALERT` を `null` にして `npm run deploy`（LINE リンクも元に戻る）。
 
 ## フォーム送信（Formspree）
 

@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { events } from "@/mocks/events";
 import { submitToFormspree } from "@/lib/formspree";
 import AlertNotice from "@/components/AlertNotice";
+import LineLink, { LINE_URL } from "@/components/LineLink";
+import { ALERT } from "@/lib/alert";
 
 interface ApplyModalProps {
   open: boolean;
@@ -26,8 +28,8 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
       const ok = await submitToFormspree("apply", e.currentTarget, "【木更津街コン】イベント申し込み");
       if (ok) {
         setSubmitted(true);
-        // LINE登録ページへ遷移
-        window.open("https://lin.ee/9pu5Slg", "_blank", "noopener,noreferrer");
+        // LINE登録ページへ遷移（障害中は開かず、完了画面の案内に任せる）
+        if (!ALERT) window.open(LINE_URL, "_blank", "noopener,noreferrer");
       } else {
         setError("送信に失敗しました。もう一度お試しください。");
       }
@@ -67,15 +69,10 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
                 当日の詳細はLINEでお送りします。<br />
                 LINEの友だち追加が完了していない場合は下記よりお願いします。
               </p>
-              <a
-                href="https://lin.ee/9pu5Slg"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer"
-              >
+              <LineLink className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer">
                 <i className="ri-chat-smile-2-line" />
                 LINEで友だち追加
-              </a>
+              </LineLink>
             </div>
           ) : (
             <form

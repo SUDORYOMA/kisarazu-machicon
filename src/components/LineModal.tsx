@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { submitToFormspree } from "@/lib/formspree";
 import AlertNotice from "@/components/AlertNotice";
+import LineLink from "@/components/LineLink";
 
 interface LineModalProps {
   open: boolean;
@@ -67,28 +68,18 @@ export default function LineModal({ open, onClose }: LineModalProps) {
                 ご連絡ありがとうございます。<br />
                 LINEの友だち追加もお忘れなく！
               </p>
-              <a
-                href="https://lin.ee/9pu5Slg"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer"
-              >
+              <LineLink className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer">
                 <i className="ri-chat-smile-2-line" />
                 LINEで友だち追加
-              </a>
+              </LineLink>
             </div>
           ) : (
             <>
               {/* LINE direct link */}
-              <a
-                href="https://lin.ee/9pu5Slg"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                className="whitespace-nowrap w-full flex items-center justify-center gap-2 bg-[#06C755] text-white font-bold py-4 rounded-xl hover:bg-[#05b34c] transition-colors cursor-pointer mb-4"
-              >
+              <LineLink className="whitespace-nowrap w-full flex items-center justify-center gap-2 bg-[#06C755] text-white font-bold py-4 rounded-xl hover:bg-[#05b34c] transition-colors cursor-pointer mb-4">
                 <i className="ri-chat-smile-2-line text-lg" />
                 LINEで友だち追加する
-              </a>
+              </LineLink>
 
               <div className="flex items-center gap-3 mb-4">
                 <div className="flex-1 h-px bg-gray-200" />

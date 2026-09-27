@@ -2,6 +2,7 @@ import { useEffect, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import SubPageLayout from "@/components/SubPageLayout";
 import BlogCard from "@/components/BlogCard";
+import LineLink from "@/components/LineLink";
 import NotFound from "@/pages/NotFound";
 import { formatDate, getPost, getPosts, renderMarkdown } from "@/lib/blog";
 import { setPageMeta } from "@/lib/seo";
@@ -66,15 +67,10 @@ export default function BlogPost() {
               参加のご相談・空席確認は公式LINEで
             </p>
             <p className="text-gray-600 text-sm mb-5">1人参加の方も多数。初めての方もお気軽にどうぞ。</p>
-            <a
-              href="https://lin.ee/9pu5Slg"
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer text-sm"
-            >
+            <LineLink className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer text-sm">
               <i className="ri-chat-smile-2-line" />
               公式LINEを友だち追加
-            </a>
+            </LineLink>
           </div>
 
           <div className="mt-10 text-center">
