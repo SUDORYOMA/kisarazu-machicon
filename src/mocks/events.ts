@@ -46,8 +46,8 @@ export const events: EventItem[] = [
     femaleFee: "2,000円",
     maleSeats: 0,
     maleStatus: "抽選",
-    femaleSeats: 5,
-    totalSeats: 5,
+    femaleSeats: 3,
+    totalSeats: 3,
     tag: "受付中",
     highlights: [
       { icon: "ri-sparkling-2-line", text: "会場内で占い師による占いを実施！" },
