@@ -60,6 +60,8 @@ ICON_PATHS = {
     "gift": '<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12M12 8c-2-3-6-3-6-1s3 1 6 1zM12 8c2-3 6-3 6-1s-3 1-6 1z"/>',
     "sparkle": '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/>',
     "goblet": '<path d="M7 3h10l-1 7a4 4 0 0 1-8 0L7 3zM12 14v6M8 21h8"/>',
+    "shield-user": '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><circle cx="12" cy="10.5" r="2.2"/><path d="M8.2 16.5c.7-1.5 2.1-2.3 3.8-2.3s3.1.8 3.8 2.3"/>',
+    "id-card": '<rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5 16c.6-1.4 1.9-2.2 3.5-2.2S11.4 14.6 12 16M15 10h4M15 14h4"/>',
 }
 
 def icon(name, size=16, color="currentColor", extra=""):
@@ -234,8 +236,29 @@ def events():
       </div>
       {btn("公式LINEから申し込む", C["rose500"], "#fff", py=12, extra="flex-shrink: 0;")}
     </div>
+    {id_check_notice()}
   """)}
 </section>'''
+
+
+ID_EXAMPLES = ["運転免許証", "マイナンバーカード", "パスポート"]
+
+def id_check_notice():
+    chips = "".join(
+        f'<span style="background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; line-height: 20px; font-weight: 700; padding: 6px 14px; border-radius: 9999px; border: 1px solid rgba(255,255,255,0.2);">{n}</span>'
+        for n in ID_EXAMPLES)
+    return f'''
+<div style="margin-top: 32px; border-radius: 16px; background: {C["gray900"]}; overflow: hidden;">
+  <div style="background: {C["rose500"]}; padding: 10px 20px; display: flex; align-items: center; gap: 8px;">{icon("shield-user", 18, "#fff")}<span style="color: #fff; font-weight: 900; font-size: 14px; line-height: 20px; letter-spacing: 0.05em;">安心・安全のためのお願い</span></div>
+  <div style="padding: 32px; display: flex; flex-direction: row; align-items: center; gap: 24px;">
+    <div style="width: 96px; height: 96px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 16px; background: rgba(255,255,255,0.1);">{icon("id-card", 48, "#fff")}</div>
+    <div>
+      <p style="margin: 0 0 12px 0; font-family: {SERIF}; font-size: 30px; line-height: 1.375; font-weight: 900; color: #fff;">ご来場の際、<span style="color: {C["rose400"]};">公的身分証明書</span>を<br>確認させていただきます</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; align-items: center;">{chips}<span style="color: rgba(255,255,255,0.6); font-size: 14px; line-height: 20px; font-weight: 500; padding: 6px 4px;">など</span></div>
+      <p style="margin: 0; color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.625;">年齢・独身であることの確認のため、参加者全員にお願いしております。<br>お手数ですが、当日は必ずお持ちください。<strong style="color: {C["rose400"]}; font-weight: 700;">ご提示いただけない場合はご参加いただけません。</strong></p>
+    </div>
+  </div>
+</div>'''
 
 def stat_box(n, t):
     return (f'<div style="background: #fff; border-radius: 16px; padding: 20px; text-align: center; border: 1px solid {C["gray100"]};">'

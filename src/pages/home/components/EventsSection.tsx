@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { events, pastEvents } from "@/mocks/events";
+import IdCheckNotice from "@/components/IdCheckNotice";
 
 interface EventsSectionProps {
   onLine: () => void;
@@ -203,6 +204,9 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
               公式LINEから申し込む
             </button>
           </div>
+
+          {/* ご来場時の本人確認（参加条件） */}
+          <IdCheckNotice />
         </div>
       </section>
 
