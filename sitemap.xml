@@ -8,9 +8,15 @@
   </url>
   <url>
     <loc>https://kazusacon.com/blog</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://kazusacon.com/blog/2026-09-29-first-date-plan</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://kazusacon.com/blog/2026-09-28-before-you-apply</loc>
