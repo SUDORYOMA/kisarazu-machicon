@@ -25,9 +25,14 @@ export default function AlertBanner() {
             <p className="text-red-600 font-black text-lg md:text-2xl leading-snug mb-3">
               {ALERT.title}
             </p>
-            <p className="text-red-600 font-bold text-base md:text-lg leading-relaxed mb-5">
+            <p className="text-red-600 font-bold text-base md:text-lg leading-relaxed mb-3">
               {ALERT.body}
             </p>
+            {ALERT.note && (
+              <p className="text-red-600/90 font-medium text-sm md:text-base leading-relaxed mb-5">
+                {ALERT.note}
+              </p>
+            )}
 
             {/* 連絡先 */}
             <div className="flex flex-col sm:flex-row gap-3">

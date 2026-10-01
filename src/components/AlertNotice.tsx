@@ -15,6 +15,9 @@ export default function AlertNotice() {
       </div>
       <p className="text-red-600 font-black text-sm leading-snug mb-1.5">{ALERT.title}</p>
       <p className="text-red-600 font-bold text-xs leading-relaxed">{ALERT.body}</p>
+      {ALERT.note && (
+        <p className="text-red-600/90 font-medium text-xs leading-relaxed mt-1.5">{ALERT.note}</p>
+      )}
     </div>
   );
 }
