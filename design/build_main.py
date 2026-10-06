@@ -229,12 +229,12 @@ def events():
     </div>
     <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px;">{cards}</div>
     <div style="margin-top: 40px; background: {C["rose50"]}; border: 1px solid {C["rose100"]}; border-radius: 16px; padding: 24px; display: flex; flex-direction: row; align-items: center; gap: 16px;">
-      <div style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: {C["rose100"]}; border-radius: 9999px; flex-shrink: 0;">{icon("alarm-fill", 20, C["rose500"])}</div>
+      <div style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: {C["rose100"]}; border-radius: 9999px; flex-shrink: 0;">{icon("instagram", 20, C["rose500"])}</div>
       <div style="flex: 1;">
-        <p style="margin: 0 0 4px 0; font-weight: 700; color: {C["gray900"]}; font-size: 16px; line-height: 24px;">人気日程はすぐ埋まります</p>
-        <p style="margin: 0; color: {C["gray600"]}; font-size: 14px; line-height: 20px;">特に<strong style="color: {C["rose500"]};">女性枠は早く満席</strong>になる傾向があります。参加をご検討の方はお早めにお申し込みください。</p>
+        <p style="margin: 0 0 4px 0; font-weight: 700; color: {C["gray900"]}; font-size: 16px; line-height: 24px;">次回開催のご案内を希望の方は公式Instagramへ</p>
+        <p style="margin: 0; color: {C["gray600"]}; font-size: 14px; line-height: 20px;">開催日程が決まり次第、<strong style="color: {C["rose500"]};">公式Instagram</strong>でお知らせします。フォローしてお待ちください。</p>
       </div>
-      {btn("公式LINEから申し込む", C["rose500"], "#fff", py=12, extra="flex-shrink: 0;")}
+      {btn("公式Instagramをフォロー", C["gray900"], "#fff", "instagram", py=12, extra="flex-shrink: 0;")}
     </div>
     {id_check_notice()}
   """)}

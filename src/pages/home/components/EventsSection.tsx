@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { events, pastEvents } from "@/mocks/events";
 import IdCheckNotice from "@/components/IdCheckNotice";
+import { INSTAGRAM_URL } from "@/lib/alert";
 
 interface EventsSectionProps {
   onLine: () => void;
@@ -185,24 +186,27 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
             ))}
           </div>
 
-          {/* Urgency note */}
+          {/* 次回開催の案内 */}
           <div className="mt-10 bg-rose-50 border border-rose-100 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-4">
             <div className="w-12 h-12 flex items-center justify-center bg-rose-100 rounded-full flex-shrink-0">
-              <i className="ri-alarm-warning-fill text-rose-500 text-xl" />
+              <i className="ri-notification-3-fill text-rose-500 text-xl" />
             </div>
-            <div>
-              <p className="font-bold text-gray-900 mb-1">人気日程はすぐ埋まります</p>
+            <div className="flex-1 text-center md:text-left">
+              <p className="font-bold text-gray-900 mb-1">次回開催のご案内を希望の方は公式Instagramへ</p>
               <p className="text-gray-600 text-sm">
-                特に<strong className="text-rose-500">女性枠は早く満席</strong>になる傾向があります。
-                参加をご検討の方はお早めにお申し込みください。
+                開催日程が決まり次第、<strong className="text-rose-500">公式Instagram</strong>でお知らせします。
+                フォローしてお待ちください。
               </p>
             </div>
-            <button
-              onClick={onLine}
-              className="whitespace-nowrap flex-shrink-0 bg-rose-500 text-white font-bold px-6 py-3 rounded-full hover:bg-rose-600 transition-colors cursor-pointer text-sm"
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              className="whitespace-nowrap flex-shrink-0 inline-flex items-center gap-2 bg-gray-900 text-white font-bold px-6 py-3 rounded-full hover:bg-gray-700 transition-colors cursor-pointer text-sm"
             >
-              公式LINEから申し込む
-            </button>
+              <i className="ri-instagram-line" />
+              公式Instagramをフォロー
+            </a>
           </div>
 
           {/* ご来場時の本人確認（参加条件） */}
