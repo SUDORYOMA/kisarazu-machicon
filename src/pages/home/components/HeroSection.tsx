@@ -1,5 +1,6 @@
 import heroImg from "@/assets/hero.jpg";
 import { useEffect, useState } from "react";
+import { CTA_APPLY, CTA_CONSULT, CTA_ICON, CTA_BG } from "@/lib/alert";
 
 interface HeroSectionProps {
   onLine: () => void;
@@ -76,17 +77,17 @@ export default function HeroSection({ onLine, onScrollToEvents }: HeroSectionPro
             </button>
             <button
               onClick={onLine}
-              className="whitespace-nowrap flex items-center justify-center gap-2 bg-[#06C755] text-white font-bold px-6 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer text-sm"
+              className={`whitespace-nowrap flex items-center justify-center gap-2 ${CTA_BG} text-white font-bold px-6 py-3.5 rounded-full transition-colors cursor-pointer text-sm`}
             >
-              <i className="ri-chat-smile-2-line" />
-              公式LINEから申し込む
+              <i className={CTA_ICON} />
+              {CTA_APPLY}
             </button>
             <button
               onClick={onLine}
-              className="whitespace-nowrap flex items-center justify-center gap-2 bg-[#06C755] text-white font-bold px-6 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer text-sm"
+              className={`whitespace-nowrap flex items-center justify-center gap-2 ${CTA_BG} text-white font-bold px-6 py-3.5 rounded-full transition-colors cursor-pointer text-sm`}
             >
-              <i className="ri-chat-smile-2-line" />
-              LINEで空席確認
+              <i className={CTA_ICON} />
+              {CTA_CONSULT}
             </button>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import logo from "@/assets/logo.png";
 import { Link } from "react-router-dom";
+import { LINE_DOWN, CTA_APPLY, CTA_ICON, CTA_BG } from "@/lib/alert";
 import LineLink from "@/components/LineLink";
 interface FooterProps {
   onApply: () => void;
@@ -81,34 +82,33 @@ export default function Footer({ onApply, onLine }: FooterProps) {
                 </div>
                 <span className="text-sm">Instagram</span>
               </a>
-              <LineLink className="flex items-center gap-3 text-white/60 hover:text-white transition-colors cursor-pointer">
-                <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full">
-                  <i className="ri-chat-smile-2-line" />
-                </div>
-                <span className="text-sm">LINE公式</span>
-              </LineLink>
+              {!LINE_DOWN && (
+                <LineLink className="flex items-center gap-3 text-white/60 hover:text-white transition-colors cursor-pointer">
+                  <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full">
+                    <i className="ri-chat-smile-2-line" />
+                  </div>
+                  <span className="text-sm">LINE公式</span>
+                </LineLink>
+              )}
             </div>
           </div>
 
-          {/* LINE CTA */}
+          {/* お問合せ CTA */}
           <div>
-            <h4 className="font-bold text-sm mb-4 text-white/90">最新情報をLINEで</h4>
+            <h4 className="font-bold text-sm mb-4 text-white/90">
+              {LINE_DOWN ? "最新情報・お問合せ" : "最新情報をLINEで"}
+            </h4>
             <p className="text-white/60 text-sm mb-4 leading-relaxed">
-              空席情報やお得なキャンペーン情報をいち早くお届けします。
+              {LINE_DOWN
+                ? "開催日程や空席情報は公式Instagramでお知らせします。ご相談はDM・メールでどうぞ。"
+                : "空席情報やお得なキャンペーン情報をいち早くお届けします。"}
             </p>
             <button
               onClick={onLine}
-              className="whitespace-nowrap w-full flex items-center justify-center gap-2 bg-[#06C755] text-white font-bold py-3 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer text-sm"
+              className={`whitespace-nowrap w-full flex items-center justify-center gap-2 ${CTA_BG} text-white font-bold py-3 rounded-full transition-colors cursor-pointer text-sm`}
             >
-              <i className="ri-chat-smile-2-line" />
-              LINE登録する
-            </button>
-            <button
-              onClick={onLine}
-              className="whitespace-nowrap w-full flex items-center justify-center gap-2 bg-white/10 text-white font-bold py-3 rounded-full hover:bg-white/20 transition-colors cursor-pointer text-sm mt-2"
-            >
-              <i className="ri-chat-smile-2-line" />
-              公式LINEから申し込む
+              <i className={CTA_ICON} />
+              {CTA_APPLY}
             </button>
           </div>
         </div>

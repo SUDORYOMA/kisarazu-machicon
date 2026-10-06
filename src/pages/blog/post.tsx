@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import SubPageLayout from "@/components/SubPageLayout";
 import BlogCard from "@/components/BlogCard";
 import LineLink from "@/components/LineLink";
+import { LINE_DOWN, INSTAGRAM_URL, EMAIL } from "@/lib/alert";
 import NotFound from "@/pages/NotFound";
 import { formatDate, getPost, getPosts, renderMarkdown } from "@/lib/blog";
 import { setPageMeta } from "@/lib/seo";
@@ -64,13 +65,34 @@ export default function BlogPost() {
           {/* CTA */}
           <div className="mt-14 bg-rose-50 border border-rose-100 rounded-2xl p-6 md:p-8 text-center">
             <p className="font-black text-gray-900 text-lg mb-2" style={{ fontFamily: "'Noto Serif JP', serif" }}>
-              参加のご相談・空席確認は公式LINEで
+              {LINE_DOWN ? "参加のご相談・空席確認はこちら" : "参加のご相談・空席確認は公式LINEで"}
             </p>
             <p className="text-gray-600 text-sm mb-5">1人参加の方も多数。初めての方もお気軽にどうぞ。</p>
-            <LineLink className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer text-sm">
-              <i className="ri-chat-smile-2-line" />
-              公式LINEを友だち追加
-            </LineLink>
+            {LINE_DOWN ? (
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  className="whitespace-nowrap inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-bold px-8 py-3.5 rounded-full hover:bg-gray-700 transition-colors cursor-pointer text-sm"
+                >
+                  <i className="ri-instagram-line" />
+                  公式InstagramにDM
+                </a>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="whitespace-nowrap inline-flex items-center justify-center gap-2 bg-white border-2 border-gray-900 text-gray-900 font-bold px-8 py-3.5 rounded-full hover:bg-gray-50 transition-colors cursor-pointer text-sm"
+                >
+                  <i className="ri-mail-line" />
+                  メールでお問合せ
+                </a>
+              </div>
+            ) : (
+              <LineLink className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer text-sm">
+                <i className="ri-chat-smile-2-line" />
+                公式LINEを友だち追加
+              </LineLink>
+            )}
           </div>
 
           <div className="mt-10 text-center">

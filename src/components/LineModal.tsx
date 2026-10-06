@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { submitToFormspree } from "@/lib/formspree";
 import AlertNotice from "@/components/AlertNotice";
+import { LINE_DOWN, INSTAGRAM_URL, EMAIL, CTA_ICON } from "@/lib/alert";
 import LineLink from "@/components/LineLink";
 
 interface LineModalProps {
@@ -39,13 +40,15 @@ export default function LineModal({ open, onClose }: LineModalProps) {
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
       <div className="relative bg-white rounded-3xl w-full max-w-md overflow-hidden">
         {/* Header */}
-        <div className="bg-[#06C755] px-6 py-5 flex items-center justify-between">
+        <div className={`${LINE_DOWN ? "bg-gray-900" : "bg-[#06C755]"} px-6 py-5 flex items-center justify-between`}>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 flex items-center justify-center bg-white/20 rounded-full">
-              <i className="ri-chat-smile-2-line text-white text-xl" />
+              <i className={`${CTA_ICON} text-white text-xl`} />
             </div>
             <div>
-              <h2 className="text-white font-black text-lg">LINEで相談・空席確認</h2>
+              <h2 className="text-white font-black text-lg">
+                {LINE_DOWN ? "お問合せ・空席確認" : "LINEで相談・空席確認"}
+              </h2>
               <p className="text-white/80 text-xs">お気軽にご連絡ください</p>
             </div>
           </div>
@@ -66,20 +69,45 @@ export default function LineModal({ open, onClose }: LineModalProps) {
               <h3 className="text-lg font-black text-gray-900 mb-2">送信完了！</h3>
               <p className="text-gray-600 text-sm mb-6 leading-relaxed">
                 ご連絡ありがとうございます。<br />
-                LINEの友だち追加もお忘れなく！
+                {LINE_DOWN
+                  ? "担当より、メールまたはInstagramのDMでご連絡いたします。"
+                  : "LINEの友だち追加もお忘れなく！"}
               </p>
-              <LineLink className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer">
-                <i className="ri-chat-smile-2-line" />
-                LINEで友だち追加
-              </LineLink>
+              {!LINE_DOWN && (
+                <LineLink className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer">
+                  <i className="ri-chat-smile-2-line" />
+                  LINEで友だち追加
+                </LineLink>
+              )}
             </div>
           ) : (
             <>
-              {/* LINE direct link */}
-              <LineLink className="whitespace-nowrap w-full flex items-center justify-center gap-2 bg-[#06C755] text-white font-bold py-4 rounded-xl hover:bg-[#05b34c] transition-colors cursor-pointer mb-4">
-                <i className="ri-chat-smile-2-line text-lg" />
-                LINEで友だち追加する
-              </LineLink>
+              {/* 連絡先（LINE障害中は Instagram・メール） */}
+              {LINE_DOWN ? (
+                <div className="flex flex-col gap-2.5 mb-4">
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                    className="whitespace-nowrap w-full flex items-center justify-center gap-2 bg-gray-900 text-white font-bold py-4 rounded-xl hover:bg-gray-700 transition-colors cursor-pointer"
+                  >
+                    <i className="ri-instagram-line text-lg" />
+                    公式InstagramにDM
+                  </a>
+                  <a
+                    href={`mailto:${EMAIL}`}
+                    className="whitespace-nowrap w-full flex items-center justify-center gap-2 bg-white border-2 border-gray-900 text-gray-900 font-bold py-4 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer"
+                  >
+                    <i className="ri-mail-line text-lg" />
+                    {EMAIL}
+                  </a>
+                </div>
+              ) : (
+                <LineLink className="whitespace-nowrap w-full flex items-center justify-center gap-2 bg-[#06C755] text-white font-bold py-4 rounded-xl hover:bg-[#05b34c] transition-colors cursor-pointer mb-4">
+                  <i className="ri-chat-smile-2-line text-lg" />
+                  LINEで友だち追加する
+                </LineLink>
+              )}
 
               <div className="flex items-center gap-3 mb-4">
                 <div className="flex-1 h-px bg-gray-200" />

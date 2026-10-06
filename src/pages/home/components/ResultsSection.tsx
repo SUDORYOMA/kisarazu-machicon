@@ -1,3 +1,5 @@
+import { CTA_APPLY, CTA_ICON, CTA_BG } from "@/lib/alert";
+
 interface ResultsSectionProps {
   onLine: () => void;
 }
@@ -47,10 +49,10 @@ export default function ResultsSection({ onLine }: ResultsSectionProps) {
         <div className="text-center">
           <button
             onClick={onLine}
-            className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-10 py-4 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer text-lg"
+            className={`whitespace-nowrap inline-flex items-center gap-2 ${CTA_BG} text-white font-bold px-10 py-4 rounded-full transition-colors cursor-pointer text-lg`}
           >
-            <i className="ri-chat-smile-2-line" />
-            公式LINEから申し込む
+            <i className={CTA_ICON} />
+            {CTA_APPLY}
           </button>
         </div>
       </div>

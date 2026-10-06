@@ -1,4 +1,5 @@
 import safetyImg from "@/assets/safety.jpg";
+import { CTA_CONSULT, CTA_ICON, CTA_BG } from "@/lib/alert";
 interface SafetySectionProps {
   onLine: () => void;
 }
@@ -48,10 +49,10 @@ export default function SafetySection({ onLine }: SafetySectionProps) {
             </p>
             <button
               onClick={onLine}
-              className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-7 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer"
+              className={`whitespace-nowrap inline-flex items-center gap-2 ${CTA_BG} text-white font-bold px-7 py-3.5 rounded-full transition-colors cursor-pointer`}
             >
-              <i className="ri-chat-smile-2-line" />
-              LINEで相談する
+              <i className={CTA_ICON} />
+              {CTA_CONSULT}
             </button>
 
             {/* Image */}

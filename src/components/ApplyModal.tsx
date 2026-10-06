@@ -3,7 +3,7 @@ import { events } from "@/mocks/events";
 import { submitToFormspree } from "@/lib/formspree";
 import AlertNotice from "@/components/AlertNotice";
 import LineLink, { LINE_URL } from "@/components/LineLink";
-import { ALERT } from "@/lib/alert";
+import { ALERT, LINE_DOWN } from "@/lib/alert";
 
 interface ApplyModalProps {
   open: boolean;
@@ -66,13 +66,16 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
               </div>
               <h3 className="text-xl font-black text-gray-900 mb-2">申し込みありがとうございます！</h3>
               <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-                当日の詳細はLINEでお送りします。<br />
-                LINEの友だち追加が完了していない場合は下記よりお願いします。
+                {LINE_DOWN
+                  ? "当日の詳細は、メールまたはInstagramのDMでご連絡いたします。"
+                  : "当日の詳細はLINEでお送りします。LINEの友だち追加が完了していない場合は下記よりお願いします。"}
               </p>
-              <LineLink className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer">
-                <i className="ri-chat-smile-2-line" />
-                LINEで友だち追加
-              </LineLink>
+              {!LINE_DOWN && (
+                <LineLink className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer">
+                  <i className="ri-chat-smile-2-line" />
+                  LINEで友だち追加
+                </LineLink>
+              )}
             </div>
           ) : (
             <form
@@ -228,7 +231,9 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
               </button>
 
               <p className="text-center text-xs text-gray-400">
-                申し込み後、LINEの友だち追加画面に移動します
+                {LINE_DOWN
+                  ? "お申し込み後、メールまたはInstagramのDMでご連絡いたします"
+                  : "申し込み後、LINEの友だち追加画面に移動します"}
               </p>
             </form>
           )}

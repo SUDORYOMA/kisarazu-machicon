@@ -42,9 +42,14 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
 
 `src/lib/alert.ts` の `ALERT` に文言を入れると、次の2か所に赤枠＋点滅ランプで表示される：
 トップのヒーロー直下（`AlertBanner`。募集中イベントの上）と、LINE・申し込みモーダルの冒頭（`AlertNotice`）。
-さらに `ALERT` が設定されている間は、サイト内の LINE 友だち追加リンク（`LineLink`）が
-LINE へ飛ばず、問い合わせ先を案内する小窓を出す。申し込み送信後の LINE 自動遷移も止まる。
-不要になったら `ALERT` を `null` にして `npm run deploy`（LINE リンクも元に戻る）。
+さらに同ファイルの `LINE_DOWN`（bool）が true の間は、サイト全体の LINE 導線が
+Instagram DM・メールでの問い合わせに切り替わる：
+- CTA のラベル・アイコン・色（`CTA_APPLY` / `CTA_CONSULT` / `CTA_SHORT` / `CTA_ICON` / `CTA_BG`）
+- 問い合わせモーダルの冒頭が「公式InstagramにDM」「メールアドレス」の2ボタンになる
+- LINE 友だち追加リンク（`LineLink`）は LINE へ飛ばず、案内の小窓を出す
+- フッターの「LINE公式」行と、申し込み送信後の LINE 自動遷移を隠す
+
+復旧したら `LINE_DOWN` を `false`、`ALERT` を `null` にして `npm run deploy`（元の LINE 導線に戻る）。
 
 ## フォーム送信（Formspree）
 

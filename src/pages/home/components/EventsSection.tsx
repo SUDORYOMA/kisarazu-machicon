@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { events, pastEvents } from "@/mocks/events";
 import IdCheckNotice from "@/components/IdCheckNotice";
-import { INSTAGRAM_URL } from "@/lib/alert";
+import { INSTAGRAM_URL, CTA_APPLY, CTA_SHORT, CTA_ICON, CTA_BG } from "@/lib/alert";
 
 interface EventsSectionProps {
   onLine: () => void;
@@ -171,14 +171,14 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                       onClick={onLine}
                       className="whitespace-nowrap flex-1 bg-gray-900 text-white text-sm font-bold py-2.5 rounded-xl hover:bg-gray-700 transition-colors cursor-pointer"
                     >
-                      公式LINEから申し込む
+                      {CTA_APPLY}
                     </button>
                     <button
                       onClick={onLine}
-                      className="whitespace-nowrap flex items-center justify-center gap-1 bg-[#06C755] text-white text-sm font-bold px-4 py-2.5 rounded-xl hover:bg-[#05b34c] transition-colors cursor-pointer"
+                      className={`whitespace-nowrap flex items-center justify-center gap-1 ${CTA_BG} text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors cursor-pointer`}
                     >
-                      <i className="ri-chat-smile-2-line" />
-                      LINE確認
+                      <i className={CTA_ICON} />
+                      {CTA_SHORT}
                     </button>
                   </div>
                 </div>

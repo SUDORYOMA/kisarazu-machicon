@@ -1,6 +1,7 @@
 import logo from "@/assets/logo.png";
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { CTA_APPLY, CTA_SHORT, CTA_ICON, CTA_BG } from "@/lib/alert";
 
 interface NavbarProps {
   onApply: () => void;
@@ -80,7 +81,7 @@ export default function Navbar({ onApply, onLine, onScrollToEvents, solid = fals
             onClick={onLine}
             className="whitespace-nowrap bg-rose-500 text-white text-sm font-bold px-5 py-2 rounded-full hover:bg-rose-600 transition-colors cursor-pointer"
           >
-            公式LINEから申し込む
+            {CTA_APPLY}
           </button>
         </div>
 
@@ -117,16 +118,16 @@ export default function Navbar({ onApply, onLine, onScrollToEvents, solid = fals
           <div className="flex gap-3 pt-2">
             <button
               onClick={() => { onLine(); setMenuOpen(false); }}
-              className="whitespace-nowrap flex-1 flex items-center justify-center gap-1.5 bg-[#06C755] text-white text-sm font-bold py-3 rounded-xl cursor-pointer"
+              className={`whitespace-nowrap flex-1 flex items-center justify-center gap-1.5 ${CTA_BG} text-white text-sm font-bold py-3 rounded-xl cursor-pointer`}
             >
-              <i className="ri-chat-smile-2-line" />
-              LINE相談
+              <i className={CTA_ICON} />
+              {CTA_SHORT}
             </button>
             <button
               onClick={() => { onLine(); setMenuOpen(false); }}
               className="whitespace-nowrap flex-1 bg-rose-500 text-white text-sm font-bold py-3 rounded-xl cursor-pointer"
             >
-              公式LINEから申し込む
+              {CTA_APPLY}
             </button>
           </div>
         </div>

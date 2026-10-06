@@ -1,3 +1,5 @@
+import { CTA_APPLY, CTA_ICON, CTA_BG } from "@/lib/alert";
+
 interface FixedCTAProps {
   onLine: () => void;
 }
@@ -8,10 +10,10 @@ export default function FixedCTA({ onLine }: FixedCTAProps) {
       <div className="max-w-lg mx-auto flex gap-3">
         <button
           onClick={onLine}
-          className="whitespace-nowrap flex-1 flex items-center justify-center gap-2 bg-[#06C755] text-white font-bold py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer text-sm"
+          className={`whitespace-nowrap flex-1 flex items-center justify-center gap-2 ${CTA_BG} text-white font-bold py-3.5 rounded-full transition-colors cursor-pointer text-sm`}
         >
-          <i className="ri-chat-smile-2-line" />
-          公式LINEから申し込む
+          <i className={CTA_ICON} />
+          {CTA_APPLY}
         </button>
       </div>
     </div>
