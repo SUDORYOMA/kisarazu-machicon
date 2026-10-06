@@ -63,7 +63,8 @@ export default defineConfig({
   ],
   base,
   build: {
-    sourcemap: true,
+    // 本番にソースマップは不要。生成すると 1.8MB 超になり、ビルドのメモリ不足の原因にもなる
+    sourcemap: false,
     outDir: 'out',
   },
   resolve: {
