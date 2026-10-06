@@ -147,7 +147,7 @@ def hero():
 
 EVENTS = [
     dict(date="10月18日", dow="日", time="13:00〜16:00", title="木更津40人街コン", venue="Y's Table",
-         address="木更津市富士見1丁目12-32", age="20〜49歳", male="12,000円", female="2,000円", ms=0, ms_status="抽選", fs=3, tag="受付中",
+         address="木更津市富士見1丁目12-32", age="20〜49歳", male="12,000円", female="2,000円", ms=0, ms_status="抽選終了", fs=0, fs_status="抽選終了", status_note="※キャンセル待ち受付中", tag="キャンセル待ち", tag_color=C["amber500"],
          highlights=[("sparkle", "会場内で占い師による占いを実施！", None), ("goblet", "同会場でアフターパーティー(16:00〜18:00)開催！", "※街コン参加者のみ")]),
     dict(date="1月某日", dow="日", time="13:00〜16:00", title="木更津40人街コン", venue="Y's Table",
          address="木更津市富士見1丁目12-32", age="20〜49歳", male="12,000円", female="2,000円", ms=20, fs=20, tag="受付中"),
@@ -160,11 +160,11 @@ PAST = [
     ("2026年8月2日", "木更津街コン vol.5", "Y's Table", 37, 4, "夏祭り前で夏祭りのお約束をするカップルも！それ以外にもアフターパーティーでも更に追加カップリングも！"),
 ]
 
-def seat(label_, n, status=None):
+def seat(label_, n, status=None, note="※応募可能"):
     head = f'<div style="text-align: center;"><p style="margin: 0 0 4px 0; font-size: 12px; line-height: 16px; color: {C["gray500"]};">{label_}</p>'
     if status:  # 抽選など、残席数の代わりの文言
         return (head + f'<p style="margin: 0; font-size: 24px; line-height: 32px; font-weight: 900; color: {C["amber500"]};">{status}</p>'
-                f'<p style="margin: 2px 0 0 0; font-size: 12px; line-height: 16px; color: {C["gray500"]};">※応募可能</p></div>')
+                f'<p style="margin: 2px 0 0 0; font-size: 12px; line-height: 16px; color: {C["gray500"]};">{note}</p></div>')
     color = C["rose500"] if n <= 5 else C["emerald500"]
     return head + f'<p style="margin: 0; font-size: 24px; line-height: 32px; font-weight: 900; color: {color};">残り{n}名</p></div>'
 
@@ -191,7 +191,7 @@ def event_card(e):
       <div style="width: 1px; height: 32px; background: rgba(255,255,255,0.2);"></div>
       <p style="margin: 0; color: rgba(255,255,255,0.8); font-size: 14px; line-height: 20px;">{e["time"]}</p>
     </div>
-    <span style="background: {C["rose500"]}; color: #fff; font-size: 12px; line-height: 16px; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">{e["tag"]}</span>
+    <span style="background: {e.get("tag_color", C["rose500"])}; color: #fff; font-size: 12px; line-height: 16px; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">{e["tag"]}</span>
   </div>
   <div style="padding: 20px;">
     <h3 style="margin: 0 0 4px 0; font-size: 18px; line-height: 28px; font-weight: 900; color: {C["gray900"]};">{e["title"]}</h3>
@@ -209,7 +209,7 @@ def event_card(e):
     {highlights_block(e.get("highlights"))}
     <div style="background: {C["gray50"]}; border-radius: 12px; padding: 16px; margin-bottom: 20px;">
       <p style="margin: 0 0 12px 0; font-size: 12px; line-height: 16px; color: {C["gray500"]}; font-weight: 500;">開催状況</p>
-      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">{seat("男性", e["ms"], e.get("ms_status"))}{seat("女性", e["fs"], e.get("fs_status"))}</div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">{seat("男性", e["ms"], e.get("ms_status"), e.get("status_note", "※応募可能"))}{seat("女性", e["fs"], e.get("fs_status"), e.get("status_note", "※応募可能"))}</div>
     </div>
     <div style="display: flex; gap: 8px;">
       {btn("公式LINEから申し込む", C["gray900"], "#fff", py=10, radius=12, extra="flex: 1;")}

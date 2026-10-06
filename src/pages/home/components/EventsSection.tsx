@@ -132,7 +132,7 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                         {event.maleStatus ? (
                           <div>
                             <p className="text-2xl font-black text-amber-500">{event.maleStatus}</p>
-                            <p className="text-xs text-gray-500 mt-0.5">※応募可能</p>
+                            <p className="text-xs text-gray-500 mt-0.5">{event.statusNote ?? "※応募可能"}</p>
                           </div>
                         ) : event.maleSeats > 0 ? (
                           <p className={`text-2xl font-black ${event.maleSeats <= 5 ? "text-rose-500" : "text-emerald-500"}`}>
@@ -149,7 +149,7 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                         {event.femaleStatus ? (
                           <div>
                             <p className="text-2xl font-black text-amber-500">{event.femaleStatus}</p>
-                            <p className="text-xs text-gray-500 mt-0.5">※応募可能</p>
+                            <p className="text-xs text-gray-500 mt-0.5">{event.statusNote ?? "※応募可能"}</p>
                           </div>
                         ) : event.femaleSeats > 0 ? (
                           <p className={`text-2xl font-black ${event.femaleSeats <= 5 ? "text-rose-500" : "text-emerald-500"}`}>

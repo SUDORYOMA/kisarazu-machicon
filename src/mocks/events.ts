@@ -14,6 +14,8 @@ export interface EventItem {
   /** 残席数の代わりに表示する文言（例：抽選）。設定すると maleSeats の数値は表示しない */
   maleStatus?: string;
   femaleStatus?: string;
+  /** 残席欄の下に出す注記（既定：※応募可能） */
+  statusNote?: string;
   /** その回だけの企画・特典（占い、アフターパーティーなど）。無ければ省略 */
   highlights?: { icon: string; text: string; note?: string }[];
   totalSeats: number;
@@ -45,15 +47,17 @@ export const events: EventItem[] = [
     maleFee: "12,000円",
     femaleFee: "2,000円",
     maleSeats: 0,
-    maleStatus: "抽選",
-    femaleSeats: 3,
-    totalSeats: 3,
-    tag: "受付中",
+    maleStatus: "抽選終了",
+    femaleSeats: 0,
+    femaleStatus: "抽選終了",
+    statusNote: "※キャンセル待ち受付中",
+    totalSeats: 0,
+    tag: "キャンセル待ち",
     highlights: [
       { icon: "ri-sparkling-2-line", text: "会場内で占い師による占いを実施！" },
       { icon: "ri-goblet-line", text: "同会場でアフターパーティー(16:00〜18:00)開催！", note: "※街コン参加者のみ" },
     ],
-    tagColor: "bg-rose-500",
+    tagColor: "bg-amber-500",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3244.0!2d139.9226!3d35.3748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022a3b0b0b0b0b1%3A0x0!2sY's+Table!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp",
   },
   {
