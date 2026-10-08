@@ -9,8 +9,7 @@ const COMPANY = {
   name: "株式会社SIXMATE",
   representative: "代表取締役社長　須藤龍馬",
   site: "https://kazusacon.com",
-  // TODO: 所在地が決まったら記載する（個人情報保護法の公表事項）
-  address: "【所在地】",
+  address: "千葉県袖ヶ浦市福王台2-20-2",
 };
 
 const LAST_UPDATED = "2026年10月8日";
