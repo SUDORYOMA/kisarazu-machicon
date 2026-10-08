@@ -3,6 +3,7 @@ import NotFound from "../pages/NotFound";
 import Home from "../pages/home/page";
 import BlogIndex from "../pages/blog/page";
 import BlogPost from "../pages/blog/post";
+import Privacy from "../pages/privacy/page";
 
 const routes: RouteObject[] = [
   {
@@ -16,6 +17,10 @@ const routes: RouteObject[] = [
   {
     path: "/blog/:slug",
     element: <BlogPost />,
+  },
+  {
+    path: "/privacy",
+    element: <Privacy />,
   },
   {
     path: "*",

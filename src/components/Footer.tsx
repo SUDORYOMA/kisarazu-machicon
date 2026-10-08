@@ -55,6 +55,11 @@ export default function Footer({ onApply, onLine }: FooterProps) {
                   ブログ・お知らせ
                 </Link>
               </li>
+              <li>
+                <Link to="/privacy" className="whitespace-nowrap text-white/60 hover:text-white text-sm transition-colors cursor-pointer">
+                  プライバシーポリシー
+                </Link>
+              </li>
             </ul>
           </div>
 

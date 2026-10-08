@@ -70,6 +70,13 @@ write("blog", pageHtml({
   path: "/blog",
 }));
 
+// /privacy
+write("privacy", pageHtml({
+  title: "プライバシーポリシー｜木更津街コン",
+  description: "木更津街コン（株式会社SIXMATE）における個人情報の取り扱いについて。取得する情報、利用目的、第三者提供、お問い合わせ窓口を記載しています。",
+  path: "/privacy",
+}));
+
 // /blog/<slug>
 for (const p of posts) {
   write(`blog/${p.slug}`, pageHtml({
@@ -85,6 +92,7 @@ const today = new Date().toISOString().slice(0, 10);
 const urls = [
   { loc: `${SITE_URL}/`, lastmod: today, changefreq: "weekly", priority: "1.0" },
   { loc: `${SITE_URL}/blog`, lastmod: posts[0]?.date ?? today, changefreq: "weekly", priority: "0.7" },
+  { loc: `${SITE_URL}/privacy`, lastmod: today, changefreq: "yearly", priority: "0.3" },
   ...posts.map((p) => ({ loc: `${SITE_URL}/blog/${p.slug}`, lastmod: p.date, changefreq: "monthly", priority: "0.6" })),
 ];
 writeFileSync(
