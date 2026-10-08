@@ -6,11 +6,7 @@ export const ALERT: {
   body: string;
   /** 補足（※で始まる注記）。無ければ省略 */
   note?: string;
-} | null = {
-  title: "9/25 18時頃〜10/18終日 - 公式LINEが一時的に利用できない状況でございます",
-  body: "お問合せは公式Instagram又はメールアドレスまでお願い致します。また、InstagramのDM・メール・お電話にて参加者の確認を取らせて頂きます。",
-  note: "※抽選結果のご連絡も上記方法になる可能性があり、ご不便をおかけいたしますが、ご対応お願い致します。",
-};
+} | null = null;
 
 export const INSTAGRAM_URL = "https://www.instagram.com/kazusacon?igsh=MTNwZ3NqeXQ2bjVm&utm_source=qr";
 export const EMAIL = "info@kazusacon.com";
@@ -23,7 +19,7 @@ export const EMAIL = "info@kazusacon.com";
 export const LINE_DOWN = true;
 
 /** 主要CTAのラベル（申し込み・問い合わせ） */
-export const CTA_APPLY = LINE_DOWN ? "Instagram・メールでお問合せ" : "公式LINEから申し込む";
+export const CTA_APPLY = LINE_DOWN ? "お問合せ" : "公式LINEから申し込む";
 /** 相談・空席確認のラベル */
 export const CTA_CONSULT = LINE_DOWN ? "空席確認・ご相談" : "LINEで空席確認";
 /** 狭い場所で使う短いラベル */

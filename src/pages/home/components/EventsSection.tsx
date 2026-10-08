@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { events, pastEvents } from "@/mocks/events";
 import IdCheckNotice from "@/components/IdCheckNotice";
-import { INSTAGRAM_URL, CTA_APPLY, CTA_SHORT, CTA_ICON, CTA_BG } from "@/lib/alert";
+import { INSTAGRAM_URL, CTA_SHORT, CTA_ICON, CTA_BG } from "@/lib/alert";
 
 interface EventsSectionProps {
   onLine: () => void;
@@ -166,21 +166,13 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                   </div>
 
                   {/* CTA */}
-                  <div className="flex gap-2">
-                    <button
-                      onClick={onLine}
-                      className="whitespace-nowrap flex-1 bg-gray-900 text-white text-sm font-bold py-2.5 rounded-xl hover:bg-gray-700 transition-colors cursor-pointer"
-                    >
-                      {CTA_APPLY}
-                    </button>
-                    <button
-                      onClick={onLine}
-                      className={`whitespace-nowrap flex items-center justify-center gap-1 ${CTA_BG} text-white text-sm font-bold px-4 py-2.5 rounded-xl transition-colors cursor-pointer`}
-                    >
-                      <i className={CTA_ICON} />
-                      {CTA_SHORT}
-                    </button>
-                  </div>
+                  <button
+                    onClick={onLine}
+                    className={`whitespace-nowrap w-full flex items-center justify-center gap-2 ${CTA_BG} text-white text-sm font-bold py-3 rounded-xl transition-colors cursor-pointer`}
+                  >
+                    <i className={CTA_ICON} />
+                    {CTA_SHORT}
+                  </button>
                 </div>
               </div>
             ))}

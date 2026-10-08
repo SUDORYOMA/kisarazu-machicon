@@ -41,7 +41,8 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
 ## 緊急のお知らせバナー
 
 `src/lib/alert.ts` の `ALERT` に文言を入れると、次の2か所に赤枠＋点滅ランプで表示される：
-トップのヒーロー直下（`AlertBanner`。募集中イベントの上）と、LINE・申し込みモーダルの冒頭（`AlertNotice`）。
+トップのヒーロー直下（`AlertBanner`。募集中イベントの上）と、問い合わせ・申し込みモーダルの冒頭（`AlertNotice`）。
+現在は `null`（表示なし）。
 さらに同ファイルの `LINE_DOWN`（bool）が true の間は、サイト全体の LINE 導線が
 Instagram DM・メールでの問い合わせに切り替わる：
 - CTA のラベル・アイコン・色（`CTA_APPLY` / `CTA_CONSULT` / `CTA_SHORT` / `CTA_ICON` / `CTA_BG`）

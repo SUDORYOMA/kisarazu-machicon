@@ -3,7 +3,7 @@ import { events } from "@/mocks/events";
 import { submitToFormspree } from "@/lib/formspree";
 import AlertNotice from "@/components/AlertNotice";
 import LineLink, { LINE_URL } from "@/components/LineLink";
-import { ALERT, LINE_DOWN } from "@/lib/alert";
+import { LINE_DOWN } from "@/lib/alert";
 
 interface ApplyModalProps {
   open: boolean;
@@ -28,8 +28,8 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
       const ok = await submitToFormspree("apply", e.currentTarget, "【木更津街コン】イベント申し込み");
       if (ok) {
         setSubmitted(true);
-        // LINE登録ページへ遷移（障害中は開かず、完了画面の案内に任せる）
-        if (!ALERT) window.open(LINE_URL, "_blank", "noopener,noreferrer");
+        // LINE登録ページへ遷移（LINE停止中は開かず、完了画面の案内に任せる）
+        if (!LINE_DOWN) window.open(LINE_URL, "_blank", "noopener,noreferrer");
       } else {
         setError("送信に失敗しました。もう一度お試しください。");
       }
