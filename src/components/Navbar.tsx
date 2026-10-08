@@ -1,7 +1,7 @@
 import logo from "@/assets/logo.png";
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { CTA_APPLY, CTA_SHORT, CTA_ICON, CTA_BG } from "@/lib/alert";
+import { CTA_APPLY } from "@/lib/alert";
 
 interface NavbarProps {
   onApply: () => void;
@@ -116,13 +116,6 @@ export default function Navbar({ onApply, onLine, onScrollToEvents, solid = fals
             ブログ
           </Link>
           <div className="flex gap-3 pt-2">
-            <button
-              onClick={() => { onLine(); setMenuOpen(false); }}
-              className={`whitespace-nowrap flex-1 flex items-center justify-center gap-1.5 ${CTA_BG} text-white text-sm font-bold py-3 rounded-xl cursor-pointer`}
-            >
-              <i className={CTA_ICON} />
-              {CTA_SHORT}
-            </button>
             <button
               onClick={() => { onLine(); setMenuOpen(false); }}
               className="whitespace-nowrap flex-1 bg-rose-500 text-white text-sm font-bold py-3 rounded-xl cursor-pointer"
