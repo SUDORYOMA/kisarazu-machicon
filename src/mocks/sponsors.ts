@@ -90,7 +90,7 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "株式会社大栄",
-      description: "看板施工・足場工事・鍛冶工事を手掛ける、木更津の職人集団。街の景色をつくる仕事です。未経験から6ヶ月で独り立ちを目指す育成制度があり、資格取得費用は全額会社負担。本気で人を育てる会社です。",
+      description: "木更津の街を支える看板・足場・鍛冶のプロ集団。見上げた看板も、建物を包む足場も、この街のどこかに手仕事が残っています。",
       links: [{ type: "web", url: "https://daiei-kisarazu.com/" }],
     },
     {
