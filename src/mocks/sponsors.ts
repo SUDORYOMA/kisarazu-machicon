@@ -30,17 +30,17 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     {
       name: "アクティフス在宅ケア株式会社",
       description: "掲げるのは「断らない介護」。身寄りのない方も、生活保護の方も、誰ひとり取り残さない。木更津・市原で、これ以上ないほど懐の深い介護を届け続けています。",
-      links: [{ type: "web", url: "https://actifs.jp" }],
+      links: [{ type: "web", url: "https://actifs.jp", label: "Webサイト" }],
     },
     {
       name: "LesAnges Kisarazu",
       description: "木更津の婚活を知り尽くしたサポーター。一人ひとりに寄り添う伴走力は圧巻。「結婚したい」の本気に、とことん付き合ってくれます。",
-      links: [{ type: "instagram", url: "https://www.instagram.com/lesanges_kisarazu" }],
+      links: [{ type: "instagram", url: "https://www.instagram.com/lesanges_kisarazu", label: "Instagram" }],
     },
     {
       name: "Nfarm工房 Nao なお",
       description: "当日、会場で占っていただけます。驚くほど言い当てられると評判の鑑定を、この機会にぜひ。背中を押してほしい日に。",
-      links: [{ type: "instagram", url: "https://www.instagram.com/enjoymind24581" }],
+      links: [{ type: "instagram", url: "https://www.instagram.com/enjoymind24581", label: "Instagram" }],
     },
     {
       name: "BODY MAKE SALON BOOTY",
@@ -54,12 +54,12 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     {
       name: "株式会社サリサ",
       description: "千葉の不動産を知り尽くしたプロ。買取・仲介・賃貸まで任せられる安心感は別格。「相談してよかった」が止まりません。",
-      links: [{ type: "web", url: "https://sarisa.jp" }],
+      links: [{ type: "web", url: "https://sarisa.jp", label: "Webサイト" }],
     },
     {
       name: "株式会社TOUSEN",
       description: "京葉工業地帯のプラントを支える確かな技術力。若き職人たちの熱量とスピード感は、県内屈指。難しい現場ほど真価を発揮します。",
-      links: [{ type: "web", url: "https://tousen-05.com" }],
+      links: [{ type: "web", url: "https://tousen-05.com", label: "Webサイト" }],
     },
     {
       name: "LOUNGE GOLF FOREST",
@@ -90,17 +90,17 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     {
       name: "海坊主",
       description: "木更津が誇る、おでんと地魚の名店。出汁の染みた一皿と、その日に揚がった地魚。木更津の夜は、ここから始まります。",
-      links: [{ type: "instagram", url: "https://www.instagram.com/umibouzu.kisarazu" }],
+      links: [{ type: "instagram", url: "https://www.instagram.com/umibouzu.kisarazu", label: "Instagram" }],
     },
     {
       name: "韓国料理ペゴパ",
       description: "市原で1番の韓国料理屋さん。ひと口で「あ、これ現地の味だ」と分かるはず。作っているのは本場の方々です。韓国の味が恋しくなったら絶対ここ！",
-      links: [{ type: "instagram", url: "https://www.instagram.com/pegopa.ichihara" }],
+      links: [{ type: "instagram", url: "https://www.instagram.com/pegopa.ichihara", label: "Instagram" }],
     },
     {
       name: "株式会社大栄",
       description: "木更津の街を支える看板・足場・鍛冶のプロ集団。見上げた看板も、建物を包む足場も、この街のどこかに手仕事が残っています。",
-      links: [{ type: "web", url: "https://daiei-kisarazu.com/" }],
+      links: [{ type: "web", url: "https://daiei-kisarazu.com/", label: "Webサイト" }],
     },
     {
       name: "山中拓也",
