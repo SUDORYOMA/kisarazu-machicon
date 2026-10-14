@@ -120,10 +120,13 @@ export default function SponsorsSection({ eventId, eventDate }: SponsorsSectionP
             <i className="ri-heart-fill text-rose-400 text-sm" />
             <div className="w-10 md:w-16 h-px bg-rose-300" />
           </div>
+          {/* 文の途中で改行されないよう、意味のまとまりごとに inline-block で包む */}
           <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-            木更津街コンは、地域の皆様のご協賛によって開催しています。
+            <span className="inline-block">木更津街コンは、</span>
+            <span className="inline-block">地域の皆様のご協賛によって開催しています。</span>
             <br />
-            あたたかいご支援をいただき、誠にありがとうございます。
+            <span className="inline-block">あたたかいご支援をいただき、</span>
+            <span className="inline-block">誠にありがとうございます。</span>
           </p>
         </div>
 

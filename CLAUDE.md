@@ -55,6 +55,12 @@ Instagram DM・メールでの問い合わせに切り替わる：
 
 復旧したら `LINE_DOWN` を `false`、`ALERT` を `null` にして `npm run deploy`（元の LINE 導線に戻る）。
 
+## SNS用の協賛企業一覧画像
+
+`python3 scripts/make_sponsor_images.py` で `design/sns/` に3種類を生成する
+（ストーリー 1080x1920／投稿 1080x1350／正方形 1080x1080）。社名は `src/mocks/sponsors.ts` から読むので、
+協賛が増減したらスクリプトを再実行するだけでよい。サイトには載せない（SNS投稿用）。
+
 ## フォーム送信（Formspree）
 
 - 申し込み（`ApplyModal.tsx`）と LINE 空席確認（`LineModal.tsx`）は `src/lib/formspree.ts` 経由で
