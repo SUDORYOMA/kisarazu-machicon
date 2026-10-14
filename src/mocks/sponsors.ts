@@ -103,6 +103,16 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
       links: [{ type: "web", url: "https://daiei-kisarazu.com/", label: "Webサイト" }],
     },
     {
+      name: "潮そばまる仁",
+      description: "塩味ひとすじの焼きそば専門店。地元・金田の海苔をまとった潮彩焼きそばと、貝の旨みが澄みわたる塩ラーメン。昼は食事処、夜は居酒屋——木更津の海の味が、ぜんぶここに集まります。",
+      links: [{ type: "instagram", url: "https://www.instagram.com/siosoba_marujin", label: "Instagram" }],
+    },
+    {
+      name: "Tonic Diner",
+      description: "ビリヤードもダーツも楽しめる、唯一無二のレストランバー。目印はスクールバス。飲んで、遊んで、また乾杯——夜がいちばん長くなる場所です。",
+      links: [{ type: "instagram", url: "https://www.instagram.com/tonic_diner", label: "Instagram" }],
+    },
+    {
       name: "山中拓也",
       description: "海に出れば腕利きの漁師、陸に上がればホームページ制作まで。マルチな才能で地域を支える頼れる存在です。",
       links: [],
