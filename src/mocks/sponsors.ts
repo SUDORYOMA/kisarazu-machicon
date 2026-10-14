@@ -109,7 +109,7 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "Tonic Diner",
-      description: "ビリヤードもダーツも楽しめる、唯一無二のレストランバー。目印はスクールバス。飲んで、遊んで、また乾杯——夜がいちばん長くなる場所です。",
+      description: "飲むだけじゃもったいない。ビリヤードもダーツも揃った、唯一無二のレストランバーです。スクールバスが目印。初めましての人とも、すぐ打ち解けられます。",
       links: [{ type: "instagram", url: "https://www.instagram.com/tonic_diner", label: "Instagram" }],
     },
     {
