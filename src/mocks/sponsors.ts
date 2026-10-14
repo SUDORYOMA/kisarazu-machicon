@@ -89,6 +89,11 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
       links: [{ type: "instagram", url: "https://www.instagram.com/pegopa.ichihara" }],
     },
     {
+      name: "株式会社大栄",
+      description: "木更津の看板施工・足場工事・鍛冶工事のプロ集団。街の景色をつくる仕事です。未経験から6ヶ月で独り立ちできる育成制度に、資格取得費用は全額会社負担！手に職をつけるなら絶対ここ！",
+      links: [{ type: "web", url: "https://daiei-kisarazu.com/" }],
+    },
+    {
       name: "山中拓也",
       description: "海では腕利きの漁師、陸ではホームページ制作まで。地元を知り尽くしたマルチプレイヤー！相談するなら絶対ここ！",
       links: [],
