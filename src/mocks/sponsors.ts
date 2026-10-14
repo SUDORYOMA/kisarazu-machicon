@@ -21,27 +21,27 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
   2: [
     {
       name: "麻龍湯",
-      description: "木更津駅から徒歩3分、ついに現れた本格マーラータン。クセになる痺れと旨みは一度食べたら忘れられません。10/19プレオープン、10/24グランドオープン——木更津の新定番になること間違いなし！",
+      description: "木更津駅から徒歩3分、本格マーラータンのお店。本場仕込みの痺れと旨み！10/19プレオープン、10/24グランドオープン——痺れたい日は絶対ここ！",
       links: [{ type: "instagram", url: "https://www.instagram.com/malontangkisarazu" }],
     },
     {
       name: "アクティフス在宅ケア株式会社",
-      description: "掲げるのは「断らない介護」。身寄りのない方も、生活保護の方も、誰ひとり取り残さない。木更津・市原で、これ以上ないほど懐の深い介護を届け続けています。",
+      description: "木更津・市原で1番頼れる在宅介護。掲げるのは「断らない介護」！身寄りがなくても生活保護でも相談できる。困ったら絶対ここ！",
       links: [{ type: "web", url: "https://actifs.jp" }],
     },
     {
       name: "LesAnges Kisarazu",
-      description: "木更津の婚活を知り尽くしたサポーター。一人ひとりに寄り添う伴走力は圧巻。「結婚したい」の本気に、とことん付き合ってくれます。",
+      description: "木更津で1番親身な婚活サポート。一人ひとりに本気で伴走してくれます！本気で結婚したいなら絶対ここ！",
       links: [{ type: "instagram", url: "https://www.instagram.com/lesanges_kisarazu" }],
     },
     {
       name: "Nfarm工房 Nao なお",
-      description: "当日、会場で占っていただけます。驚くほど言い当てられると評判の鑑定を、この機会にぜひ。背中を押してほしい日に。",
+      description: "当日、会場で占っていただけます。よく当たると評判の鑑定！背中を押してほしいなら絶対ここ！",
       links: [{ type: "instagram", url: "https://www.instagram.com/enjoymind24581" }],
     },
     {
       name: "BODY MAKE SALON BOOTY",
-      description: "「変わりたい」なら迷わずここへ。結果の出るボディメイクサロンと、24時間通えるパーソナルジムの二刀流。理想の体への最短ルートがあります。",
+      description: "木更津で1番結果が出るボディメイク。サロンと24時間ジムの二刀流！本気で変わりたいなら絶対ここ！",
       links: [
         { type: "instagram", url: "https://www.instagram.com/bodymakesalonbooty", label: "サロン" },
         { type: "instagram", url: "https://www.instagram.com/bootygym_3f", label: "ジム" },
@@ -49,17 +49,17 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "株式会社サリサ",
-      description: "千葉の不動産を知り尽くしたプロ。買取・仲介・賃貸まで任せられる安心感は別格。「相談してよかった」が止まりません。",
+      description: "千葉で1番相談しやすい不動産会社。買取も仲介も賃貸もおまかせ！不動産のことなら絶対ここ！",
       links: [{ type: "web", url: "https://sarisa.jp" }],
     },
     {
       name: "株式会社TOUSEN",
-      description: "京葉工業地帯のプラントを支える確かな技術力。若き職人たちの熱量とスピード感は県内屈指。難しい現場ほど真価を発揮します。",
+      description: "君津で1番勢いのあるプラント工事会社。若き職人の技術力とスピード感！難しい現場こそ絶対ここ！",
       links: [{ type: "web", url: "https://tousen-05.com" }],
     },
     {
       name: "LOUNGE GOLF FOREST",
-      description: "打って、語らって、また打つ。ゴルフを“大人の遊び場”に変えたラウンジ。株式会社昭和企画をはじめ多彩な事業を手掛ける森俊博様が運営されています。",
+      description: "打って、語らって、また打つ。ゴルフを“大人の遊び場”に変えたラウンジ。スコアを競うだけじゃない、ゴルフ好きが自然と集まる場所です。",
       links: [
         { type: "instagram", url: "https://www.instagram.com/shouwa_kikaku", label: "昭和企画" },
         { type: "instagram", url: "https://www.instagram.com/forestlg0417", label: "FOREST" },
@@ -67,7 +67,7 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "ワイクレスト株式会社",
-      description: "Instagramフォロワー3万人超。住宅メーカー兼設計事務所として、デザイン住宅から外構まで全国対応。「家を建てるならここ」と言わせる設計力です。",
+      description: "Instagramフォロワー3万人超の設計力。デザイン住宅から外構まで全国対応！家を建てるなら絶対ここ！",
       links: [
         { type: "instagram", url: "https://www.instagram.com/ycrest_architects", label: "設計・住宅" },
         { type: "instagram", url: "https://www.instagram.com/ycrest_exterior", label: "外構" },
@@ -75,22 +75,22 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "YKマネジメント株式会社",
-      description: "木更津の物件探しならこの道のプロ集団。「木更津物件ナビ」のルームツアーを見れば、理想の部屋が必ず見つかります。",
+      description: "木更津で1番の物件探しのプロ集団。ルームツアーで中まで丸わかり！部屋探しなら絶対ここ！",
       links: [{ type: "instagram", url: "https://www.instagram.com/yk_management_" }],
     },
     {
       name: "海坊主",
-      description: "木更津が誇る、おでんと地魚の名店。出汁の染みた一皿と、その日に揚がった地魚。木更津の夜は、ここから始まります。",
+      description: "木更津で1番の、おでんと地魚の居酒屋。出汁の染みた一皿と、その日に揚がった地魚！木更津の夜なら絶対ここ！",
       links: [{ type: "instagram", url: "https://www.instagram.com/umibouzu.kisarazu" }],
     },
     {
       name: "韓国料理ペゴパ",
-      description: "本場の方々が調理してます！本場の味なら絶対ここ！",
+      description: "市原で1番の韓国料理屋さん。ひと口で「あ、これ現地の味だ」と分かるはず。作っているのは本場の方々です。韓国の味が恋しくなったら絶対ここ！",
       links: [{ type: "instagram", url: "https://www.instagram.com/pegopa.ichihara" }],
     },
     {
       name: "山中拓也",
-      description: "海に出れば腕利きの漁師、陸に上がればホームページ制作まで。マルチな才能で地域を支える頼れる存在です。",
+      description: "海では腕利きの漁師、陸ではホームページ制作まで。地元を知り尽くしたマルチプレイヤー！相談するなら絶対ここ！",
       links: [],
     },
   ]
