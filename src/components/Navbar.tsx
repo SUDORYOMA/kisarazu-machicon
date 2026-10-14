@@ -17,6 +17,7 @@ const SECTION_LINKS = [
   { label: "実績", id: "results" },
   { label: "安心ポイント", id: "safety" },
   { label: "魅力", id: "charm" },
+  { label: "協賛企業", id: "sponsors" },
 ];
 
 export default function Navbar({ onApply, onLine, onScrollToEvents, solid = false }: NavbarProps) {

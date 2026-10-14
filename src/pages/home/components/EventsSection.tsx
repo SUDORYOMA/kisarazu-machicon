@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { events, pastEvents } from "@/mocks/events";
 import IdCheckNotice from "@/components/IdCheckNotice";
+import SponsorsSection from "@/components/SponsorsSection";
 import { INSTAGRAM_URL, CTA_SHORT, CTA_ICON, CTA_BG } from "@/lib/alert";
 
 interface EventsSectionProps {
@@ -205,6 +206,9 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
           <IdCheckNotice />
         </div>
       </section>
+
+      {/* ===== 協賛企業（10/18 開催） ===== */}
+      <SponsorsSection eventId={2} eventDate="10月18日" />
 
       {/* ===== 過去開催実績 ===== */}
       <section id="past-events" className="py-20" style={{ backgroundColor: "#fafaf9" }}>

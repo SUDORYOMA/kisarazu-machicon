@@ -25,6 +25,8 @@ Readdy（readdy.ai）で作成したランディングページをエクスポ�
 - `src/components/` — ナビ・フッター・モーダル・ブログカードなど全ページ共通の部品。下層ページは `SubPageLayout` で包む
 - `src/lib/blog.ts` — ブログ記事の読み込み（frontmatter 解析・Markdown 変換）。`src/lib/seo.ts` — 下層ページの title/OGP 差し替え
 - `src/mocks/events.ts` — 開催予定・過去イベントのデータ（現状はハードコード）
+- `src/mocks/sponsors.ts` — イベントIDごとの協賛企業。`SponsorsSection` が募集中イベントの下に表示する。
+  ロゴは任意（`public/images/sponsors/` に置いて `logo` を指定。無ければ社名を明朝で表示）
 - `src/mocks/instagram.ts` — Instagram 投稿の埋め込み URL
 - `public/images/` — ロゴ・OGP・ヒーロー画像など（Readdy から退避済み）
 
