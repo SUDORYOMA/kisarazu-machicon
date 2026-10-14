@@ -1,5 +1,10 @@
 import { sponsorsByEventId, domainOf, handleOf, type Sponsor } from "@/mocks/sponsors";
 
+/** 社名の後ろに少し間を空けて「様」を添える */
+function Honorific() {
+  return <span className="ml-2 font-bold">様</span>;
+}
+
 interface SponsorsSectionProps {
   /** 対象イベントのID（src/mocks/events.ts） */
   eventId: number;
@@ -25,12 +30,18 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
             style={{ fontFamily: "'Noto Serif JP', serif" }}
           >
             {sponsor.name}
+            <Honorific />
           </p>
         )}
       </div>
 
       {/* ロゴがある場合は社名を下に添える */}
-      {sponsor.logo && <p className="text-sm font-bold text-gray-900 mb-1">{sponsor.name}</p>}
+      {sponsor.logo && (
+        <p className="text-sm font-bold text-gray-900 mb-1">
+          {sponsor.name}
+          <Honorific />
+        </p>
+      )}
 
       {sponsor.description && (
         <p className="text-xs text-gray-500 leading-relaxed mb-3">{sponsor.description}</p>
