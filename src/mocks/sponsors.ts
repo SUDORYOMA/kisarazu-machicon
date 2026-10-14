@@ -21,7 +21,7 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
   2: [
     {
       name: "麻龍湯",
-      description: "木更津駅から徒歩3分。10月19日プレオープン、10月24日グランドオープン。",
+      description: "木更津駅から徒歩3分のマーラータン（麻辣湯）のお店。10月19日プレオープン、10月24日グランドオープン。",
       links: [{ type: "instagram", url: "https://www.instagram.com/malontangkisarazu" }],
     },
     {
@@ -36,7 +36,7 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "Nfarm工房 Nao なお",
-      description: "占い。",
+      description: "占い。今回のイベント会場にご出展いただきます。",
       links: [{ type: "instagram", url: "https://www.instagram.com/enjoymind24581" }],
     },
     {
@@ -66,21 +66,21 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
       ],
     },
     {
-      name: "ワイクレスト",
-      description: "設計事務所。デザイン住宅と外構デザインを全国対応で手掛けていらっしゃいます。",
+      name: "ワイクレスト株式会社",
+      description: "住宅メーカー兼設計事務所。デザイン住宅と外構デザインを全国対応で手掛けていらっしゃいます。",
       links: [
         { type: "instagram", url: "https://www.instagram.com/ycrest_architects", label: "設計・住宅" },
         { type: "instagram", url: "https://www.instagram.com/ycrest_exterior", label: "外構" },
       ],
     },
     {
-      name: "YKマネジメント",
-      description: "木更津の物件探しをサポート。「木更津物件ナビ」でルームツアーも発信されています。",
+      name: "YKマネジメント株式会社",
+      description: "木更津を中心とした物件探しのプロ集団。「木更津物件ナビ」でルームツアーも発信されています。",
       links: [{ type: "instagram", url: "https://www.instagram.com/yk_management_" }],
     },
     {
       name: "海坊主",
-      description: "木更津のお店。",
+      description: "木更津の、おでんと地魚の居酒屋。",
       links: [{ type: "instagram", url: "https://www.instagram.com/umibouzu.kisarazu" }],
     },
     {
