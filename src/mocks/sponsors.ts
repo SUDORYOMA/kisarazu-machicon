@@ -58,8 +58,8 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
       links: [{ type: "web", url: "https://tousen-05.com" }],
     },
     {
-      name: "森俊博",
-      description: "株式会社昭和企画、LOUNGE GOLF FOREST ほか、手掛ける事業はまさに八面六臂。木更津の街を動かす圧倒的な行動力に、いつも背中を押されています。",
+      name: "LOUNGE GOLF FOREST",
+      description: "打って、語らって、また打つ。ゴルフを“大人の遊び場”に変えたラウンジ。株式会社昭和企画をはじめ多彩な事業を手掛ける森俊博様が運営されています。",
       links: [
         { type: "instagram", url: "https://www.instagram.com/shouwa_kikaku", label: "昭和企画" },
         { type: "instagram", url: "https://www.instagram.com/forestlg0417", label: "FOREST" },
