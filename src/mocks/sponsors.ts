@@ -21,27 +21,27 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
   2: [
     {
       name: "麻龍湯",
-      description: "木更津駅から徒歩3分、本格マーラータンのお店。本場仕込みの痺れと旨み！10/19プレオープン、10/24グランドオープン——痺れたい日は絶対ここ！",
+      description: "木更津駅から徒歩3分、ついに現れた本格マーラータン。自分好みに選べる具材と、クセになる痺れと旨み。10/19プレオープン、10/24グランドオープン——木更津の新定番になること間違いなし！",
       links: [{ type: "instagram", url: "https://www.instagram.com/malontangkisarazu" }],
     },
     {
       name: "アクティフス在宅ケア株式会社",
-      description: "木更津・市原で1番頼れる在宅介護。掲げるのは「断らない介護」！身寄りがなくても生活保護でも相談できる。困ったら絶対ここ！",
+      description: "掲げるのは「断らない介護」。身寄りのない方も、生活保護の方も、誰ひとり取り残さない。木更津・市原で、これ以上ないほど懐の深い介護を届け続けています。",
       links: [{ type: "web", url: "https://actifs.jp" }],
     },
     {
       name: "LesAnges Kisarazu",
-      description: "木更津で1番親身な婚活サポート。一人ひとりに本気で伴走してくれます！本気で結婚したいなら絶対ここ！",
+      description: "木更津の婚活を知り尽くしたサポーター。一人ひとりに寄り添う伴走力は圧巻。「結婚したい」の本気に、とことん付き合ってくれます。",
       links: [{ type: "instagram", url: "https://www.instagram.com/lesanges_kisarazu" }],
     },
     {
       name: "Nfarm工房 Nao なお",
-      description: "当日、会場で占っていただけます。よく当たると評判の鑑定！背中を押してほしいなら絶対ここ！",
+      description: "当日、会場で占っていただけます。驚くほど言い当てられると評判の鑑定を、この機会にぜひ。背中を押してほしい日に。",
       links: [{ type: "instagram", url: "https://www.instagram.com/enjoymind24581" }],
     },
     {
       name: "BODY MAKE SALON BOOTY",
-      description: "木更津で1番結果が出るボディメイク。サロンと24時間ジムの二刀流！本気で変わりたいなら絶対ここ！",
+      description: "「変わりたい」なら迷わずここへ。結果の出るボディメイクサロンと、24時間通えるパーソナルジムの二刀流。理想の体への最短ルートがあります。",
       links: [
         { type: "instagram", url: "https://www.instagram.com/bodymakesalonbooty", label: "サロン" },
         { type: "instagram", url: "https://www.instagram.com/bootygym_3f", label: "ジム" },
@@ -49,12 +49,12 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "株式会社サリサ",
-      description: "千葉で1番相談しやすい不動産会社。買取も仲介も賃貸もおまかせ！不動産のことなら絶対ここ！",
+      description: "千葉の不動産を知り尽くしたプロ。買取・仲介・賃貸まで任せられる安心感は別格。「相談してよかった」が止まりません。",
       links: [{ type: "web", url: "https://sarisa.jp" }],
     },
     {
       name: "株式会社TOUSEN",
-      description: "君津で1番勢いのあるプラント工事会社。若き職人の技術力とスピード感！難しい現場こそ絶対ここ！",
+      description: "京葉工業地帯のプラントを支える確かな技術力。若き職人たちの熱量とスピード感は、県内屈指。難しい現場ほど真価を発揮します。",
       links: [{ type: "web", url: "https://tousen-05.com" }],
     },
     {
@@ -67,7 +67,7 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "ワイクレスト株式会社",
-      description: "Instagramフォロワー3万人超の設計力。デザイン住宅から外構まで全国対応！家を建てるなら絶対ここ！",
+      description: "Instagram フォロワー3万人超。住宅メーカー兼設計事務所として、デザイン住宅から外構まで全国対応。「家を建てるならここ」と言わせる設計力です。",
       links: [
         { type: "instagram", url: "https://www.instagram.com/ycrest_architects", label: "設計・住宅" },
         { type: "instagram", url: "https://www.instagram.com/ycrest_exterior", label: "外構" },
@@ -75,12 +75,12 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "YKマネジメント株式会社",
-      description: "木更津で1番の物件探しのプロ集団。ルームツアーで中まで丸わかり！部屋探しなら絶対ここ！",
+      description: "木更津の物件探しならこの道のプロ集団。「木更津物件ナビ」のルームツアーを見れば、理想の部屋が必ず見つかります。",
       links: [{ type: "instagram", url: "https://www.instagram.com/yk_management_" }],
     },
     {
       name: "海坊主",
-      description: "木更津で1番の、おでんと地魚の居酒屋。出汁の染みた一皿と、その日に揚がった地魚！木更津の夜なら絶対ここ！",
+      description: "木更津が誇る、おでんと地魚の名店。出汁の染みた一皿と、その日に揚がった地魚。木更津の夜は、ここから始まります。",
       links: [{ type: "instagram", url: "https://www.instagram.com/umibouzu.kisarazu" }],
     },
     {
@@ -90,12 +90,12 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "株式会社大栄",
-      description: "木更津の看板施工・足場工事・鍛冶工事のプロ集団。街の景色をつくる仕事です。未経験から6ヶ月で独り立ちできる育成制度に、資格取得費用は全額会社負担！手に職をつけるなら絶対ここ！",
+      description: "看板施工・足場工事・鍛冶工事を手掛ける、木更津の職人集団。街の景色をつくる仕事です。未経験から6ヶ月で独り立ちを目指す育成制度があり、資格取得費用は全額会社負担。本気で人を育てる会社です。",
       links: [{ type: "web", url: "https://daiei-kisarazu.com/" }],
     },
     {
       name: "山中拓也",
-      description: "海では腕利きの漁師、陸ではホームページ制作まで。地元を知り尽くしたマルチプレイヤー！相談するなら絶対ここ！",
+      description: "海に出れば腕利きの漁師、陸に上がればホームページ制作まで。マルチな才能で地域を支える頼れる存在です。",
       links: [],
     },
   ]
