@@ -22,7 +22,10 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     {
       name: "麻龍湯",
       description: "木更津駅から徒歩3分、ついに現れた本格マーラータン。自分好みに選べる具材と、クセになる痺れと旨み。10/19プレオープン、10/24グランドオープン——木更津の新定番になること間違いなし！",
-      links: [{ type: "instagram", url: "https://www.instagram.com/malontangkisarazu" }],
+      links: [
+        { type: "web", url: "https://malontang.jp", label: "Webサイト" },
+        { type: "instagram", url: "https://www.instagram.com/malontangkisarazu", label: "Instagram" },
+      ],
     },
     {
       name: "アクティフス在宅ケア株式会社",
