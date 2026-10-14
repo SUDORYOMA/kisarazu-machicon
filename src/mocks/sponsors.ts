@@ -43,6 +43,7 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
       name: "BODY MAKE SALON BOOTY",
       description: "「変わりたい」なら迷わずここへ。結果の出るボディメイクサロンと、24時間通えるパーソナルジムの二刀流。理想の体への最短ルートがあります。",
       links: [
+        { type: "web", url: "https://www.bootysalon0401.com", label: "Webサイト" },
         { type: "instagram", url: "https://www.instagram.com/bodymakesalonbooty", label: "サロン" },
         { type: "instagram", url: "https://www.instagram.com/bootygym_3f", label: "ジム" },
       ],
@@ -61,14 +62,16 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
       name: "LOUNGE GOLF FOREST",
       description: "打って、語らって、また打つ。ゴルフを“大人の遊び場”に変えたラウンジ。スコアを競うだけじゃない、ゴルフ好きが自然と集まる場所です。",
       links: [
-        { type: "instagram", url: "https://www.instagram.com/shouwa_kikaku", label: "昭和企画" },
+        { type: "web", url: "https://forest-lg.com", label: "Webサイト" },
         { type: "instagram", url: "https://www.instagram.com/forestlg0417", label: "FOREST" },
+        { type: "instagram", url: "https://www.instagram.com/shouwa_kikaku", label: "昭和企画" },
       ],
     },
     {
       name: "ワイクレスト株式会社",
       description: "Instagram フォロワー3万人超。住宅メーカー兼設計事務所として、デザイン住宅から外構まで全国対応。「家を建てるならここ」と言わせる設計力です。",
       links: [
+        { type: "web", url: "https://www.y-crest.jp", label: "Webサイト" },
         { type: "instagram", url: "https://www.instagram.com/ycrest_architects", label: "設計・住宅" },
         { type: "instagram", url: "https://www.instagram.com/ycrest_exterior", label: "外構" },
       ],
@@ -76,7 +79,10 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     {
       name: "YKマネジメント株式会社",
       description: "木更津の物件探しならこの道のプロ集団。「木更津物件ナビ」のルームツアーを見れば、理想の部屋が必ず見つかります。",
-      links: [{ type: "instagram", url: "https://www.instagram.com/yk_management_" }],
+      links: [
+        { type: "web", url: "https://yk-management.jp", label: "Webサイト" },
+        { type: "instagram", url: "https://www.instagram.com/yk_management_", label: "Instagram" },
+      ],
     },
     {
       name: "海坊主",
