@@ -21,27 +21,27 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
   2: [
     {
       name: "麻龍湯",
-      description: "木更津駅から徒歩3分のマーラータン（麻辣湯）のお店。10月19日プレオープン、10月24日グランドオープン。",
+      description: "木更津駅から徒歩3分、ついに現れた本格マーラータン。クセになる痺れと旨みは一度食べたら忘れられません。10/19プレオープン、10/24グランドオープン——木更津の新定番になること間違いなし！",
       links: [{ type: "instagram", url: "https://www.instagram.com/malontangkisarazu" }],
     },
     {
       name: "アクティフス在宅ケア株式会社",
-      description: "木更津・市原を中心とした介護サービス業。訪問介護と住宅型有料老人ホームを運営されています。",
+      description: "掲げるのは「断らない介護」。身寄りのない方も、生活保護の方も、誰ひとり取り残さない。木更津・市原で、これ以上ないほど懐の深い介護を届け続けています。",
       links: [{ type: "web", url: "https://actifs.jp" }],
     },
     {
       name: "LesAnges Kisarazu",
-      description: "木更津の婚活サポート。",
+      description: "木更津の婚活を知り尽くしたサポーター。一人ひとりに寄り添う伴走力は圧巻。「結婚したい」の本気に、とことん付き合ってくれます。",
       links: [{ type: "instagram", url: "https://www.instagram.com/lesanges_kisarazu" }],
     },
     {
       name: "Nfarm工房 Nao なお",
-      description: "占い。今回のイベント会場にご出展いただきます。",
+      description: "当日、会場で占っていただけます。驚くほど言い当てられると評判の鑑定を、この機会にぜひ。背中を押してほしい日に。",
       links: [{ type: "instagram", url: "https://www.instagram.com/enjoymind24581" }],
     },
     {
       name: "BODY MAKE SALON BOOTY",
-      description: "ボディメイクサロンと、24時間フィットネス＆パーソナルジム「BOOTY GYM」。",
+      description: "「変わりたい」なら迷わずここへ。結果の出るボディメイクサロンと、24時間通えるパーソナルジムの二刀流。理想の体への最短ルートがあります。",
       links: [
         { type: "instagram", url: "https://www.instagram.com/bodymakesalonbooty", label: "サロン" },
         { type: "instagram", url: "https://www.instagram.com/bootygym_3f", label: "ジム" },
@@ -49,17 +49,17 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "株式会社サリサ",
-      description: "千葉の不動産買取・仲介・賃貸。",
+      description: "千葉の不動産を知り尽くしたプロ。買取・仲介・賃貸まで任せられる安心感は別格。「相談してよかった」が止まりません。",
       links: [{ type: "web", url: "https://sarisa.jp" }],
     },
     {
       name: "株式会社TOUSEN",
-      description: "千葉県君津市。京葉工業地帯のプラントを中心に、配管工事・鍛冶溶接・機械設置・足場仮設工事を手掛けていらっしゃいます。",
+      description: "京葉工業地帯のプラントを支える確かな技術力。若き職人たちの熱量とスピード感は県内屈指。難しい現場ほど真価を発揮します。",
       links: [{ type: "web", url: "https://tousen-05.com" }],
     },
     {
       name: "森俊博",
-      description: "株式会社昭和企画、LOUNGE GOLF FOREST をはじめ、様々な事業を手掛けていらっしゃいます。",
+      description: "株式会社昭和企画、LOUNGE GOLF FOREST ほか、手掛ける事業はまさに八面六臂。木更津の街を動かす圧倒的な行動力に、いつも背中を押されています。",
       links: [
         { type: "instagram", url: "https://www.instagram.com/shouwa_kikaku", label: "昭和企画" },
         { type: "instagram", url: "https://www.instagram.com/forestlg0417", label: "FOREST" },
@@ -67,7 +67,7 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "ワイクレスト株式会社",
-      description: "住宅メーカー兼設計事務所。デザイン住宅と外構デザインを全国対応で手掛けていらっしゃいます。",
+      description: "Instagramフォロワー3万人超。住宅メーカー兼設計事務所として、デザイン住宅から外構まで全国対応。「家を建てるならここ」と言わせる設計力です。",
       links: [
         { type: "instagram", url: "https://www.instagram.com/ycrest_architects", label: "設計・住宅" },
         { type: "instagram", url: "https://www.instagram.com/ycrest_exterior", label: "外構" },
@@ -75,22 +75,22 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     },
     {
       name: "YKマネジメント株式会社",
-      description: "木更津を中心とした物件探しのプロ集団。「木更津物件ナビ」でルームツアーも発信されています。",
+      description: "木更津の物件探しならこの道のプロ集団。「木更津物件ナビ」のルームツアーを見れば、理想の部屋が必ず見つかります。",
       links: [{ type: "instagram", url: "https://www.instagram.com/yk_management_" }],
     },
     {
       name: "海坊主",
-      description: "木更津の、おでんと地魚の居酒屋。",
+      description: "木更津が誇る、おでんと地魚の名店。出汁の染みた一皿と、その日に揚がった地魚。木更津の夜は、ここから始まります。",
       links: [{ type: "instagram", url: "https://www.instagram.com/umibouzu.kisarazu" }],
     },
     {
       name: "韓国料理ペゴパ",
-      description: "市原の韓国料理店。",
+      description: "本場の方々が調理してます！本場の味なら絶対ここ！",
       links: [{ type: "instagram", url: "https://www.instagram.com/pegopa.ichihara" }],
     },
     {
       name: "山中拓也",
-      description: "地元の漁師さん。最近はホームページ制作なども手掛けていらっしゃいます。",
+      description: "海に出れば腕利きの漁師、陸に上がればホームページ制作まで。マルチな才能で地域を支える頼れる存在です。",
       links: [],
     },
   ]
