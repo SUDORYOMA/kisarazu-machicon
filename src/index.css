@@ -31,6 +31,13 @@
   .prose-blog ol {
     @apply list-decimal pl-6 my-5 space-y-1.5;
   }
+  /* チェックリスト（- [ ] …）。点を消して、枠で囲んだ一覧にする */
+  .prose-blog ul:has(> li > input[type="checkbox"]) {
+    @apply list-none pl-0 space-y-2.5 bg-rose-50/60 rounded-2xl px-5 py-5;
+  }
+  .prose-blog li > input[type="checkbox"] {
+    @apply mr-2.5 h-4 w-4 align-middle accent-rose-500;
+  }
   .prose-blog blockquote {
     @apply border-l-4 border-rose-200 bg-rose-50/50 rounded-r-xl pl-5 pr-4 py-3 my-6 text-gray-600;
   }
