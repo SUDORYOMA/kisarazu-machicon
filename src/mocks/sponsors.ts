@@ -35,7 +35,10 @@ export const sponsorsByEventId: Record<number, Sponsor[]> = {
     {
       name: "LesAnges Kisarazu",
       description: "木更津の婚活を知り尽くしたサポーター。一人ひとりに寄り添う伴走力は圧巻。「結婚したい」の本気に、とことん付き合ってくれます。",
-      links: [{ type: "instagram", url: "https://www.instagram.com/lesanges_kisarazu", label: "Instagram" }],
+      links: [
+        { type: "web", url: "https://les-anges.net", label: "Webサイト" },
+        { type: "instagram", url: "https://www.instagram.com/lesanges_kisarazu", label: "Instagram" },
+      ],
     },
     {
       name: "Nfarm工房 Nao なお",
