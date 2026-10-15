@@ -104,6 +104,18 @@ def sponsor_slide(slug, cfg, path):
 
     panel_w = 820
     decor(d)  # 飾りは写真の下に敷く
+    logo_file = cfg.get("logo")
+    if logo_file and not photo:
+        # ロゴを右半分に白いカードで置く
+        card = (panel_w + 80, 180, W - 120, H - 180)
+        d.rounded_rectangle(card, radius=48, fill=WHITE)
+        im = Image.open(os.path.join(src_dir, logo_file)).convert("RGBA")
+        bw, bh = card[2] - card[0] - 160, card[3] - card[1] - 160
+        s = min(bw / im.width, bh / im.height)
+        im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
+        img.paste(im, (card[0] + (card[2] - card[0] - im.width) // 2,
+                       card[1] + (card[3] - card[1] - im.height) // 2), im)
+        d = ImageDraw.Draw(img, "RGBA")
     if photo:
         im = Image.open(os.path.join(src_dir, photo[0])).convert("RGB")
         im = fill_crop(im, W - panel_w, H, photo[1])
@@ -116,7 +128,7 @@ def sponsor_slide(slug, cfg, path):
         img.paste(veil, (panel_w, 0), veil)
         d = ImageDraw.Draw(img, "RGBA")
 
-    if photo:
+    if photo or logo_file:
         x0, inner = 96, panel_w - 96 - 60
     else:
         inner = 1200

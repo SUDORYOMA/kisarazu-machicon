@@ -77,7 +77,8 @@ POSTS = {
     "actifs": {
         "name": "アクティフス在宅ケア株式会社",
         "lead": "掲げるのは、「断らない介護」。",
-        "cover": ("cover.jpg", None),
+        # 手を取り合っているところが真ん中に来るよう、左寄りに切る
+        "cover": ("cover.jpg", (0.0, 0.0, 0.62, 1.0)),
         "slides": [
             ("a.jpg", "断らない介護", "身寄りのない方も、生活保護の方も。\n誰ひとり、取り残しません。"),
             ("b.jpg", "暮らしをまるごと", "住宅型有料老人ホームと訪問介護で、\n木更津・市原の毎日を支えています。"),
@@ -151,6 +152,7 @@ POSTS = {
         "name": "株式会社TOUSEN",
         "lead": "京葉工業地帯のプラントを支える技術力。",
         "cover": None,
+        "logo": "logo.png",
         "slides": [
             (None, "配管・機械設置・足場", "プラント工事まで一貫して。\n難しい現場ほど、真価を発揮します。"),
             (None, "若い職人たちの熱量", "スピード感は県内屈指。\n安全第一を基盤に、信頼と品質を追求します。"),
@@ -230,6 +232,7 @@ POSTS = {
         "name": "株式会社大栄",
         "lead": "木更津の街を支える、看板・足場・鍛冶。",
         "cover": None,
+        "logo": "logo.png",
         "slides": [
             (None, "看板施工", "店舗・商業施設・大型サインまで。\n見上げたあの看板も、この街のどこかに。"),
             (None, "足場工事・鍛冶工事", "ビル・マンション・プラントまで、\n安全第一の足場を迅速に構築します。"),
@@ -368,8 +371,35 @@ def draw_name(d, cfg, cy, dark):
     return cy + fb.size + 46
 
 
+def paste_fit(img, path, box):
+    """box=(x,y,w,h) の中に、縦横比そのままで収めて中央に置く"""
+    im = Image.open(path).convert("RGBA")
+    x, y, w, h = box
+    scale = min(w / im.width, h / im.height)
+    im = im.resize((max(1, round(im.width * scale)), max(1, round(im.height * scale))), Image.LANCZOS)
+    img.paste(im, (x + (w - im.width) // 2, y + (h - im.height) // 2), im)
+
+
 def cover(cfg, src_dir, out):
     photo = cfg.get("cover")
+    logo_file = cfg.get("logo")
+    if logo_file:
+        # ロゴを大きく置く表紙（写真が無く、ロゴがはっきりしている協賛企業様）
+        img = Image.new("RGB", (W, H), BG)
+        d = ImageDraw.Draw(img, "RGBA")
+        decor(d)
+        y = paste_logo(img, d, 64) + 44
+        y = badge(d, y)
+        d.rounded_rectangle((110, y + 70, W - 110, y + 530), radius=40, fill=WHITE)
+        paste_fit(img, os.path.join(src_dir, logo_file), (170, y + 130, W - 340, 340))
+        ty = draw_name(d, cfg, y + 610, False)
+        fl = fit(d, cfg["lead"], SANS, 500, W - 150, 34, 24)
+        center(d, cfg["lead"], fl, ty, GRAY600)
+        center(d, EVENT, font(SANS, 30, 700), H - 218, ROSE500)
+        center(d, "ご協賛、誠にありがとうございます。", font(SANS, 27, 500), H - 168, GRAY600)
+        center(d, "スワイプでご紹介 →", font(SANS, 26, 700), H - 110, GRAY900)
+        img.save(out, "JPEG", quality=92, optimize=True, progressive=True)
+        return
     if photo:
         im = Image.open(os.path.join(src_dir, photo[0])).convert("RGB")
         img = fill_crop(im, W, H, photo[1])
