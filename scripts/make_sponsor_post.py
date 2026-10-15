@@ -54,7 +54,7 @@ POSTS = {
     },
 }
 
-EVENT = "10月18日（土）木更津40人街コン"
+EVENT = "10月18日（日）木更津40人街コン"
 
 
 def font(path, size, weight):
