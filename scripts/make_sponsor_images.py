@@ -116,9 +116,10 @@ def render(width, height, out_path, cols, title_size, card_h, name_size, gap):
     inner = width - PAD * 2
     card_w = (inner - gap * (cols - 1)) // cols
     rows = (len(names) + cols - 1) // cols
-    footer_top = height - PAD - 30 - 24 - 20 - 24  # サイト名・注記ぶん
+    footer_top = height - PAD - 30 - 32  # サイト名ぶん＋その上の余白
     avail = footer_top - y - 24
-    card_h = min(card_h, max(70, (avail - gap * (rows - 1)) // rows))
+    # 社数が増えても重ならないよう、下限を設けずに残りの高さで割る
+    card_h = min(card_h, (avail - gap * (rows - 1)) // rows)
     for i, name in enumerate(names):
         col, row = i % cols, i // cols
         x = PAD + col * (card_w + gap)
@@ -131,12 +132,13 @@ def render(width, height, out_path, cols, title_size, card_h, name_size, gap):
         # 社名＋「様」を1行で中央に置く（「様」は少し小さく、少し離す）
         gap_x = max(10, int(name_size * 0.3))
         fn = font(SERIF, name_size, 900)
-        fh = font(SANS, max(20, int(name_size * 0.62)), 700)
+        fh = font(SANS, max(14, int(name_size * 0.62)), 700)
         avail = card_w - 40
         size = name_size
-        while size > 20:
+        # 長い社名でもカードからはみ出さないよう、入るまで小さくする
+        while size > 14:
             fn = font(SERIF, size, 900)
-            fh = font(SANS, max(18, int(size * 0.62)), 700)
+            fh = font(SANS, max(12, int(size * 0.62)), 700)
             if d.textlength(name, font=fn) + gap_x + d.textlength("様", font=fh) <= avail:
                 break
             size -= 2
@@ -151,9 +153,6 @@ def render(width, height, out_path, cols, title_size, card_h, name_size, gap):
     fsite = font(SANS, 30, 700)
     site_y = height - PAD - fsite.size
     d.text(((width - d.textlength(SITE, font=fsite)) / 2, site_y), SITE, font=fsite, fill=GRAY900)
-    ffoot = font(SANS, 24, 500)
-    note = "順不同・敬称略"
-    d.text(((width - d.textlength(note, font=ffoot)) / 2, site_y - ffoot.size - 20), note, font=ffoot, fill=GRAY400)
 
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     img.save(out_path, "JPEG", quality=92, optimize=True, progressive=True)
