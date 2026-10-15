@@ -8,7 +8,7 @@
 #
 # 写真は design/sns/posts/<slug>/src/ に置く（各社の公式サイト・公式掲載から取得したもの）。
 # 写真が無い協賛企業様は、同じ配色・書体のまま文字だけのカードになる。
-import os, sys
+import glob, os, sys
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -121,12 +121,9 @@ POSTS = {
     },
     "booty": {
         "name": "BODY MAKE SALON BOOTY",
-        "lead": "「変わりたい」なら、迷わずここへ。",
-        "cover": None,
-        "slides": [
-            (None, "結果の出るボディメイク", "サロンでの施術と、24時間通える\nパーソナルジムの二刀流です。"),
-            (None, "理想の体への最短ルート", "木更津市富士見。通いやすい場所で、\nあなたに合わせたメニューを。"),
-        ],
+        "lead": "エステ×ジムのWアプローチで、続けられる“美習慣”を。",
+        "cover": ("cover.jpg", None),
+        "slides": [],
         "info": [
             ("住所", "千葉県木更津市富士見1-12-35"),
             ("事業内容", "ボディメイクサロン／パーソナルジム"),
@@ -276,11 +273,8 @@ POSTS = {
     "tonic": {
         "name": "Tonic Diner",
         "lead": "ビリヤードもダーツも、唯一無二のBar。",
-        "cover": None,
-        "slides": [
-            (None, "遊びも満載", "飲むだけじゃもったいない。\nビリヤード・ダーツで遊べるレストランバー。"),
-            (None, "目印はスクールバス", "袖ケ浦・今井。初めましての人とも、\nすぐ打ち解けられます。"),
-        ],
+        "cover": ("cover.jpg", None),
+        "slides": [],
         "info": [
             ("エリア", "千葉県袖ケ浦市今井"),
             ("事業内容", "レストランバー（ビリヤード・ダーツ）"),
@@ -493,11 +487,15 @@ def build(slug):
     base = os.path.join(ROOT, "design", "sns", "posts", slug)
     src_dir = os.path.join(base, "src")
     os.makedirs(base, exist_ok=True)
+    # 古い書き出しが残らないよう、先に消す
+    for old in glob.glob(os.path.join(base, "0*.jpg")):
+        os.remove(old)
     cover(cfg, src_dir, os.path.join(base, "01.jpg"))
-    for i in range(2):
+    n = len(cfg["slides"])
+    for i in range(n):
         slide(cfg, src_dir, i, os.path.join(base, f"{i + 2:02d}.jpg"))
-    info(cfg, os.path.join(base, "04.jpg"))
-    print("generated", slug, "-> design/sns/posts/" + slug)
+    info(cfg, os.path.join(base, f"{n + 2:02d}.jpg"))
+    print("generated", slug, f"({n + 2} images) -> design/sns/posts/" + slug)
 
 
 def main():
