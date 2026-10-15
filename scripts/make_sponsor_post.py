@@ -1,13 +1,15 @@
 # 協賛企業様を1社ずつ紹介する Instagram カルーセル（1080x1350・4:5）を作る。
 #
-#   python3 scripts/make_sponsor_post.py umibouzu
+#   python3 scripts/make_sponsor_post.py            # 全社ぶん
+#   python3 scripts/make_sponsor_post.py umibouzu   # 1社だけ
 #
-# 出力先: design/sns/posts/<slug>/01.jpg, 02.jpg, ...
-# 写真は design/sns/posts/<slug>/src/ に置いておく（店舗の公式掲載から取得したもの）。
+# 1社あたり4枚：01 表紙 / 02・03 紹介 / 04 店舗情報
+# 出力先: design/sns/posts/<slug>/01.jpg 〜 04.jpg
 #
-# 下の POSTS に1社ぶんの設定を足せば、同じ体裁で他の協賛企業様も作れる。
+# 写真は design/sns/posts/<slug>/src/ に置く（各社の公式サイト・公式掲載から取得したもの）。
+# 写真が無い協賛企業様は、同じ配色・書体のまま文字だけのカードになる。
 import os, sys
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOGO = os.path.join(ROOT, "src", "assets", "logo.png")
@@ -17,32 +19,34 @@ SANS = os.path.join(FONTS, "NotoSansJP-VF.ttf")
 
 W, H = 1080, 1350
 PAD = 72
+EVENT = "10月18日（日）木更津40人街コン"
 
 # サイトと同じ配色
 BG = (253, 246, 243)
 GRAY900 = (17, 24, 39)
 GRAY600 = (75, 85, 99)
-GRAY500 = (107, 114, 128)
 ROSE500 = (244, 63, 94)
 ROSE100 = (255, 228, 230)
 AMBER100 = (254, 243, 199)
 WHITE = (255, 255, 255)
+CREAM = (255, 241, 242)
 
+# name       … 社名（「様」は自動で付く）
+# prefix     … 社名の上に小さく出す文字（任意）
+# lead       … 表紙に出す一言
+# cover      … 表紙の写真（src/ 内のファイル名）。None なら文字だけの表紙
+# slides     … (写真 or None, 見出し, 本文) を2つ
+# info       … 最後のカードに並べる項目
 POSTS = {
     "umibouzu": {
         "name": "海坊主",
-        "name_prefix": "【木更津】",
-        "handle": "@umibouzu.kisarazu",
+        "prefix": "【木更津】",
         "lead": "おでんと、地魚の刺身と、日本酒と。",
-        # (写真ファイル, 見出し, 本文)
+        "cover": ("0n5e.jpg", (0.5, 0.0, 1.0, 0.5)),
         "slides": [
             ("0n6o.jpg", "おでん", "出汁の染みた大根に、牛すじ、たまご。\n一皿目から、もう木更津の夜です。"),
             ("0n80.jpg", "地魚の刺身", "市場直送の鮮魚を、その日のいちばんで。\n熟成させた一切れは、とろけます。"),
-            ("0n6x.jpg", "貝・牡蠣", "殻付きのまま、豪快に。\n海のものが、とにかく強い店です。"),
-            ("0n7f.jpg", "厳選の日本酒", "全国から選び抜いた一本と、\n店名を冠したオリジナルの「海坊主」も。"),
-            ("0n7j.jpg", "木更津駅から歩いて3分", "気取らない、居心地のいい店内。\n一人でも、大人数でも。"),
         ],
-        "cover": {"file": "0n5e.jpg", "crop": (0.5, 0.0, 1.0, 0.5)},  # 4分割の右上（外観）
         "info": [
             ("住所", "千葉県木更津市東中央1-4-6"),
             ("最寄り", "JR木更津駅 東口から徒歩3分"),
@@ -52,9 +56,236 @@ POSTS = {
             ("Instagram", "@umibouzu.kisarazu"),
         ],
     },
+    "malontang": {
+        "name": "麻龍湯",
+        "prefix": "【木更津】",
+        "lead": "木更津駅から3分、本格マーラータン。",
+        "cover": ("cover.jpg", None),
+        "slides": [
+            ("a.jpg", "選べる具材", "ずらりと並んだ具材から、好きなものを\n好きなだけ。自分だけの一杯ができます。"),
+            ("b.jpg", "スープは2種類", "痺れる薬膳麻辣湯か、まろやかな白湯か。\n辛さは5段階、苦手な方でも大丈夫。"),
+        ],
+        "info": [
+            ("住所", "千葉県木更津市大和2-1-16"),
+            ("最寄り", "JR木更津駅から徒歩3分"),
+            ("営業時間", "11:00〜21:00"),
+            ("オープン", "10/19 プレ ／ 10/24 グランド"),
+            ("ご予約", "0438-97-7337"),
+            ("Instagram", "@malontangkisarazu"),
+        ],
+    },
+    "actifs": {
+        "name": "アクティフス在宅ケア株式会社",
+        "lead": "掲げるのは、「断らない介護」。",
+        "cover": ("cover.jpg", None),
+        "slides": [
+            ("a.jpg", "断らない介護", "身寄りのない方も、生活保護の方も。\n誰ひとり、取り残しません。"),
+            ("b.jpg", "暮らしをまるごと", "住宅型有料老人ホームと訪問介護で、\n木更津・市原の毎日を支えています。"),
+        ],
+        "info": [
+            ("エリア", "千葉県木更津市・市原市 ほか"),
+            ("事業内容", "訪問介護／住宅型有料老人ホーム"),
+            ("受付時間", "9:00〜18:00"),
+            ("お問合せ", "0436-63-5111"),
+            ("Webサイト", "actifs.jp"),
+        ],
+    },
+    "lesanges": {
+        "name": "LesAnges Kisarazu",
+        "lead": "木更津の婚活を、知り尽くしたサポーター。",
+        "cover": None,
+        "slides": [
+            (None, "とことん寄り添う", "一人ひとりに伴走する力が圧巻。\n「結婚したい」の本気に、本気で応えます。"),
+            (None, "地元を知るからこそ", "木更津・君津・富津・市原を中心に、\n大人の婚活をサポートしています。"),
+        ],
+        "info": [
+            ("エリア", "木更津・君津・富津・市原"),
+            ("事業内容", "結婚相談所"),
+            ("Webサイト", "les-anges.net"),
+            ("Instagram", "@lesanges_kisarazu"),
+        ],
+    },
+    "nfarm": {
+        "name": "Nfarm工房 Nao なお",
+        "lead": "当日、会場で占っていただけます。",
+        "cover": None,
+        "slides": [
+            (None, "驚くほど言い当てる", "そう評判の鑑定を、この機会にぜひ。\n迷っていることを、ひとつ持って行ってください。"),
+            (None, "背中を押してほしい日に", "10月18日、会場でお待ちしています。\n街コンのもうひとつのお楽しみです。"),
+        ],
+        "info": [
+            ("ご出展", "10月18日（日）木更津40人街コン"),
+            ("内容", "会場での占い鑑定"),
+            ("Instagram", "@enjoymind24581"),
+        ],
+    },
+    "booty": {
+        "name": "BODY MAKE SALON BOOTY",
+        "lead": "「変わりたい」なら、迷わずここへ。",
+        "cover": None,
+        "slides": [
+            (None, "結果の出るボディメイク", "サロンでの施術と、24時間通える\nパーソナルジムの二刀流です。"),
+            (None, "理想の体への最短ルート", "木更津市富士見。通いやすい場所で、\nあなたに合わせたメニューを。"),
+        ],
+        "info": [
+            ("住所", "千葉県木更津市富士見1-12-35"),
+            ("事業内容", "ボディメイクサロン／パーソナルジム"),
+            ("Webサイト", "bootysalon0401.com"),
+            ("Instagram", "@bodymakesalonbooty（サロン）"),
+            ("Instagram", "@bootygym_3f（ジム）"),
+        ],
+    },
+    "sarisa": {
+        "name": "株式会社サリサ",
+        "lead": "千葉の不動産を、知り尽くしたプロ。",
+        "cover": ("cover.jpg", None),
+        "slides": [
+            ("a.jpg", "買取・仲介・賃貸", "どの入口から相談しても、ちゃんと最後まで。\n「相談してよかった」が止まりません。"),
+            (None, "ハウスクリーニングも", "「ピカピカ 木更津店」として、\nエアコンや水まわりの清掃まで承ります。"),
+        ],
+        "info": [
+            ("住所", "千葉県木更津市富士見1-12-32"),
+            ("事業内容", "不動産売買・仲介・賃貸／清掃"),
+            ("お問合せ", "0438-97-6619"),
+            ("Webサイト", "sarisa.jp"),
+        ],
+    },
+    "tousen": {
+        "name": "株式会社TOUSEN",
+        "lead": "京葉工業地帯のプラントを支える技術力。",
+        "cover": None,
+        "slides": [
+            (None, "配管・機械設置・足場", "プラント工事まで一貫して。\n難しい現場ほど、真価を発揮します。"),
+            (None, "若い職人たちの熱量", "スピード感は県内屈指。\n安全第一を基盤に、信頼と品質を追求します。"),
+        ],
+        "info": [
+            ("住所", "千葉県君津市人見4-8-34-201"),
+            ("事業内容", "配管工事／機械設置／足場仮設／プラント"),
+            ("営業時間", "9:00〜18:00"),
+            ("Webサイト", "tousen-05.com"),
+        ],
+    },
+    "forest": {
+        "name": "LOUNGE GOLF FOREST",
+        "lead": "ゴルフを、大人の遊び場に。",
+        "cover": ("cover.jpg", None),
+        "slides": [
+            ("a.jpg", "シミュレーションゴルフ", "打って、語らって、また打つ。\nスコアを競うだけじゃない時間です。"),
+            ("b.jpg", "ラウンジで一杯", "ゴルフ好きが自然と集まる、\n金田に生まれた新しい場所。"),
+        ],
+        "info": [
+            ("住所", "千葉県木更津市金田東1-9-10"),
+            ("事業内容", "シミュレーションゴルフバー"),
+            ("Webサイト", "forest-lg.com"),
+            ("Instagram", "@forestlg0417"),
+        ],
+    },
+    "ycrest": {
+        "name": "ワイクレスト株式会社",
+        "lead": "Instagram フォロワー3万人超の設計力。",
+        "cover": ("cover.jpg", None),
+        "slides": [
+            ("a.jpg", "デザイン住宅", "住宅メーカー兼設計事務所として、\n全国に家を建てています。"),
+            ("b.jpg", "外構までまるごと", "設計から庭先まで、ひと続きでデザイン。\n「家を建てるならここ」と言わせる力。"),
+        ],
+        "info": [
+            ("住所", "千葉県木更津市請西1-12-3"),
+            ("事業内容", "住宅メーカー／設計事務所／外構"),
+            ("お問合せ", "0438-97-6322"),
+            ("Webサイト", "y-crest.jp"),
+            ("Instagram", "@ycrest_architects"),
+        ],
+    },
+    "yk": {
+        "name": "YKマネジメント株式会社",
+        "lead": "木更津の物件探しなら、この道のプロ集団。",
+        "cover": ("cover.jpg", None),
+        "slides": [
+            ("a.jpg", "マンション・アパートの賃貸管理", "木更津周辺を中心に、オーナーと入居者の\n両方を支えています。"),
+            ("b.jpg", "木更津物件ナビ", "ルームツアーを見れば、\n理想の部屋が必ず見つかります。"),
+        ],
+        "info": [
+            ("エリア", "千葉県木更津市 周辺"),
+            ("事業内容", "マンション・アパートの賃貸管理"),
+            ("営業時間", "9:00〜18:00"),
+            ("お問合せ", "0438-38-3295"),
+            ("Webサイト", "yk-management.jp"),
+            ("Instagram", "@yk_management_"),
+        ],
+    },
+    "pegopa": {
+        "name": "韓国料理ペゴパ",
+        "lead": "市原で1番の、韓国料理屋さん。",
+        "cover": None,
+        "slides": [
+            (None, "本場の方々が作っています", "ひと口で「あ、これ現地の味だ」と\n分かるはずです。"),
+            (None, "韓国の味が恋しくなったら", "絶対ここ。市原で、本場に出会えます。"),
+        ],
+        "info": [
+            ("エリア", "千葉県市原市"),
+            ("事業内容", "韓国料理"),
+            ("Instagram", "@pegopa.ichihara"),
+        ],
+    },
+    "daiei": {
+        "name": "株式会社大栄",
+        "lead": "木更津の街を支える、看板・足場・鍛冶。",
+        "cover": None,
+        "slides": [
+            (None, "看板施工", "店舗・商業施設・大型サインまで。\n見上げたあの看板も、この街のどこかに。"),
+            (None, "足場工事・鍛冶工事", "ビル・マンション・プラントまで、\n安全第一の足場を迅速に構築します。"),
+        ],
+        "info": [
+            ("エリア", "千葉県木更津市"),
+            ("事業内容", "看板施工／足場工事／鍛冶工事"),
+            ("営業時間", "8:00〜17:00"),
+            ("お問合せ", "090-9977-5855"),
+            ("Webサイト", "daiei-kisarazu.com"),
+        ],
+    },
+    "yamanaka": {
+        "name": "山中拓也",
+        "lead": "海では漁師、陸ではホームページ制作。",
+        "cover": None,
+        "slides": [
+            (None, "腕利きの漁師", "海に出れば、その日いちばんの魚を。\n木更津の海を知り尽くしています。"),
+            (None, "ホームページ制作まで", "マルチな才能で地域を支える、\n頼れる存在です。"),
+        ],
+        "info": [
+            ("ご協賛", "10月18日（日）木更津40人街コン"),
+            ("ひとこと", "いつもありがとうございます"),
+        ],
+    },
+    "marujin": {
+        "name": "潮そばまる仁",
+        "lead": "塩味ひとすじの、焼きそば専門店。",
+        "cover": None,
+        "slides": [
+            (None, "潮彩焼きそば", "地元・金田の海苔をまとった、\nご当地の塩焼きそばです。"),
+            (None, "夜は居酒屋", "塩ベースのあさりラーメンも。\n木更津の海の味が、ここにあります。"),
+        ],
+        "info": [
+            ("住所", "千葉県木更津市金田東1-40-5"),
+            ("事業内容", "塩味専門の焼きそば店／夜は居酒屋"),
+            ("定休日", "月曜日・火曜日"),
+            ("Instagram", "@siosoba_marujin"),
+        ],
+    },
+    "tonic": {
+        "name": "Tonic Diner",
+        "lead": "ビリヤードもダーツも、唯一無二のBar。",
+        "cover": None,
+        "slides": [
+            (None, "遊びも満載", "飲むだけじゃもったいない。\nビリヤード・ダーツで遊べるレストランバー。"),
+            (None, "目印はスクールバス", "袖ケ浦・今井。初めましての人とも、\nすぐ打ち解けられます。"),
+        ],
+        "info": [
+            ("エリア", "千葉県袖ケ浦市今井"),
+            ("事業内容", "レストランバー（ビリヤード・ダーツ）"),
+            ("Instagram", "@tonic_diner"),
+        ],
+    },
 }
-
-EVENT = "10月18日（日）木更津40人街コン"
 
 
 def font(path, size, weight):
@@ -66,27 +297,32 @@ def font(path, size, weight):
     return f
 
 
-from PIL import ImageFont  # noqa: E402  （font() の後で読んでも動くが、分かりやすさのためここに置く）
+def center(d, text, f, y, fill):
+    d.text(((W - d.textlength(text, font=f)) / 2, y), text, font=f, fill=fill)
 
 
-def center(d, text, f, y, fill, width=W):
-    d.text(((width - d.textlength(text, font=f)) / 2, y), text, font=f, fill=fill)
+def fit(d, text, path, weight, max_w, start, floor=22):
+    """max_w に収まるまで小さくする"""
+    size = start
+    while size > floor:
+        f = font(path, size, weight)
+        if d.textlength(text, font=f) <= max_w:
+            return f
+        size -= 2
+    return font(path, floor, weight)
 
 
 def fill_crop(im, w, h, box=None):
-    """box=(l,t,r,b)（0〜1）で切り出してから、w x h に外側合わせで埋める"""
     if box:
         l, t, r, b = box
         im = im.crop((int(im.width * l), int(im.height * t), int(im.width * r), int(im.height * b)))
     scale = max(w / im.width, h / im.height)
     im = im.resize((max(w, round(im.width * scale)), max(h, round(im.height * scale))), Image.LANCZOS)
-    x = (im.width - w) // 2
-    y = (im.height - h) // 2
+    x, y = (im.width - w) // 2, (im.height - h) // 2
     return im.crop((x, y, x + w, y + h))
 
 
 def paste_logo(img, d, y, dark=False):
-    """ロゴ＋「木更津街コン」を中央に置いて、下端のyを返す"""
     logo = Image.open(LOGO).convert("RGBA")
     lh = 74
     logo = logo.resize((round(logo.width * lh / logo.height), lh), Image.LANCZOS)
@@ -104,70 +340,105 @@ def decor(d):
     d.ellipse((-320, H - 420, 300, H + 200), fill=AMBER100 + (130,))
 
 
-def cover(cfg, src_dir, out):
-    photo = Image.open(os.path.join(src_dir, cfg["cover"]["file"])).convert("RGB")
-    img = fill_crop(photo, W, H, cfg["cover"].get("crop"))
-    # 文字を読ませるため、上下を暗くする
-    veil = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    vd = ImageDraw.Draw(veil)
-    # 境目が線に見えないよう、上と下へなめらかに濃くする
-    for i in range(H):
-        top = max(0.0, 1 - i / 560) ** 1.4
-        bottom = max(0.0, (i - (H - 540)) / 540) ** 1.4
-        a = 118 + int(100 * top + 105 * bottom)
-        vd.line((0, i, W, i), fill=(10, 8, 12, min(a, 235)))
-    img = Image.alpha_composite(img.convert("RGBA"), veil).convert("RGB")
-    d = ImageDraw.Draw(img, "RGBA")
-
-    y = paste_logo(img, d, 64, dark=True) + 44
+def badge(d, y, dark=False):
     f = font(SANS, 27, 900)
     label = "協 賛 企 業 様 の ご 紹 介"
     bw = d.textlength(label, font=f) + 64
     d.rounded_rectangle((int((W - bw) // 2), y, int((W + bw) // 2), y + 62), radius=31, fill=ROSE500)
     center(d, label, f, y + 15, WHITE)
+    return y + 62
 
-    fn = font(SERIF, 48, 700)
-    center(d, cfg["name_prefix"], fn, H // 2 - 150, (255, 228, 230))
-    fb = font(SERIF, 136, 900)
+
+def heart_rule(d, y, dark=False):
+    """区切りの線とハート（サイトの見出しと同じ飾り）"""
+    line = (255, 228, 230) if dark else (253, 164, 175)
+    d.line((W / 2 - 120, y, W / 2 - 40, y), fill=line, width=3)
+    d.line((W / 2 + 40, y, W / 2 + 120, y), fill=line, width=3)
+    d.ellipse((W / 2 - 10, y - 10, W / 2 + 10, y + 10), fill=ROSE500)
+
+
+def draw_name(d, cfg, cy, dark):
+    """社名＋様を中央に。戻り値は本文を置くy"""
+    if cfg.get("prefix"):
+        center(d, cfg["prefix"], font(SERIF, 48, 700), cy - 70, ROSE100 if dark else ROSE500)
     name = cfg["name"]
-    fh = font(SANS, 54, 700)
+    fb = fit(d, name, SERIF, 900, W - 300, 136, 44)
+    fh = font(SANS, max(28, int(fb.size * 0.4)), 700)
     block = d.textlength(name, font=fb) + 26 + d.textlength("様", font=fh)
     x = (W - block) / 2
-    d.text((x, H // 2 - 80), name, font=fb, fill=WHITE)
-    d.text((x + d.textlength(name, font=fb) + 26, H // 2 + 10), "様", font=fh, fill=(255, 228, 230))
+    d.text((x, cy), name, font=fb, fill=WHITE if dark else GRAY900)
+    d.text((x + d.textlength(name, font=fb) + 26, cy + fb.size * 0.62), "様", font=fh,
+           fill=ROSE100 if dark else GRAY600)
+    return cy + fb.size + 46
 
-    fl = font(SANS, 36, 500)
-    center(d, cfg["lead"], fl, H // 2 + 120, (250, 240, 240))
 
-    fe = font(SANS, 30, 700)
-    center(d, EVENT, fe, H - 218, (255, 228, 230))
-    fe2 = font(SANS, 27, 500)
-    center(d, "ご協賛、誠にありがとうございます。", fe2, H - 168, (235, 225, 228))
-    center(d, "スワイプでお店をご紹介 →", font(SANS, 26, 700), H - 110, WHITE)
+def cover(cfg, src_dir, out):
+    photo = cfg.get("cover")
+    if photo:
+        im = Image.open(os.path.join(src_dir, photo[0])).convert("RGB")
+        img = fill_crop(im, W, H, photo[1])
+        veil = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        vd = ImageDraw.Draw(veil)
+        for i in range(H):
+            top = max(0.0, 1 - i / 560) ** 1.4
+            bottom = max(0.0, (i - (H - 540)) / 540) ** 1.4
+            vd.line((0, i, W, i), fill=(10, 8, 12, min(118 + int(100 * top + 105 * bottom), 235)))
+        img = Image.alpha_composite(img.convert("RGBA"), veil).convert("RGB")
+        dark = True
+    else:
+        img = Image.new("RGB", (W, H), BG)
+        dark = False
+    d = ImageDraw.Draw(img, "RGBA")
+    if not dark:
+        decor(d)
+
+    y = paste_logo(img, d, 64, dark) + 44
+    y = badge(d, y, dark)
+    if not photo:
+        # 写真が無いぶん、飾りで間を持たせる
+        heart_rule(d, y + 110)
+
+    ty = draw_name(d, cfg, H // 2 - 80, dark)
+    fl = fit(d, cfg["lead"], SANS, 500, W - 150, 36, 26)
+    center(d, cfg["lead"], fl, ty, (250, 240, 240) if dark else GRAY600)
+    if not photo:
+        heart_rule(d, ty + 120)
+
+    center(d, EVENT, font(SANS, 30, 700), H - 218, ROSE100 if dark else ROSE500)
+    center(d, "ご協賛、誠にありがとうございます。", font(SANS, 27, 500),
+           H - 168, (235, 225, 228) if dark else GRAY600)
+    center(d, "スワイプでご紹介 →", font(SANS, 26, 700), H - 110, WHITE if dark else GRAY900)
     img.save(out, "JPEG", quality=92, optimize=True, progressive=True)
 
 
-def photo_slide(cfg, src_dir, i, out):
+def slide(cfg, src_dir, i, out):
     file, title, body = cfg["slides"][i]
-    photo = Image.open(os.path.join(src_dir, file)).convert("RGB")
-    img = fill_crop(photo, W, H)
-    d = ImageDraw.Draw(img, "RGBA")
+    num = f"{i + 2:02d}"
+    if file:
+        img = fill_crop(Image.open(os.path.join(src_dir, file)).convert("RGB"), W, H)
+        d = ImageDraw.Draw(img, "RGBA")
+        card_fill = WHITE + (242,)
+    else:
+        img = Image.new("RGB", (W, H), BG)
+        d = ImageDraw.Draw(img, "RGBA")
+        decor(d)
+        # 写真が無いぶん、連番を大きく薄く置いて、下に飾りを入れる
+        center(d, num, font(SERIF, 300, 900), 240, ROSE100)
+        heart_rule(d, 700)
+        card_fill = WHITE
 
-    # 下に白いカードを置いて、その中に文字を入れる
     card_h = 300
     top = H - card_h - 56
-    d.rounded_rectangle((56, top, W - 56, H - 56), radius=36, fill=WHITE + (242,))
+    d.rounded_rectangle((56, top, W - 56, H - 56), radius=36, fill=card_fill)
     d.rounded_rectangle((56, top, W - 56, top + 12), radius=6, fill=ROSE500)
     d.rectangle((56, top + 6, W - 56, top + 12), fill=ROSE500)
 
-    # 連番
-    num = f"{i + 2:02d}"
     fnum = font(SANS, 26, 900)
-    d.ellipse((96, top + 44, 96 + 56, top + 100), fill=ROSE500)
+    d.ellipse((96, top + 44, 152, top + 100), fill=ROSE500)
     d.text((96 + (56 - d.textlength(num, font=fnum)) / 2, top + 60), num, font=fnum, fill=WHITE)
 
-    ft = font(SERIF, 56, 900)
-    d.text((176, top + 46), title, font=ft, fill=GRAY900)
+    ft = fit(d, title, SERIF, 900, W - 290, 56, 34)
+    d.text((176, top + 46 + (56 - ft.size) * 0.6), title, font=ft, fill=GRAY900)
     fb = font(SANS, 29, 500)
     ty = top + 140
     for line in body.split("\n"):
@@ -181,52 +452,56 @@ def info(cfg, out):
     d = ImageDraw.Draw(img, "RGBA")
     decor(d)
 
-    y = paste_logo(img, d, 72) + 56
-    ft = font(SERIF, 62, 900)
-    center(d, cfg["name_prefix"] + cfg["name"], ft, y, GRAY900)
-    y += 92
-    center(d, "様", font(SANS, 34, 700), y, GRAY600)
-    y += 72
+    y = paste_logo(img, d, 72) + 52
+    title = (cfg.get("prefix") or "") + cfg["name"]
+    ft = fit(d, title, SERIF, 900, W - 150, 62, 34)
+    center(d, title, ft, y, GRAY900)
+    y += ft.size + 26
+    center(d, "様", font(SANS, 32, 700), y, GRAY600)
+    y += 66
     d.line((W / 2 - 120, y, W / 2 - 40, y), fill=(253, 164, 175), width=3)
     d.line((W / 2 + 40, y, W / 2 + 120, y), fill=(253, 164, 175), width=3)
     d.ellipse((W / 2 - 10, y - 10, W / 2 + 10, y + 10), fill=ROSE500)
-    y += 56
+    y += 52
 
     rows = cfg["info"]
-    card_top = y
-    card_h = len(rows) * 86 + 56
-    d.rounded_rectangle((PAD, card_top, W - PAD, card_top + card_h), radius=32, fill=WHITE)
-    fk = font(SANS, 25, 700)
-    fv = font(SANS, 31, 500)
-    ry = card_top + 36
+    row_h = 84 if len(rows) > 4 else 92
+    card_h = len(rows) * row_h + 52
+    d.rounded_rectangle((PAD, y, W - PAD, y + card_h), radius=32, fill=WHITE)
+    fk = font(SANS, 24, 700)
+    ry = y + 34
     for k, v in rows:
-        d.text((PAD + 44, ry + 6), k, font=fk, fill=ROSE500)
-        d.text((PAD + 230, ry), v, font=fv, fill=GRAY900)
-        ry += 86
+        d.text((PAD + 40, ry + 6), k, font=fk, fill=ROSE500)
+        fv = fit(d, v, SANS, 500, W - PAD * 2 - 270, 31, 20)
+        d.text((PAD + 228, ry), v, font=fv, fill=GRAY900)
+        ry += row_h
+    y += card_h + 56
 
-    y = card_top + card_h + 64
-    fe = font(SANS, 31, 700)
-    center(d, EVENT, fe, y, GRAY900)
-    center(d, "にご協賛いただきました。", font(SANS, 27, 500), y + 52, GRAY600)
-    center(d, "誠にありがとうございます。", font(SANS, 27, 500), y + 98, GRAY600)
+    center(d, EVENT, font(SANS, 31, 700), y, GRAY900)
+    center(d, "にご協賛いただきました。", font(SANS, 27, 500), y + 50, GRAY600)
+    center(d, "誠にありがとうございます。", font(SANS, 27, 500), y + 94, GRAY600)
 
     fs = font(SANS, 30, 700)
     center(d, "kazusacon.com", fs, H - PAD - fs.size, GRAY900)
     img.save(out, "JPEG", quality=92, optimize=True, progressive=True)
 
 
-def main():
-    slug = sys.argv[1] if len(sys.argv) > 1 else "umibouzu"
+def build(slug):
     cfg = POSTS[slug]
     base = os.path.join(ROOT, "design", "sns", "posts", slug)
     src_dir = os.path.join(base, "src")
     os.makedirs(base, exist_ok=True)
-
     cover(cfg, src_dir, os.path.join(base, "01.jpg"))
-    for i in range(len(cfg["slides"])):
-        photo_slide(cfg, src_dir, i, os.path.join(base, f"{i + 2:02d}.jpg"))
-    info(cfg, os.path.join(base, f"{len(cfg['slides']) + 2:02d}.jpg"))
-    print("generated", len(cfg["slides"]) + 2, "images ->", os.path.relpath(base, ROOT))
+    for i in range(2):
+        slide(cfg, src_dir, i, os.path.join(base, f"{i + 2:02d}.jpg"))
+    info(cfg, os.path.join(base, "04.jpg"))
+    print("generated", slug, "-> design/sns/posts/" + slug)
+
+
+def main():
+    targets = sys.argv[1:] or list(POSTS)
+    for slug in targets:
+        build(slug)
 
 
 if __name__ == "__main__":
