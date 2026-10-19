@@ -125,6 +125,21 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                     </div>
                   )}
 
+                  {/* 開催が終わった回：残席とお問合せの代わりに、お礼のことばを出す */}
+                  {event.finished ? (
+                    <div className="rounded-xl border border-rose-100 bg-rose-50/60 p-5">
+                      <p className="text-xs font-bold text-rose-500 mb-3 tracking-wide flex items-center gap-1">
+                        <i className="ri-heart-3-line" />
+                        開催のご報告とお礼
+                      </p>
+                      {event.comment?.split("\n").map((line, i) => (
+                        <p key={i} className="text-sm text-gray-700 leading-relaxed mb-2 last:mb-0">
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                  ) : (
+                  <>
                   {/* Seats */}
                   <div className="bg-gray-50 rounded-xl p-4 mb-5">
                     <p className="text-xs text-gray-500 mb-3 font-medium">開催状況</p>
@@ -174,6 +189,8 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                     <i className={CTA_ICON} />
                     {CTA_SHORT}
                   </button>
+                  </>
+                  )}
                 </div>
               </div>
             ))}
