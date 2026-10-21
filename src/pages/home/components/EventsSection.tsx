@@ -42,7 +42,7 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                   <div className="flex items-center gap-3">
                     <div className="text-center">
                       <p className="text-white font-black text-xl leading-none">{event.date}</p>
-                      <p className="text-white/60 text-xs mt-0.5">({event.dayOfWeek})</p>
+                      {event.dayOfWeek && <p className="text-white/60 text-xs mt-0.5">({event.dayOfWeek})</p>}
                     </div>
                     <div className="w-px h-8 bg-white/20" />
                     <p className="text-white/80 text-sm">{event.time}</p>
@@ -65,13 +65,16 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                         <span className="ml-2 text-gray-400">{event.address}</span>
                       </div>
                     </div>
-                    <button
-                      onClick={() => setOpenMapId(openMapId === event.id ? null : event.id)}
-                      className="whitespace-nowrap flex items-center gap-1 text-xs text-rose-500 hover:text-rose-600 font-medium cursor-pointer ml-5 mt-1"
-                    >
-                      <i className="ri-map-2-line" />
-                      {openMapId === event.id ? "マップを閉じる" : "Googleマップで見る"}
-                    </button>
+                    {/* 会場が決まっていない回はマップを出さない */}
+                    {event.mapEmbedUrl && (
+                      <button
+                        onClick={() => setOpenMapId(openMapId === event.id ? null : event.id)}
+                        className="whitespace-nowrap flex items-center gap-1 text-xs text-rose-500 hover:text-rose-600 font-medium cursor-pointer ml-5 mt-1"
+                      >
+                        <i className="ri-map-2-line" />
+                        {openMapId === event.id ? "マップを閉じる" : "Googleマップで見る"}
+                      </button>
+                    )}
                   </div>
 
                   {/* Google Map embed */}

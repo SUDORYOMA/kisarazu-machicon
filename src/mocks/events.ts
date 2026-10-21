@@ -1,7 +1,8 @@
 export interface EventItem {
   id: number;
   date: string;
-  dayOfWeek: string;
+  /** 曜日。日程が決まっていない回（「12月某日」など）は省略する */
+  dayOfWeek?: string;
   time: string;
   title: string;
   venue: string;
@@ -25,7 +26,8 @@ export interface EventItem {
   totalSeats: number;
   tag: string;
   tagColor: string;
-  mapEmbedUrl: string;
+  /** 会場が決まっていない回は省略する（マップのボタンを出さない） */
+  mapEmbedUrl?: string;
 }
 
 export interface PastEventItem {
@@ -66,6 +68,22 @@ export const events: EventItem[] = [
     ],
     tagColor: "bg-gray-500",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3244.0!2d139.9226!3d35.3748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022a3b0b0b0b0b1%3A0x0!2sY's+Table!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp",
+  },
+  {
+    id: 4,
+    date: "12月某日",
+    time: "13:00〜16:00",
+    title: "木更津40人街コン",
+    venue: "会場調整中",
+    address: "木更津駅 または 五井駅 周辺",
+    ageRange: "20〜49歳",
+    maleFee: "12,000円",
+    femaleFee: "2,000円",
+    maleSeats: 20,
+    femaleSeats: 20,
+    totalSeats: 40,
+    tag: "日程調整中",
+    tagColor: "bg-sky-500",
   },
   {
     id: 3,
