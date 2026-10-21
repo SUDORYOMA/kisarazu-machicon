@@ -31,16 +31,16 @@ export default function BlogPost() {
         {/* Header */}
         <header className="bg-gray-50 border-b border-gray-100">
           <div className="max-w-3xl mx-auto px-6 py-14 md:py-20">
-            <nav className="text-xs text-gray-400 mb-6 flex items-center gap-2 flex-wrap">
-              <Link to="/" className="hover:text-rose-500 transition-colors">ホーム</Link>
+            <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2 flex-wrap">
+              <Link to="/" className="hover:text-rose-600 transition-colors">ホーム</Link>
               <i className="ri-arrow-right-s-line" />
-              <Link to="/blog" className="hover:text-rose-500 transition-colors">ブログ</Link>
+              <Link to="/blog" className="hover:text-rose-600 transition-colors">ブログ</Link>
               <i className="ri-arrow-right-s-line" />
               <span className="text-gray-600 truncate max-w-[16rem]">{post.title}</span>
             </nav>
             <div className="flex items-center gap-3 mb-4">
-              <span className="bg-rose-50 text-rose-500 text-xs font-bold px-2.5 py-1 rounded-full">{post.category}</span>
-              <time dateTime={post.date} className="text-xs text-gray-400">{formatDate(post.date)}</time>
+              <span className="bg-rose-50 text-rose-700 text-sm font-bold px-2.5 py-1 rounded-full">{post.category}</span>
+              <time dateTime={post.date} className="text-sm text-gray-500">{formatDate(post.date)}</time>
             </div>
             <h1
               className="text-2xl md:text-4xl font-black text-gray-900 leading-tight"
@@ -67,28 +67,28 @@ export default function BlogPost() {
             <p className="font-black text-gray-900 text-lg mb-2" style={{ fontFamily: "'Noto Serif JP', serif" }}>
               {LINE_DOWN ? "参加のご相談・空席確認はこちら" : "参加のご相談・空席確認は公式LINEで"}
             </p>
-            <p className="text-gray-600 text-sm mb-5">1人参加の方も多数。初めての方もお気軽にどうぞ。</p>
+            <p className="text-gray-600 text-base mb-5">1人参加の方も多数。初めての方もお気軽にどうぞ。</p>
             {LINE_DOWN ? (
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="nofollow noopener noreferrer"
-                  className="whitespace-nowrap inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-bold px-8 py-3.5 rounded-full hover:bg-gray-700 transition-colors cursor-pointer text-sm"
+                  className="whitespace-nowrap inline-flex items-center justify-center gap-2 bg-gray-900 text-white font-bold px-8 py-3.5 rounded-full hover:bg-gray-700 transition-colors cursor-pointer text-base"
                 >
                   <i className="ri-instagram-line" />
                   公式InstagramにDM
                 </a>
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="whitespace-nowrap inline-flex items-center justify-center gap-2 bg-white border-2 border-gray-900 text-gray-900 font-bold px-8 py-3.5 rounded-full hover:bg-gray-50 transition-colors cursor-pointer text-sm"
+                  className="whitespace-nowrap inline-flex items-center justify-center gap-2 bg-white border-2 border-gray-900 text-gray-900 font-bold px-8 py-3.5 rounded-full hover:bg-gray-50 transition-colors cursor-pointer text-base"
                 >
                   <i className="ri-mail-line" />
                   メールでお問合せ
                 </a>
               </div>
             ) : (
-              <LineLink className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer text-sm">
+              <LineLink className="whitespace-nowrap inline-flex items-center gap-2 bg-[#06C755] text-white font-bold px-8 py-3.5 rounded-full hover:bg-[#05b34c] transition-colors cursor-pointer text-base">
                 <i className="ri-chat-smile-2-line" />
                 公式LINEを友だち追加
               </LineLink>
@@ -96,7 +96,7 @@ export default function BlogPost() {
           </div>
 
           <div className="mt-10 text-center">
-            <Link to="/blog" className="inline-flex items-center gap-1.5 text-sm font-bold text-gray-700 hover:text-rose-500 transition-colors">
+            <Link to="/blog" className="inline-flex items-center gap-1.5 text-base font-bold text-gray-700 hover:text-rose-600 transition-colors">
               <i className="ri-arrow-left-line" />
               ブログ一覧へ戻る
             </Link>
@@ -108,7 +108,7 @@ export default function BlogPost() {
       {others.length > 0 && (
         <section className="py-14 md:py-20 border-t border-gray-100" style={{ backgroundColor: "#fafaf9" }}>
           <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <p className="text-rose-500 font-semibold text-sm mb-2 tracking-widest uppercase">More</p>
+            <p className="text-rose-600 font-semibold text-base mb-2 tracking-widest uppercase">More</p>
             <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-8" style={{ fontFamily: "'Noto Serif JP', serif" }}>
               ほかの記事
             </h2>

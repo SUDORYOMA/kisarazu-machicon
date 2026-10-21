@@ -25,7 +25,7 @@ export default function Footer({ onApply, onLine }: FooterProps) {
               alt="木更津街コン"
               className="h-10 w-auto object-contain mb-4 brightness-0 invert"
             />
-            <p className="text-white/70 text-sm leading-relaxed">
+            <p className="text-white/70 text-base leading-relaxed">
               木更津で、自然に恋が始まる街コン。<br />
               安心して参加できる出会いの場を提供しています。
             </p>
@@ -33,7 +33,7 @@ export default function Footer({ onApply, onLine }: FooterProps) {
 
           {/* Nav */}
           <div>
-            <h4 className="font-bold text-sm mb-4 text-white/90">メニュー</h4>
+            <h4 className="font-bold text-base mb-4 text-white/90">メニュー</h4>
             <ul className="space-y-2.5">
               {[
                 { label: "イベント一覧", id: "events" },
@@ -44,19 +44,19 @@ export default function Footer({ onApply, onLine }: FooterProps) {
                 <li key={item.id}>
                   <button
                     onClick={() => scrollTo(item.id)}
-                    className="whitespace-nowrap text-white/60 hover:text-white text-sm transition-colors cursor-pointer"
+                    className="whitespace-nowrap text-white/60 hover:text-white text-base transition-colors cursor-pointer"
                   >
                     {item.label}
                   </button>
                 </li>
               ))}
               <li>
-                <Link to="/blog" className="whitespace-nowrap text-white/60 hover:text-white text-sm transition-colors cursor-pointer">
+                <Link to="/blog" className="whitespace-nowrap text-white/60 hover:text-white text-base transition-colors cursor-pointer">
                   ブログ・お知らせ
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="whitespace-nowrap text-white/60 hover:text-white text-sm transition-colors cursor-pointer">
+                <Link to="/privacy" className="whitespace-nowrap text-white/60 hover:text-white text-base transition-colors cursor-pointer">
                   プライバシーポリシー
                 </Link>
               </li>
@@ -65,7 +65,7 @@ export default function Footer({ onApply, onLine }: FooterProps) {
 
           {/* SNS / Contact */}
           <div>
-            <h4 className="font-bold text-sm mb-4 text-white/90">お問い合わせ</h4>
+            <h4 className="font-bold text-base mb-4 text-white/90">お問い合わせ</h4>
             <div className="space-y-3">
               <a
                 href="mailto:info@kazusacon.com"
@@ -74,7 +74,7 @@ export default function Footer({ onApply, onLine }: FooterProps) {
                 <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full">
                   <i className="ri-mail-line" />
                 </div>
-                <span className="text-sm whitespace-nowrap">info@kazusacon.com</span>
+                <span className="text-base whitespace-nowrap">info@kazusacon.com</span>
               </a>
               <a
                 href="https://www.instagram.com/kazusacon?igsh=MTNwZ3NqeXQ2bjVm&utm_source=qr"
@@ -85,14 +85,14 @@ export default function Footer({ onApply, onLine }: FooterProps) {
                 <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full">
                   <i className="ri-instagram-line" />
                 </div>
-                <span className="text-sm">Instagram</span>
+                <span className="text-base">Instagram</span>
               </a>
               {!LINE_DOWN && (
                 <LineLink className="flex items-center gap-3 text-white/60 hover:text-white transition-colors cursor-pointer">
                   <div className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-full">
                     <i className="ri-chat-smile-2-line" />
                   </div>
-                  <span className="text-sm">LINE公式</span>
+                  <span className="text-base">LINE公式</span>
                 </LineLink>
               )}
             </div>
@@ -100,17 +100,17 @@ export default function Footer({ onApply, onLine }: FooterProps) {
 
           {/* お問合せ CTA */}
           <div>
-            <h4 className="font-bold text-sm mb-4 text-white/90">
+            <h4 className="font-bold text-base mb-4 text-white/90">
               {LINE_DOWN ? "最新情報・お問合せ" : "最新情報をLINEで"}
             </h4>
-            <p className="text-white/60 text-sm mb-4 leading-relaxed">
+            <p className="text-white/60 text-base mb-4 leading-relaxed">
               {LINE_DOWN
                 ? "開催日程や空席情報は公式Instagramでお知らせします。ご相談はDM・メールでどうぞ。"
                 : "空席情報やお得なキャンペーン情報をいち早くお届けします。"}
             </p>
             <button
               onClick={onLine}
-              className={`whitespace-nowrap w-full flex items-center justify-center gap-2 ${CTA_BG} text-white font-bold py-3 rounded-full transition-colors cursor-pointer text-sm`}
+              className={`whitespace-nowrap w-full flex items-center justify-center gap-2 ${CTA_BG} text-white font-bold py-3 rounded-full transition-colors cursor-pointer text-base`}
             >
               <i className={CTA_ICON} />
               {CTA_APPLY}
@@ -119,7 +119,7 @@ export default function Footer({ onApply, onLine }: FooterProps) {
         </div>
 
         <div className="border-t border-white/10 pt-6 text-center">
-          <p className="text-white/40 text-xs">
+          <p className="text-white/40 text-sm">
             &copy; {new Date().getFullYear()} 木更津街コン All Rights Reserved.
           </p>
         </div>

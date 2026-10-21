@@ -35,11 +35,11 @@ function SponsorLinks({ sponsor, large = false }: { sponsor: Sponsor; large?: bo
           target="_blank"
           rel="nofollow noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
-          className={`inline-flex items-center gap-1.5 bg-gray-900 hover:bg-rose-500 text-white font-bold rounded-full transition-colors cursor-pointer max-w-full ${
-            large ? "text-sm px-5 py-3" : "text-xs px-4 py-2.5"
+          className={`inline-flex items-center gap-1.5 bg-gray-900 hover:bg-rose-600 text-white font-bold rounded-full transition-colors cursor-pointer max-w-full ${
+            large ? "text-base px-5 py-3" : "text-sm px-4 py-2.5"
           }`}
         >
-          <i className={link.type === "instagram" ? "ri-instagram-line text-sm" : "ri-global-line text-sm"} />
+          <i className={link.type === "instagram" ? "ri-instagram-line text-base" : "ri-global-line text-base"} />
           <span className="truncate">
             {link.label ? link.label : link.type === "instagram" ? handleOf(link.url) : domainOf(link.url)}
           </span>
@@ -93,7 +93,7 @@ function SponsorCard({ sponsor, onOpen }: { sponsor: Sponsor; onOpen: () => void
         )}
 
         {sponsor.description && (
-          <p className="text-sm text-gray-600 leading-relaxed mb-4">{sponsor.description}</p>
+          <p className="text-base text-gray-600 leading-relaxed mb-4">{sponsor.description}</p>
         )}
 
         <SponsorLinks sponsor={sponsor} />
@@ -141,7 +141,7 @@ export default function SponsorsSection({ eventId, eventDate }: SponsorsSectionP
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-gray-900 text-white font-black text-xs tracking-[0.2em] px-5 py-2 rounded-full mb-5">
+          <div className="inline-flex items-center gap-2 bg-gray-900 text-white font-black text-sm tracking-[0.2em] px-5 py-2 rounded-full mb-5">
             <i className="ri-award-line text-base" />
             SPONSORS
           </div>
@@ -151,22 +151,22 @@ export default function SponsorsSection({ eventId, eventDate }: SponsorsSectionP
           >
             {eventDate}開催
             <br className="md:hidden" />
-            <span className="md:ml-3 text-rose-500">協賛企業様</span>
+            <span className="md:ml-3 text-rose-600">協賛企業様</span>
           </h2>
           <div className="flex items-center justify-center gap-3 mb-5">
             <div className="w-10 md:w-16 h-px bg-rose-300" />
-            <i className="ri-heart-fill text-rose-400 text-sm" />
+            <i className="ri-heart-fill text-rose-500 text-base" />
             <div className="w-10 md:w-16 h-px bg-rose-300" />
           </div>
           {/* 文の途中で改行されないよう、意味のまとまりごとに inline-block で包む */}
-          <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+          <p className="text-gray-600 text-base md:text-base leading-relaxed">
             <span className="inline-block">木更津街コンは、</span>
             <span className="inline-block">地域の皆様のご協賛によって開催しています。</span>
             <br />
             <span className="inline-block">あたたかいご支援をいただき、</span>
             <span className="inline-block">誠にありがとうございます。</span>
           </p>
-          <p className="text-gray-500 text-xs md:text-sm leading-relaxed mt-3">
+          <p className="text-gray-500 text-sm md:text-base leading-relaxed mt-3">
             <i className="ri-shuffle-line mr-1" />
             <span className="inline-block">掲載順は、ページを開くたびに</span>
             <span className="inline-block">ランダムで入れ替わります（敬称略）</span>

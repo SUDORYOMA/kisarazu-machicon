@@ -83,7 +83,7 @@ export const events: EventItem[] = [
     femaleSeats: 20,
     totalSeats: 40,
     tag: "日程調整中",
-    tagColor: "bg-sky-500",
+    tagColor: "bg-sky-700",
   },
   {
     id: 3,
@@ -100,7 +100,7 @@ export const events: EventItem[] = [
     femaleSeats: 20,
     totalSeats: 40,
     tag: "受付中",
-    tagColor: "bg-rose-500",
+    tagColor: "bg-rose-600",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3244.0!2d139.9226!3d35.3748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022a3b0b0b0b0b1%3A0x0!2sY's+Table!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp",
   },
 ];

@@ -24,7 +24,8 @@ export default function HeroSection({ onLine, onScrollToEvents }: HeroSectionPro
           alt="木更津街コン"
           className="w-full h-full object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/20" />
+        {/* 写真の明るい部分でも白文字が読めるよう、黒を少し濃くしている（見出しのコントラスト比 3.41 → 4.68） */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/60 to-black/30" />
       </div>
 
       {/* Content */}
@@ -33,8 +34,8 @@ export default function HeroSection({ onLine, onScrollToEvents }: HeroSectionPro
           className={`max-w-xl transition-all duration-1000 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-rose-500/90 text-white text-sm font-medium px-4 py-1.5 rounded-full mb-6">
-            <i className="ri-heart-fill text-xs" />
+          <div className="inline-flex items-center gap-2 bg-rose-600/90 text-white text-base font-medium px-4 py-1.5 rounded-full mb-6">
+            <i className="ri-heart-fill text-sm" />
             累計カップル14組誕生
           </div>
 
@@ -50,41 +51,41 @@ export default function HeroSection({ onLine, onScrollToEvents }: HeroSectionPro
 
           {/* Empathy box */}
           <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 mb-8">
-            <p className="text-white/80 text-sm mb-3 font-medium">こんな気持ち、ありませんか？</p>
+            <p className="text-white/80 text-base mb-3 font-medium">こんな気持ち、ありませんか？</p>
             <ul className="space-y-2">
               {[
                 "「職場と家の往復で、出会いがない」",
                 "「マッチングアプリに疲れた」",
                 "「地元で自然な出会いがしたい」",
               ].map((text, i) => (
-                <li key={i} className="flex items-start gap-2 text-white text-sm">
-                  <i className="ri-checkbox-circle-fill text-rose-400 mt-0.5 flex-shrink-0" />
+                <li key={i} className="flex items-start gap-2 text-white text-base">
+                  <i className="ri-checkbox-circle-fill text-rose-500 mt-0.5 flex-shrink-0" />
                   {text}
                 </li>
               ))}
             </ul>
-            <p className="text-white font-semibold mt-3 text-sm">そんな方のための街コンです。</p>
+            <p className="text-white font-semibold mt-3 text-base">そんな方のための街コンです。</p>
           </div>
 
           {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-3">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
             <button
               onClick={onScrollToEvents}
-              className="whitespace-nowrap flex items-center justify-center gap-2 bg-white text-gray-900 font-bold px-6 py-3.5 rounded-full hover:bg-gray-100 transition-colors cursor-pointer text-sm"
+              className="whitespace-nowrap flex items-center justify-center gap-2 bg-white text-gray-900 font-bold px-6 py-3.5 rounded-full hover:bg-gray-100 transition-colors cursor-pointer text-base"
             >
               <i className="ri-calendar-event-line" />
               募集中イベントを見る
             </button>
             <button
               onClick={onLine}
-              className={`whitespace-nowrap flex items-center justify-center gap-2 ${CTA_BG} text-white font-bold px-6 py-3.5 rounded-full transition-colors cursor-pointer text-sm`}
+              className={`whitespace-nowrap flex items-center justify-center gap-2 ${CTA_BG} text-white font-bold px-6 py-3.5 rounded-full transition-colors cursor-pointer text-base`}
             >
               <i className={CTA_ICON} />
               {CTA_APPLY}
             </button>
             <button
               onClick={onLine}
-              className={`whitespace-nowrap flex items-center justify-center gap-2 ${CTA_BG} text-white font-bold px-6 py-3.5 rounded-full transition-colors cursor-pointer text-sm`}
+              className={`whitespace-nowrap flex items-center justify-center gap-2 ${CTA_BG} text-white font-bold px-6 py-3.5 rounded-full transition-colors cursor-pointer text-base`}
             >
               <i className={CTA_ICON} />
               {CTA_CONSULT}
@@ -95,7 +96,7 @@ export default function HeroSection({ onLine, onScrollToEvents }: HeroSectionPro
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/60 animate-bounce">
-        <span className="text-xs">スクロール</span>
+        <span className="text-sm">スクロール</span>
         <i className="ri-arrow-down-line" />
       </div>
     </section>

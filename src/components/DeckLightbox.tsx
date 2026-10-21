@@ -65,7 +65,7 @@ export function DeckLightbox({
           className="relative w-full max-w-lg px-3 pb-4 pt-12"
           onClick={(e) => e.target === e.currentTarget && onClose()}
         >
-          <p className="absolute left-4 top-3 max-w-[75%] truncate text-sm font-bold text-white">{title}</p>
+          <p className="absolute left-4 top-3 max-w-[75%] truncate text-base font-bold text-white">{title}</p>
           <button
             type="button"
             onClick={onClose}

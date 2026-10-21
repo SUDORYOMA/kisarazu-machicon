@@ -160,7 +160,7 @@ export function SlideDeck({
         </button>
       </div>
       {/* 何枚目か（点で。多いときは数字で） */}
-      <div className={`flex items-center justify-center gap-1.5 text-xs tabular-nums ${dark ? "text-white/80" : "text-gray-500"}`} aria-live="polite">
+      <div className={`flex items-center justify-center gap-1.5 text-sm tabular-nums ${dark ? "text-white/80" : "text-gray-500"}`} aria-live="polite">
         {count <= 8 ? (
           items.map((it, i) => (
             <button
@@ -170,7 +170,7 @@ export function SlideDeck({
               aria-label={`${i + 1}件目`}
               aria-current={i === current}
               className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                i === current ? `w-5 ${dark ? "bg-white" : "bg-rose-500"}` : `w-1.5 ${dark ? "bg-white/40" : "bg-gray-300"}`
+                i === current ? `w-5 ${dark ? "bg-white" : "bg-rose-600"}` : `w-1.5 ${dark ? "bg-white/40" : "bg-gray-300"}`
               }`}
             />
           ))

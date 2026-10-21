@@ -49,16 +49,16 @@ export default function BlogCard({ post }: { post: BlogPost }) {
       {/* Body */}
       <div className="p-5">
         <div className="flex items-center gap-2 mb-3">
-          <span className="bg-rose-50 text-rose-500 text-xs font-bold px-2.5 py-1 rounded-full">
+          <span className="bg-rose-50 text-rose-700 text-sm font-bold px-2.5 py-1 rounded-full">
             {post.category}
           </span>
-          <span className="text-xs text-gray-400">{formatDate(post.date)}</span>
+          <span className="text-sm text-gray-500">{formatDate(post.date)}</span>
         </div>
-        <h3 className="text-base font-black text-gray-900 leading-snug mb-2 group-hover:text-rose-500 transition-colors line-clamp-2">
+        <h3 className="text-base font-black text-gray-900 leading-snug mb-2 group-hover:text-rose-600 transition-colors line-clamp-2">
           {post.title}
         </h3>
-        <p className="text-gray-500 text-sm leading-relaxed line-clamp-3">{post.excerpt}</p>
-        <div className="mt-4 inline-flex items-center gap-1 text-rose-500 text-xs font-bold">
+        <p className="text-gray-500 text-base leading-relaxed line-clamp-3">{post.excerpt}</p>
+        <div className="mt-4 inline-flex items-center gap-1 text-rose-600 text-sm font-bold">
           続きを読む
           <i className="ri-arrow-right-line" />
         </div>

@@ -48,7 +48,7 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
         <div className="sticky top-0 bg-white rounded-t-3xl px-6 pt-6 pb-4 border-b border-gray-100 flex items-center justify-between">
           <div>
             <h2 className="text-xl font-black text-gray-900">イベント申し込み</h2>
-            <p className="text-gray-500 text-sm mt-0.5">必要事項をご入力ください</p>
+            <p className="text-gray-500 text-base mt-0.5">必要事項をご入力ください</p>
           </div>
           <button onClick={onClose} className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors cursor-pointer">
             <i className="ri-close-line text-gray-600" />
@@ -62,10 +62,10 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
           {submitted ? (
             <div className="text-center py-8">
               <div className="w-16 h-16 flex items-center justify-center bg-rose-100 rounded-full mx-auto mb-4">
-                <i className="ri-check-line text-rose-500 text-3xl" />
+                <i className="ri-check-line text-rose-600 text-3xl" />
               </div>
               <h3 className="text-xl font-black text-gray-900 mb-2">申し込みありがとうございます！</h3>
-              <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+              <p className="text-gray-600 text-base mb-6 leading-relaxed">
                 {LINE_DOWN
                   ? "当日の詳細は、メールまたはInstagramのDMでご連絡いたします。"
                   : "当日の詳細はLINEでお送りします。LINEの友だち追加が完了していない場合は下記よりお願いします。"}
@@ -85,14 +85,14 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
             >
               {/* Event select */}
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1.5">
-                  参加イベント <span className="text-rose-500">*</span>
+                <label className="block text-base font-bold text-gray-700 mb-1.5">
+                  参加イベント <span className="text-rose-600">*</span>
                 </label>
                 <select
                   name="event"
                   required
                   defaultValue={defaultEventId?.toString() ?? ""}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-rose-400 bg-white cursor-pointer"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-rose-400 bg-white cursor-pointer"
                 >
                   <option value="">選択してください</option>
                   {events.map((ev) => (
@@ -106,28 +106,28 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
 
               {/* Name */}
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1.5">
-                  お名前（ニックネーム可） <span className="text-rose-500">*</span>
+                <label className="block text-base font-bold text-gray-700 mb-1.5">
+                  お名前（ニックネーム可） <span className="text-rose-600">*</span>
                 </label>
                 <input
                   type="text"
                   name="name"
                   required
                   placeholder="例：たろう"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-rose-400"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-rose-400"
                 />
               </div>
 
               {/* Gender */}
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1.5">
-                  性別 <span className="text-rose-500">*</span>
+                <label className="block text-base font-bold text-gray-700 mb-1.5">
+                  性別 <span className="text-rose-600">*</span>
                 </label>
                 <div className="flex gap-3">
                   {["男性", "女性"].map((g) => (
                     <label key={g} className="flex-1 flex items-center justify-center gap-2 border border-gray-200 rounded-xl py-3 cursor-pointer hover:border-rose-400 transition-colors has-[:checked]:border-rose-500 has-[:checked]:bg-rose-50">
-                      <input type="radio" name="gender" value={g} required className="accent-rose-500" />
-                      <span className="text-sm font-medium">{g}</span>
+                      <input type="radio" name="gender" value={g} required className="accent-rose-600" />
+                      <span className="text-base font-medium">{g}</span>
                     </label>
                   ))}
                 </div>
@@ -135,50 +135,50 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
 
               {/* Email */}
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1.5">
-                  メールアドレス <span className="text-rose-500">*</span>
+                <label className="block text-base font-bold text-gray-700 mb-1.5">
+                  メールアドレス <span className="text-rose-600">*</span>
                 </label>
                 <input
                   type="email"
                   name="email"
                   required
                   placeholder="例：example@email.com"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-rose-400"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-rose-400"
                 />
               </div>
 
               {/* Phone */}
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1.5">
-                  電話番号 <span className="text-rose-500">*</span>
+                <label className="block text-base font-bold text-gray-700 mb-1.5">
+                  電話番号 <span className="text-rose-600">*</span>
                 </label>
                 <input
                   type="tel"
                   name="phone"
                   required
                   placeholder="例：090-1234-5678"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-rose-400"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-rose-400"
                 />
               </div>
 
               {/* City */}
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1.5">
-                  居住地（市） <span className="text-rose-500">*</span>
+                <label className="block text-base font-bold text-gray-700 mb-1.5">
+                  居住地（市） <span className="text-rose-600">*</span>
                 </label>
                 <input
                   type="text"
                   name="city"
                   required
                   placeholder="例：木更津市"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-rose-400"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-rose-400"
                 />
               </div>
 
               {/* Age */}
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1.5">
-                  年齢 <span className="text-rose-500">*</span>
+                <label className="block text-base font-bold text-gray-700 mb-1.5">
+                  年齢 <span className="text-rose-600">*</span>
                 </label>
                 <input
                   type="number"
@@ -187,26 +187,26 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
                   min={18}
                   max={60}
                   placeholder="例：28"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-rose-400"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-rose-400"
                 />
               </div>
 
               {/* Occupation */}
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1.5">
+                <label className="block text-base font-bold text-gray-700 mb-1.5">
                   ご職業（任意）
                 </label>
                 <input
                   type="text"
                   name="occupation"
                   placeholder="例：会社員、看護師、自営業 など"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-rose-400"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-rose-400"
                 />
               </div>
 
               {/* Comment */}
               <div>
-                <label className="block text-sm font-bold text-gray-700 mb-1.5">
+                <label className="block text-base font-bold text-gray-700 mb-1.5">
                   コメント（任意）
                 </label>
                 <textarea
@@ -214,23 +214,23 @@ export default function ApplyModal({ open, defaultEventId, onClose }: ApplyModal
                   rows={3}
                   maxLength={500}
                   placeholder="何かご不明な点やご要望があればお気軽にどうぞ"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-rose-400 resize-none"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-rose-400 resize-none"
                 />
               </div>
 
               {error && (
-                <p className="text-rose-500 text-sm">{error}</p>
+                <p className="text-rose-600 text-base">{error}</p>
               )}
 
               <button
                 type="submit"
                 disabled={submitting}
-                className="whitespace-nowrap w-full bg-rose-500 text-white font-bold py-4 rounded-xl hover:bg-rose-600 transition-colors cursor-pointer disabled:opacity-60"
+                className="whitespace-nowrap w-full bg-rose-600 text-white font-bold py-4 rounded-xl hover:bg-rose-600 transition-colors cursor-pointer disabled:opacity-60"
               >
                 {submitting ? "送信中..." : "申し込む"}
               </button>
 
-              <p className="text-center text-xs text-gray-400">
+              <p className="text-center text-sm text-gray-500">
                 {LINE_DOWN
                   ? "お申し込み後、メールまたはInstagramのDMでご連絡いたします"
                   : "申し込み後、LINEの友だち追加画面に移動します"}

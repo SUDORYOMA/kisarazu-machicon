@@ -39,7 +39,7 @@ export default function SafetySection({ onLine }: SafetySectionProps) {
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           {/* Left */}
           <div className="lg:w-2/5">
-            <p className="text-rose-500 font-semibold text-sm mb-2 tracking-widest uppercase">Safety</p>
+            <p className="text-rose-600 font-semibold text-base mb-2 tracking-widest uppercase">Safety</p>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 leading-tight" style={{ fontFamily: "'Noto Serif JP', serif" }}>
               初めてでも<br />安心して<br />参加できます
             </h2>
@@ -72,12 +72,12 @@ export default function SafetySection({ onLine }: SafetySectionProps) {
                 key={i}
                 className="flex items-start gap-4 bg-rose-50/60 rounded-2xl p-5 hover:bg-rose-50 transition-colors"
               >
-                <div className="w-11 h-11 flex items-center justify-center bg-rose-500 rounded-xl flex-shrink-0">
+                <div className="w-11 h-11 flex items-center justify-center bg-rose-600 rounded-xl flex-shrink-0">
                   <i className={`${p.icon} text-white text-lg`} />
                 </div>
                 <div>
                   <h3 className="font-black text-gray-900 mb-1">{p.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{p.desc}</p>
+                  <p className="text-gray-600 text-base leading-relaxed">{p.desc}</p>
                 </div>
               </div>
             ))}

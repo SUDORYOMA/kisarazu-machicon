@@ -19,14 +19,14 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
             <div>
-              <p className="text-rose-500 font-semibold text-sm mb-2 tracking-widest uppercase">Events</p>
+              <p className="text-rose-600 font-semibold text-base mb-2 tracking-widest uppercase">Events</p>
               <h2 className="text-3xl md:text-4xl font-black text-gray-900" style={{ fontFamily: "'Noto Serif JP', serif" }}>
                 募集中のイベント
               </h2>
             </div>
-            <div className="flex items-center gap-2 text-rose-500 bg-rose-50 px-4 py-2 rounded-full">
+            <div className="flex items-center gap-2 text-rose-700 bg-rose-50 px-4 py-2 rounded-full">
               <i className="ri-alarm-warning-line" />
-              <span className="text-sm font-medium">人気日程はすぐ埋まります</span>
+              <span className="text-base font-medium">人気日程はすぐ埋まります</span>
             </div>
           </div>
 
@@ -38,16 +38,17 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                 className="border border-gray-200 rounded-2xl overflow-hidden hover:border-rose-200 transition-all duration-300"
               >
                 {/* Date bar */}
-                <div className="bg-gray-900 px-5 py-3 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
+                <div className="bg-gray-900 px-4 py-3 flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2.5 min-w-0">
                     <div className="text-center">
-                      <p className="text-white font-black text-xl leading-none">{event.date}</p>
-                      {event.dayOfWeek && <p className="text-white/60 text-xs mt-0.5">({event.dayOfWeek})</p>}
+                      <p className="text-white font-black text-xl leading-none whitespace-nowrap">{event.date}</p>
+                      {event.dayOfWeek && <p className="text-white/60 text-sm mt-0.5">({event.dayOfWeek})</p>}
                     </div>
-                    <div className="w-px h-8 bg-white/20" />
-                    <p className="text-white/80 text-sm">{event.time}</p>
+                    <div className="w-px h-8 bg-white/20 flex-shrink-0" />
+                    {/* 時刻は補足情報なので14px。折り返すと日付バーが崩れるため1行に固定する */}
+                    <p className="text-white/80 text-sm whitespace-nowrap">{event.time}</p>
                   </div>
-                  <span className={`${event.tagColor} text-white text-xs font-bold px-2.5 py-1 rounded-full`}>
+                  <span className={`${event.tagColor} text-white text-sm font-bold px-2.5 py-1 rounded-full whitespace-nowrap flex-shrink-0`}>
                     {event.tag}
                   </span>
                 </div>
@@ -58,18 +59,18 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
 
                   {/* Venue + map toggle */}
                   <div className="mb-4">
-                    <div className="flex items-start gap-1.5 text-gray-500 text-sm mb-1">
-                      <i className="ri-map-pin-line text-rose-400 mt-0.5 flex-shrink-0" />
+                    <div className="flex items-start gap-1.5 text-gray-500 text-base mb-1">
+                      <i className="ri-map-pin-line text-rose-500 mt-0.5 flex-shrink-0" />
                       <div>
                         <span className="font-medium text-gray-700">{event.venue}</span>
-                        <span className="ml-2 text-gray-400">{event.address}</span>
+                        <span className="ml-2 text-gray-500">{event.address}</span>
                       </div>
                     </div>
                     {/* 会場が決まっていない回はマップを出さない */}
                     {event.mapEmbedUrl && (
                       <button
                         onClick={() => setOpenMapId(openMapId === event.id ? null : event.id)}
-                        className="whitespace-nowrap flex items-center gap-1 text-xs text-rose-500 hover:text-rose-600 font-medium cursor-pointer ml-5 mt-1"
+                        className="whitespace-nowrap flex items-center gap-1 text-sm text-rose-600 hover:text-rose-600 font-medium cursor-pointer ml-5 mt-1"
                       >
                         <i className="ri-map-2-line" />
                         {openMapId === event.id ? "マップを閉じる" : "Googleマップで見る"}
@@ -94,13 +95,13 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                   )}
 
                   {/* Info row */}
-                  <div className="flex flex-wrap items-center gap-4 mb-4 text-sm">
+                  <div className="flex flex-wrap items-center gap-4 mb-4 text-base">
                     <div className="flex items-center gap-1.5 text-gray-600">
-                      <i className="ri-user-line text-gray-400" />
+                      <i className="ri-user-line text-gray-500" />
                       {event.ageRange}
                     </div>
                     <div className="flex items-center gap-1.5 text-gray-600">
-                      <i className="ri-coin-line text-gray-400" />
+                      <i className="ri-coin-line text-gray-500" />
                       男{event.maleFee} / 女{event.femaleFee}
                     </div>
                   </div>
@@ -108,19 +109,19 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                   {/* Highlights（その回だけの企画） */}
                   {event.highlights && event.highlights.length > 0 && (
                     <div className="mb-4 rounded-xl border border-amber-200 bg-gradient-to-r from-amber-50 to-rose-50 p-4">
-                      <p className="text-xs font-bold text-amber-600 mb-2 tracking-wide flex items-center gap-1">
+                      <p className="text-sm font-bold text-amber-700 mb-2 tracking-wide flex items-center gap-1">
                         <i className="ri-gift-line" />
                         今回のお楽しみ
                       </p>
                       <ul className="space-y-1.5">
                         {event.highlights.map((h, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm">
-                            <span className="w-6 h-6 flex items-center justify-center rounded-full bg-white text-rose-500 flex-shrink-0 mt-px">
-                              <i className={`${h.icon} text-sm`} />
+                          <li key={i} className="flex items-start gap-2 text-base">
+                            <span className="w-6 h-6 flex items-center justify-center rounded-full bg-white text-rose-600 flex-shrink-0 mt-px">
+                              <i className={`${h.icon} text-base`} />
                             </span>
                             <span>
                               <span className="font-bold text-gray-900">{h.text}</span>
-                              {h.note && <span className="block text-xs text-gray-500 mt-0.5">{h.note}</span>}
+                              {h.note && <span className="block text-sm text-gray-500 mt-0.5">{h.note}</span>}
                             </span>
                           </li>
                         ))}
@@ -131,12 +132,12 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                   {/* 開催が終わった回：残席とお問合せの代わりに、お礼のことばを出す */}
                   {event.finished ? (
                     <div className="rounded-xl border border-rose-100 bg-rose-50/60 p-5">
-                      <p className="text-xs font-bold text-rose-500 mb-3 tracking-wide flex items-center gap-1">
+                      <p className="text-sm font-bold text-rose-600 mb-3 tracking-wide flex items-center gap-1">
                         <i className="ri-heart-3-line" />
                         開催のご報告とお礼
                       </p>
                       {event.comment?.split("\n").map((line, i) => (
-                        <p key={i} className="text-sm text-gray-700 leading-relaxed mb-2 last:mb-0">
+                        <p key={i} className="text-base text-gray-700 leading-relaxed mb-2 last:mb-0">
                           {line}
                         </p>
                       ))}
@@ -145,38 +146,38 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                   <>
                   {/* Seats */}
                   <div className="bg-gray-50 rounded-xl p-4 mb-5">
-                    <p className="text-xs text-gray-500 mb-3 font-medium">開催状況</p>
+                    <p className="text-sm text-gray-500 mb-3 font-medium">開催状況</p>
                     <div className="grid grid-cols-2 gap-3">
                       <div className="text-center">
-                        <p className="text-xs text-gray-500 mb-1">男性</p>
+                        <p className="text-sm text-gray-500 mb-1">男性</p>
                         {event.maleStatus ? (
                           <div>
-                            <p className="text-2xl font-black text-amber-500">{event.maleStatus}</p>
-                            <p className="text-xs text-gray-500 mt-0.5">{event.statusNote ?? "※応募可能"}</p>
+                            <p className="text-2xl font-black text-amber-700">{event.maleStatus}</p>
+                            <p className="text-sm text-gray-500 mt-0.5">{event.statusNote ?? "※応募可能"}</p>
                           </div>
                         ) : event.maleSeats > 0 ? (
-                          <p className={`text-2xl font-black ${event.maleSeats <= 5 ? "text-rose-500" : "text-emerald-500"}`}>
+                          <p className={`text-2xl font-black ${event.maleSeats <= 5 ? "text-rose-600" : "text-emerald-700"}`}>
                             残り{event.maleSeats}名
                           </p>
                         ) : (
-                          <span className="inline-block bg-gray-800 text-white text-xs font-bold px-3 py-1 rounded-full">
+                          <span className="inline-block bg-gray-800 text-white text-sm font-bold px-3 py-1 rounded-full">
                             満席
                           </span>
                         )}
                       </div>
                       <div className="text-center">
-                        <p className="text-xs text-gray-500 mb-1">女性</p>
+                        <p className="text-sm text-gray-500 mb-1">女性</p>
                         {event.femaleStatus ? (
                           <div>
-                            <p className="text-2xl font-black text-amber-500">{event.femaleStatus}</p>
-                            <p className="text-xs text-gray-500 mt-0.5">{event.statusNote ?? "※応募可能"}</p>
+                            <p className="text-2xl font-black text-amber-700">{event.femaleStatus}</p>
+                            <p className="text-sm text-gray-500 mt-0.5">{event.statusNote ?? "※応募可能"}</p>
                           </div>
                         ) : event.femaleSeats > 0 ? (
-                          <p className={`text-2xl font-black ${event.femaleSeats <= 5 ? "text-rose-500" : "text-emerald-500"}`}>
+                          <p className={`text-2xl font-black ${event.femaleSeats <= 5 ? "text-rose-600" : "text-emerald-700"}`}>
                             残り{event.femaleSeats}名
                           </p>
                         ) : (
-                          <span className="inline-block bg-rose-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                          <span className="inline-block bg-rose-600 text-white text-sm font-bold px-3 py-1 rounded-full">
                             満席
                           </span>
                         )}
@@ -187,7 +188,7 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                   {/* CTA */}
                   <button
                     onClick={onLine}
-                    className={`whitespace-nowrap w-full flex items-center justify-center gap-2 ${CTA_BG} text-white text-sm font-bold py-3 rounded-xl transition-colors cursor-pointer`}
+                    className={`whitespace-nowrap w-full flex items-center justify-center gap-2 ${CTA_BG} text-white text-base font-bold py-3 rounded-xl transition-colors cursor-pointer`}
                   >
                     <i className={CTA_ICON} />
                     {CTA_SHORT}
@@ -202,12 +203,12 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
           {/* 次回開催の案内 */}
           <div className="mt-10 bg-rose-50 border border-rose-100 rounded-2xl p-6 flex flex-col md:flex-row items-center gap-4">
             <div className="w-12 h-12 flex items-center justify-center bg-rose-100 rounded-full flex-shrink-0">
-              <i className="ri-notification-3-fill text-rose-500 text-xl" />
+              <i className="ri-notification-3-fill text-rose-600 text-xl" />
             </div>
             <div className="flex-1 text-center md:text-left">
               <p className="font-bold text-gray-900 mb-1">次回開催のご案内を希望の方は公式Instagramへ</p>
-              <p className="text-gray-600 text-sm">
-                開催日程が決まり次第、<strong className="text-rose-500">公式Instagram</strong>でお知らせします。
+              <p className="text-gray-600 text-base">
+                開催日程が決まり次第、<strong className="text-rose-600">公式Instagram</strong>でお知らせします。
                 フォローしてお待ちください。
               </p>
             </div>
@@ -215,7 +216,7 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="nofollow noopener noreferrer"
-              className="whitespace-nowrap flex-shrink-0 inline-flex items-center gap-2 bg-gray-900 text-white font-bold px-6 py-3 rounded-full hover:bg-gray-700 transition-colors cursor-pointer text-sm"
+              className="whitespace-nowrap flex-shrink-0 inline-flex items-center gap-2 bg-gray-900 text-white font-bold px-6 py-3 rounded-full hover:bg-gray-700 transition-colors cursor-pointer text-base"
             >
               <i className="ri-instagram-line" />
               公式Instagramをフォロー
@@ -234,26 +235,26 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
       <section id="past-events" className="py-20" style={{ backgroundColor: "#fafaf9" }}>
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="mb-10">
-            <p className="text-rose-500 font-semibold text-sm mb-2 tracking-widest uppercase">Track Record</p>
+            <p className="text-rose-600 font-semibold text-base mb-2 tracking-widest uppercase">Track Record</p>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900" style={{ fontFamily: "'Noto Serif JP', serif" }}>
               過去の開催実績
             </h2>
-            <p className="text-gray-500 mt-3 text-sm">これまでに開催したイベントの記録です。</p>
+            <p className="text-gray-500 mt-3 text-base">これまでに開催したイベントの記録です。</p>
           </div>
 
           {/* Summary stats */}
           <div className="grid grid-cols-3 gap-4 mb-10">
-            <div className="bg-white rounded-2xl p-5 text-center border border-gray-100">
-              <p className="text-4xl font-black text-rose-500 mb-1">5</p>
-              <p className="text-xs text-gray-500 font-medium">開催回数</p>
+            <div className="bg-white rounded-2xl p-4 md:p-5 text-center border border-gray-100">
+              <p className="text-3xl md:text-4xl font-black text-rose-600 mb-1">5</p>
+              <p className="text-sm text-gray-500 font-medium">開催回数</p>
             </div>
-            <div className="bg-white rounded-2xl p-5 text-center border border-gray-100">
-              <p className="text-4xl font-black text-rose-500 mb-1">191</p>
-              <p className="text-xs text-gray-500 font-medium">累計参加者数</p>
+            <div className="bg-white rounded-2xl p-4 md:p-5 text-center border border-gray-100">
+              <p className="text-3xl md:text-4xl font-black text-rose-600 mb-1">191</p>
+              <p className="text-sm text-gray-500 font-medium">累計参加者数</p>
             </div>
-            <div className="bg-white rounded-2xl p-5 text-center border border-gray-100">
-              <p className="text-4xl font-black text-rose-500 mb-1">18</p>
-              <p className="text-xs text-gray-500 font-medium">累計カップル誕生</p>
+            <div className="bg-white rounded-2xl p-4 md:p-5 text-center border border-gray-100">
+              <p className="text-3xl md:text-4xl font-black text-rose-600 mb-1">18</p>
+              <p className="text-sm text-gray-500 font-medium">累計カップル誕生</p>
             </div>
           </div>
 
@@ -263,9 +264,9 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
               <div key={past.id} className="bg-white rounded-2xl border border-gray-100 p-5 flex flex-col md:flex-row md:items-center gap-4">
                 {/* Date + title */}
                 <div className="flex-shrink-0 md:w-48">
-                  <p className="text-xs text-gray-400 mb-0.5">{past.date}</p>
-                  <p className="font-bold text-gray-900 text-sm">{past.title}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">{past.venue}</p>
+                  <p className="text-sm text-gray-500 mb-0.5">{past.date}</p>
+                  <p className="font-bold text-gray-900 text-base">{past.title}</p>
+                  <p className="text-sm text-gray-500 mt-0.5">{past.venue}</p>
                 </div>
 
                 {/* Divider */}
@@ -274,12 +275,12 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                 {/* Stats */}
                 <div className="flex items-center gap-6 flex-shrink-0">
                   <div className="text-center">
-                    <p className="text-2xl font-black text-gray-800">{past.participants}<span className="text-sm font-normal text-gray-400 ml-0.5">名</span></p>
-                    <p className="text-xs text-gray-400">参加者</p>
+                    <p className="text-2xl font-black text-gray-800">{past.participants}<span className="text-base font-normal text-gray-500 ml-0.5">名</span></p>
+                    <p className="text-sm text-gray-500">参加者</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-2xl font-black text-rose-500">{past.couples}<span className="text-sm font-normal text-rose-300 ml-0.5">組</span></p>
-                    <p className="text-xs text-gray-400">カップル誕生</p>
+                    <p className="text-2xl font-black text-rose-600">{past.couples}<span className="text-base font-normal text-rose-600 ml-0.5">組</span></p>
+                    <p className="text-sm text-gray-500">カップル誕生</p>
                   </div>
                 </div>
 
@@ -287,7 +288,7 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
                 <div className="hidden md:block w-px h-12 bg-gray-100 flex-shrink-0" />
 
                 {/* Comment */}
-                <p className="text-sm text-gray-600 flex-1 leading-relaxed">
+                <p className="text-base text-gray-600 flex-1 leading-relaxed">
                   <i className="ri-double-quotes-l text-rose-200 mr-1" />
                   {past.comment}
                 </p>

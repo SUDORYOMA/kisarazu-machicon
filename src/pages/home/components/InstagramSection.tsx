@@ -63,7 +63,7 @@ export default function InstagramSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 text-rose-500 font-semibold text-sm mb-2 tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 text-rose-600 font-semibold text-base mb-2 tracking-widest uppercase">
             <i className="ri-instagram-line text-lg" />
             Instagram
           </div>
@@ -73,7 +73,7 @@ export default function InstagramSection() {
           >
             イベントの雰囲気
           </h2>
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-500 text-base">
             過去の開催の様子をお届けします。
           </p>
         </div>
@@ -86,8 +86,8 @@ export default function InstagramSection() {
             </div>
           </div>
           <div>
-            <p className="font-bold text-gray-900 text-sm">@kazusacon</p>
-            <p className="text-xs text-gray-500">木更津街コン 公式</p>
+            <p className="font-bold text-gray-900 text-base">@kazusacon</p>
+            <p className="text-sm text-gray-500">木更津街コン 公式</p>
           </div>
         </div>
 
@@ -412,7 +412,7 @@ export default function InstagramSection() {
             href="https://www.instagram.com/kazusacon"
             target="_blank"
             rel="nofollow noopener noreferrer"
-            className="whitespace-nowrap inline-flex items-center gap-2 bg-gray-900 text-white font-bold px-8 py-3.5 rounded-full hover:bg-gray-700 transition-colors cursor-pointer text-sm"
+            className="whitespace-nowrap inline-flex items-center gap-2 bg-gray-900 text-white font-bold px-8 py-3.5 rounded-full hover:bg-gray-700 transition-colors cursor-pointer text-base"
           >
             <i className="ri-instagram-line" />
             Instagramでフォローする

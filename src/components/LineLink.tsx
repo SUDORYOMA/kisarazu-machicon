@@ -39,7 +39,7 @@ export default function LineLink({ className, children }: LineLinkProps) {
             <div className="bg-gray-900 px-5 py-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <i className="ri-instagram-line text-white" />
-                <span className="text-white font-black text-sm tracking-wider">お問合せについて</span>
+                <span className="text-white font-black text-base tracking-wider">お問合せについて</span>
               </div>
               <button
                 onClick={() => setNoticeOpen(false)}
@@ -50,7 +50,7 @@ export default function LineLink({ className, children }: LineLinkProps) {
             </div>
 
             <div className="p-6">
-              <p className="text-gray-700 text-sm leading-relaxed mb-5">
+              <p className="text-gray-700 text-base leading-relaxed mb-5">
                 お問合せは、公式InstagramのDMまたはメールにて承っております。
                 <br />
                 下記よりご連絡ください。
@@ -61,21 +61,21 @@ export default function LineLink({ className, children }: LineLinkProps) {
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="nofollow noopener noreferrer"
-                  className="whitespace-nowrap flex items-center justify-center gap-2 bg-gray-900 text-white font-bold py-3.5 rounded-xl hover:bg-gray-700 transition-colors cursor-pointer text-sm"
+                  className="whitespace-nowrap flex items-center justify-center gap-2 bg-gray-900 text-white font-bold py-3.5 rounded-xl hover:bg-gray-700 transition-colors cursor-pointer text-base"
                 >
                   <i className="ri-instagram-line text-lg" />
                   公式Instagramで問い合わせる
                 </a>
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="whitespace-nowrap flex items-center justify-center gap-2 bg-white border-2 border-gray-900 text-gray-900 font-bold py-3.5 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer text-sm"
+                  className="whitespace-nowrap flex items-center justify-center gap-2 bg-white border-2 border-gray-900 text-gray-900 font-bold py-3.5 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer text-base"
                 >
                   <i className="ri-mail-line text-lg" />
                   {EMAIL}
                 </a>
                 <button
                   onClick={() => setNoticeOpen(false)}
-                  className="whitespace-nowrap w-full text-gray-500 font-bold py-3 text-sm cursor-pointer hover:text-gray-700 transition-colors"
+                  className="whitespace-nowrap w-full text-gray-500 font-bold py-3 text-base cursor-pointer hover:text-gray-700 transition-colors"
                 >
                   閉じる
                 </button>

@@ -49,7 +49,7 @@ export default function LineModal({ open, onClose }: LineModalProps) {
               <h2 className="text-white font-black text-lg">
                 {LINE_DOWN ? "お問合せ・空席確認" : "LINEで相談・空席確認"}
               </h2>
-              <p className="text-white/80 text-xs">お気軽にご連絡ください</p>
+              <p className="text-white/80 text-sm">お気軽にご連絡ください</p>
             </div>
           </div>
           <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 transition-colors cursor-pointer">
@@ -64,10 +64,10 @@ export default function LineModal({ open, onClose }: LineModalProps) {
           {submitted ? (
             <div className="text-center py-6">
               <div className="w-14 h-14 flex items-center justify-center bg-emerald-100 rounded-full mx-auto mb-4">
-                <i className="ri-check-line text-emerald-500 text-2xl" />
+                <i className="ri-check-line text-emerald-700 text-2xl" />
               </div>
               <h3 className="text-lg font-black text-gray-900 mb-2">送信完了！</h3>
-              <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+              <p className="text-gray-600 text-base mb-6 leading-relaxed">
                 ご連絡ありがとうございます。<br />
                 {LINE_DOWN
                   ? "担当より、メールまたはInstagramのDMでご連絡いたします。"
@@ -111,38 +111,38 @@ export default function LineModal({ open, onClose }: LineModalProps) {
 
               <div className="flex items-center gap-3 mb-4">
                 <div className="flex-1 h-px bg-gray-200" />
-                <span className="text-xs text-gray-400">またはフォームで送信</span>
+                <span className="text-sm text-gray-500">またはフォームで送信</span>
                 <div className="flex-1 h-px bg-gray-200" />
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-3">
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1.5">
-                    お名前 <span className="text-rose-500">*</span>
+                  <label className="block text-base font-bold text-gray-700 mb-1.5">
+                    お名前 <span className="text-rose-600">*</span>
                   </label>
                   <input
                     type="text"
                     name="name"
                     required
                     placeholder="例：たろう"
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#06C755]"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-[#06C755]"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1.5">
-                    メールアドレス <span className="text-rose-500">*</span>
+                  <label className="block text-base font-bold text-gray-700 mb-1.5">
+                    メールアドレス <span className="text-rose-600">*</span>
                   </label>
                   <input
                     type="email"
                     name="email"
                     required
                     placeholder="例：example@email.com"
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#06C755]"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-[#06C755]"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1.5">
-                    ご相談内容 <span className="text-rose-500">*</span>
+                  <label className="block text-base font-bold text-gray-700 mb-1.5">
+                    ご相談内容 <span className="text-rose-600">*</span>
                   </label>
                   <textarea
                     name="message"
@@ -150,11 +150,11 @@ export default function LineModal({ open, onClose }: LineModalProps) {
                     rows={3}
                     maxLength={500}
                     placeholder="空席確認、参加方法など、お気軽にどうぞ"
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#06C755] resize-none"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:border-[#06C755] resize-none"
                   />
                 </div>
 
-                {error && <p className="text-rose-500 text-sm">{error}</p>}
+                {error && <p className="text-rose-600 text-base">{error}</p>}
 
                 <button
                   type="submit"

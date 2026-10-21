@@ -29,16 +29,16 @@ export default function Privacy() {
       {/* Page header */}
       <section className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-3xl mx-auto px-6 py-14 md:py-20">
-          <nav className="text-xs text-gray-400 mb-6 flex items-center gap-2">
-            <Link to="/" className="hover:text-rose-500 transition-colors">ホーム</Link>
+          <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2">
+            <Link to="/" className="hover:text-rose-600 transition-colors">ホーム</Link>
             <i className="ri-arrow-right-s-line" />
             <span className="text-gray-600">プライバシーポリシー</span>
           </nav>
-          <p className="text-rose-500 font-semibold text-sm mb-2 tracking-widest uppercase">Privacy Policy</p>
+          <p className="text-rose-600 font-semibold text-base mb-2 tracking-widest uppercase">Privacy Policy</p>
           <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4" style={{ fontFamily: "'Noto Serif JP', serif" }}>
             プライバシーポリシー
           </h1>
-          <p className="text-gray-500 text-sm leading-relaxed">
+          <p className="text-gray-500 text-base leading-relaxed">
             {COMPANY.name}（以下「当社」といいます）は、木更津街コン（{COMPANY.site}。以下「本サイト」といいます）
             における個人情報の取り扱いについて、以下のとおり定めます。
           </p>
@@ -158,7 +158,7 @@ export default function Privacy() {
           </table>
 
           <hr />
-          <p className="text-sm text-gray-500">制定日：{LAST_UPDATED}</p>
+          <p className="text-base text-gray-500">制定日：{LAST_UPDATED}</p>
         </div>
       </section>
     </SubPageLayout>

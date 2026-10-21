@@ -11,12 +11,12 @@ export default function AlertNotice() {
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
           <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-600" />
         </span>
-        <span className="text-red-600 font-black text-xs tracking-wider">緊急のお知らせ</span>
+        <span className="text-red-600 font-black text-sm tracking-wider">緊急のお知らせ</span>
       </div>
-      <p className="text-red-600 font-black text-sm leading-snug mb-1.5">{ALERT.title}</p>
-      <p className="text-red-600 font-bold text-xs leading-relaxed">{ALERT.body}</p>
+      <p className="text-red-600 font-black text-base leading-snug mb-1.5">{ALERT.title}</p>
+      <p className="text-red-600 font-bold text-sm leading-relaxed">{ALERT.body}</p>
       {ALERT.note && (
-        <p className="text-red-600/90 font-medium text-xs leading-relaxed mt-1.5">{ALERT.note}</p>
+        <p className="text-red-600/90 font-medium text-sm leading-relaxed mt-1.5">{ALERT.note}</p>
       )}
     </div>
   );

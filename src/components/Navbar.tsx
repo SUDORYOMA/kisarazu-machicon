@@ -44,8 +44,8 @@ export default function Navbar({ onApply, onLine, onScrollToEvents, solid = fals
     setMenuOpen(false);
   };
 
-  const linkClass = `whitespace-nowrap text-sm font-medium transition-colors cursor-pointer ${
-    light ? "text-gray-700 hover:text-rose-500" : "text-white/90 hover:text-white"
+  const linkClass = `whitespace-nowrap text-base font-medium transition-colors cursor-pointer ${
+    light ? "text-gray-700 hover:text-rose-600" : "text-white/90 hover:text-white"
   }`;
 
   return (
@@ -80,7 +80,7 @@ export default function Navbar({ onApply, onLine, onScrollToEvents, solid = fals
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={onLine}
-            className="whitespace-nowrap bg-rose-500 text-white text-sm font-bold px-5 py-2 rounded-full hover:bg-rose-600 transition-colors cursor-pointer"
+            className="whitespace-nowrap bg-rose-600 text-white text-base font-bold px-5 py-2 rounded-full hover:bg-rose-600 transition-colors cursor-pointer"
           >
             {CTA_APPLY}
           </button>
@@ -104,7 +104,7 @@ export default function Navbar({ onApply, onLine, onScrollToEvents, solid = fals
             <button
               key={item.id}
               onClick={() => scrollTo(item.id)}
-              className="whitespace-nowrap w-full text-left text-sm font-medium text-gray-700 py-2 cursor-pointer"
+              className="whitespace-nowrap w-full text-left text-base font-medium text-gray-700 py-2 cursor-pointer"
             >
               {item.label}
             </button>
@@ -112,14 +112,14 @@ export default function Navbar({ onApply, onLine, onScrollToEvents, solid = fals
           <Link
             to="/blog"
             onClick={() => setMenuOpen(false)}
-            className="whitespace-nowrap block w-full text-left text-sm font-medium text-gray-700 py-2 cursor-pointer"
+            className="whitespace-nowrap block w-full text-left text-base font-medium text-gray-700 py-2 cursor-pointer"
           >
             ブログ
           </Link>
           <div className="flex gap-3 pt-2">
             <button
               onClick={() => { onLine(); setMenuOpen(false); }}
-              className="whitespace-nowrap flex-1 bg-rose-500 text-white text-sm font-bold py-3 rounded-xl cursor-pointer"
+              className="whitespace-nowrap flex-1 bg-rose-600 text-white text-base font-bold py-3 rounded-xl cursor-pointer"
             >
               {CTA_APPLY}
             </button>

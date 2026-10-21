@@ -3,7 +3,7 @@ const worries = [
     icon: "ri-user-unfollow-line",
     title: "出会いがない",
     desc: "職場と家の往復で、新しい人と出会う機会がない",
-    color: "text-rose-400",
+    color: "text-rose-500",
     bg: "bg-rose-50",
   },
   {
@@ -35,7 +35,7 @@ export default function EmpathySection() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-14">
-          <p className="text-rose-500 font-semibold text-sm mb-2 tracking-widest uppercase">Empathy</p>
+          <p className="text-rose-600 font-semibold text-base mb-2 tracking-widest uppercase">Empathy</p>
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4" style={{ fontFamily: "'Noto Serif JP', serif" }}>
             こんな悩みありませんか？
           </h2>
@@ -52,7 +52,7 @@ export default function EmpathySection() {
                 <i className={`${w.icon} ${w.color} text-2xl`} />
               </div>
               <h3 className="text-lg font-black text-gray-900 mb-2">{w.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{w.desc}</p>
+              <p className="text-gray-600 text-base leading-relaxed">{w.desc}</p>
             </div>
           ))}
         </div>
@@ -62,7 +62,7 @@ export default function EmpathySection() {
           <div className="inline-flex items-center gap-4">
             <div className="w-16 h-px bg-rose-300" />
             <p className="text-xl font-black text-gray-900" style={{ fontFamily: "'Noto Serif JP', serif" }}>
-              そんな方に<span className="text-rose-500">選ばれています</span>
+              そんな方に<span className="text-rose-600">選ばれています</span>
             </p>
             <div className="w-16 h-px bg-rose-300" />
           </div>

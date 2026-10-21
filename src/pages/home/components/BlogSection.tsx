@@ -12,15 +12,15 @@ export default function BlogSection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <p className="text-rose-500 font-semibold text-sm mb-2 tracking-widest uppercase">Blog</p>
+            <p className="text-rose-600 font-semibold text-base mb-2 tracking-widest uppercase">Blog</p>
             <h2 className="text-3xl md:text-4xl font-black text-gray-900" style={{ fontFamily: "'Noto Serif JP', serif" }}>
               お知らせ・ブログ
             </h2>
-            <p className="text-gray-500 mt-3 text-sm">開催レポートや次回のご案内、初めての方向けの情報をお届けします。</p>
+            <p className="text-gray-500 mt-3 text-base">開催レポートや次回のご案内、初めての方向けの情報をお届けします。</p>
           </div>
           <Link
             to="/blog"
-            className="whitespace-nowrap hidden md:inline-flex items-center gap-1.5 text-sm font-bold text-gray-700 hover:text-rose-500 transition-colors"
+            className="whitespace-nowrap hidden md:inline-flex items-center gap-1.5 text-base font-bold text-gray-700 hover:text-rose-600 transition-colors"
           >
             ブログ一覧を見る
             <i className="ri-arrow-right-line" />
@@ -38,7 +38,7 @@ export default function BlogSection() {
         <div className="text-center mt-10">
           <Link
             to="/blog"
-            className="whitespace-nowrap inline-flex items-center gap-2 bg-gray-900 text-white font-bold px-8 py-3.5 rounded-full hover:bg-gray-700 transition-colors cursor-pointer text-sm"
+            className="whitespace-nowrap inline-flex items-center gap-2 bg-gray-900 text-white font-bold px-8 py-3.5 rounded-full hover:bg-gray-700 transition-colors cursor-pointer text-base"
           >
             <i className="ri-article-line" />
             ブログ一覧を見る

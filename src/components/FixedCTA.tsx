@@ -10,7 +10,7 @@ export default function FixedCTA({ onLine }: FixedCTAProps) {
       <div className="max-w-lg mx-auto flex gap-3">
         <button
           onClick={onLine}
-          className={`whitespace-nowrap flex-1 flex items-center justify-center gap-2 ${CTA_BG} text-white font-bold py-3.5 rounded-full transition-colors cursor-pointer text-sm`}
+          className={`whitespace-nowrap flex-1 flex items-center justify-center gap-2 ${CTA_BG} text-white font-bold py-3.5 rounded-full transition-colors cursor-pointer text-base`}
         >
           <i className={CTA_ICON} />
           {CTA_APPLY}

@@ -18,7 +18,7 @@ export default function AlertBanner() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
               <span className="relative inline-flex h-3 w-3 rounded-full bg-white" />
             </span>
-            <span className="text-white font-black text-sm tracking-wider">緊急のお知らせ</span>
+            <span className="text-white font-black text-base tracking-wider">緊急のお知らせ</span>
           </div>
 
           <div className="p-5 md:p-6">
@@ -29,7 +29,7 @@ export default function AlertBanner() {
               {ALERT.body}
             </p>
             {ALERT.note && (
-              <p className="text-red-600/90 font-medium text-sm md:text-base leading-relaxed mb-5">
+              <p className="text-red-600/90 font-medium text-base md:text-base leading-relaxed mb-5">
                 {ALERT.note}
               </p>
             )}
@@ -40,14 +40,14 @@ export default function AlertBanner() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
-                className="whitespace-nowrap flex items-center justify-center gap-2 bg-gray-900 text-white font-bold px-6 py-3.5 rounded-full hover:bg-gray-700 transition-colors cursor-pointer text-sm"
+                className="whitespace-nowrap flex items-center justify-center gap-2 bg-gray-900 text-white font-bold px-6 py-3.5 rounded-full hover:bg-gray-700 transition-colors cursor-pointer text-base"
               >
                 <i className="ri-instagram-line text-lg" />
                 公式Instagramで問い合わせる
               </a>
               <a
                 href={`mailto:${EMAIL}`}
-                className="whitespace-nowrap flex items-center justify-center gap-2 bg-white border-2 border-red-500 text-red-600 font-bold px-6 py-3.5 rounded-full hover:bg-red-50 transition-colors cursor-pointer text-sm"
+                className="whitespace-nowrap flex items-center justify-center gap-2 bg-white border-2 border-red-500 text-red-600 font-bold px-6 py-3.5 rounded-full hover:bg-red-50 transition-colors cursor-pointer text-base"
               >
                 <i className="ri-mail-line text-lg" />
                 {EMAIL}

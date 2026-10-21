@@ -4,7 +4,7 @@
 /* ブログ記事本文（Markdown → HTML）の見た目。サイトのトーンに合わせる */
 @layer components {
   .prose-blog {
-    @apply text-gray-700 text-[15px] md:text-base leading-[1.9];
+    @apply text-gray-700 text-base leading-[1.9];
   }
   .prose-blog > * + * {
     @apply mt-5;
@@ -20,7 +20,7 @@
     @apply my-5;
   }
   .prose-blog a {
-    @apply text-rose-500 font-medium underline underline-offset-4 decoration-rose-200 hover:decoration-rose-500 transition-colors;
+    @apply text-rose-600 font-medium underline underline-offset-4 decoration-rose-400 hover:decoration-rose-600 transition-colors;
   }
   .prose-blog strong {
     @apply font-bold text-gray-900;
@@ -36,7 +36,7 @@
     @apply list-none pl-0 space-y-2.5 bg-rose-50/60 rounded-2xl px-5 py-5;
   }
   .prose-blog li > input[type="checkbox"] {
-    @apply mr-2.5 h-4 w-4 align-middle accent-rose-500;
+    @apply mr-2.5 h-4 w-4 align-middle accent-rose-600;
   }
   .prose-blog blockquote {
     @apply border-l-4 border-rose-200 bg-rose-50/50 rounded-r-xl pl-5 pr-4 py-3 my-6 text-gray-600;
@@ -48,7 +48,7 @@
     @apply rounded-2xl my-8 w-full;
   }
   .prose-blog table {
-    @apply w-full text-sm my-6 border-collapse;
+    @apply w-full text-base my-6 border-collapse;
   }
   .prose-blog th {
     @apply bg-gray-50 text-left font-bold text-gray-700 px-4 py-2.5 border border-gray-200 whitespace-nowrap;

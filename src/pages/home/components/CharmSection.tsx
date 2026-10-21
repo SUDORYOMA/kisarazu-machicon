@@ -3,17 +3,17 @@ const charms = [
     icon: "ri-refresh-line",
     title: "席替えあり",
     desc: "時間ごとに席を移動するので、多くの方と自然に話せます。気になる人と話す機会が必ず生まれます。",
-    accent: "bg-rose-500",
+    accent: "bg-rose-600",
     lightBg: "bg-rose-50",
-    textColor: "text-rose-500",
+    textColor: "text-rose-600",
   },
   {
     icon: "ri-team-line",
     title: "少人数で話せる",
     desc: "大人数の合コンと違い、少人数グループで会話。じっくり相手のことを知れます。",
-    accent: "bg-amber-500",
+    accent: "bg-amber-700",
     lightBg: "bg-amber-50",
-    textColor: "text-amber-500",
+    textColor: "text-amber-700",
   },
   {
     icon: "ri-restaurant-line",
@@ -21,13 +21,13 @@ const charms = [
     desc: "美味しい食事とドリンクで場の雰囲気が自然と和みます。食事を通じて会話が弾みます。",
     accent: "bg-emerald-500",
     lightBg: "bg-emerald-50",
-    textColor: "text-emerald-500",
+    textColor: "text-emerald-700",
   },
   {
     icon: "ri-mic-line",
     title: "進行あり",
     desc: "スタッフが会話のきっかけを作るゲームや進行を担当。「何を話せばいいか分からない」を解消します。",
-    accent: "bg-sky-500",
+    accent: "bg-sky-700",
     lightBg: "bg-sky-50",
     textColor: "text-sky-500",
   },
@@ -39,11 +39,11 @@ export default function CharmSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="text-center mb-14">
-          <p className="text-rose-500 font-semibold text-sm mb-2 tracking-widest uppercase">Features</p>
+          <p className="text-rose-600 font-semibold text-base mb-2 tracking-widest uppercase">Features</p>
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4" style={{ fontFamily: "'Noto Serif JP', serif" }}>
             自然に会話が生まれる仕組み
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+          <p className="text-gray-500 max-w-xl mx-auto text-base leading-relaxed">
             「何を話せばいいか分からない」「緊張してしまう」そんな方でも大丈夫。
             自然に会話が生まれる工夫が随所に詰まっています。
           </p>
@@ -62,7 +62,7 @@ export default function CharmSection() {
                   <i className={`${c.icon} ${c.textColor} text-2xl`} />
                 </div>
                 <h3 className="text-lg font-black text-gray-900 mb-2">{c.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{c.desc}</p>
+                <p className="text-gray-500 text-base leading-relaxed">{c.desc}</p>
               </div>
             </div>
           ))}
@@ -87,8 +87,8 @@ export default function CharmSection() {
                   <div className="w-12 h-12 flex items-center justify-center bg-gray-900 rounded-full mb-2">
                     <i className={`${s.icon} text-white`} />
                   </div>
-                  <p className="text-xs text-rose-500 font-bold mb-0.5">{s.step}</p>
-                  <p className="text-xs font-bold text-gray-700">{s.label}</p>
+                  <p className="text-sm text-rose-600 font-bold mb-0.5">{s.step}</p>
+                  <p className="text-sm font-bold text-gray-700">{s.label}</p>
                 </div>
                 {i < arr.length - 1 && (
                   <i className="ri-arrow-right-line text-gray-300 text-xl mx-1 hidden md:block" />
