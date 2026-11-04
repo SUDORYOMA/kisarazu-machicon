@@ -1,4 +1,5 @@
 import { CTA_APPLY, CTA_ICON, CTA_BG } from "@/lib/alert";
+import { pastTotals } from "@/mocks/events";
 
 interface ResultsSectionProps {
   onLine: () => void;
@@ -21,19 +22,19 @@ export default function ResultsSection({ onLine }: ResultsSectionProps) {
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
             <div className="text-center">
               <p className="text-white/60 text-base mb-1">開催回数</p>
-              <p className="text-8xl md:text-9xl font-black text-white leading-none">5</p>
+              <p className="text-8xl md:text-9xl font-black text-white leading-none">{pastTotals.count}</p>
               <p className="text-rose-500 text-2xl font-black mt-1">回開催</p>
             </div>
             <div className="w-px h-24 bg-white/20 hidden md:block" />
             <div className="text-center">
               <p className="text-white/60 text-base mb-1">累計参加者</p>
-              <p className="text-8xl md:text-9xl font-black text-white leading-none">191</p>
+              <p className="text-8xl md:text-9xl font-black text-white leading-none">{pastTotals.participants}</p>
               <p className="text-rose-500 text-2xl font-black mt-1">名参加</p>
             </div>
             <div className="w-px h-24 bg-white/20 hidden md:block" />
             <div className="text-center">
               <p className="text-white/60 text-base mb-1">累計カップル</p>
-              <p className="text-8xl md:text-9xl font-black text-white leading-none">18</p>
+              <p className="text-8xl md:text-9xl font-black text-white leading-none">{pastTotals.couples}</p>
               <p className="text-rose-500 text-2xl font-black mt-1">組誕生</p>
             </div>
             <div className="w-px h-24 bg-white/20 hidden md:block" />

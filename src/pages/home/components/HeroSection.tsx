@@ -1,6 +1,7 @@
 import heroImg from "@/assets/hero.jpg";
 import { useEffect, useState } from "react";
 import { CTA_APPLY, CTA_CONSULT, CTA_ICON, CTA_BG } from "@/lib/alert";
+import { pastTotals } from "@/mocks/events";
 
 interface HeroSectionProps {
   onLine: () => void;
@@ -36,7 +37,7 @@ export default function HeroSection({ onLine, onScrollToEvents }: HeroSectionPro
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-rose-600/90 text-white text-base font-medium px-4 py-1.5 rounded-full mb-6">
             <i className="ri-heart-fill text-sm" />
-            累計カップル14組誕生
+            累計カップル{pastTotals.couples}組誕生
           </div>
 
           {/* Main copy */}

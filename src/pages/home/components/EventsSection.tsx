@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { events, pastEvents } from "@/mocks/events";
+import { events, pastEvents, pastTotals } from "@/mocks/events";
 import IdCheckNotice from "@/components/IdCheckNotice";
 import SponsorsSection from "@/components/SponsorsSection";
 import { INSTAGRAM_URL, CTA_SHORT, CTA_ICON, CTA_BG } from "@/lib/alert";
@@ -245,15 +245,15 @@ export default function EventsSection({ onLine }: EventsSectionProps) {
           {/* Summary stats */}
           <div className="grid grid-cols-3 gap-4 mb-10">
             <div className="bg-white rounded-2xl p-4 md:p-5 text-center border border-gray-100">
-              <p className="text-3xl md:text-4xl font-black text-rose-600 mb-1">5</p>
+              <p className="text-3xl md:text-4xl font-black text-rose-600 mb-1">{pastTotals.count}</p>
               <p className="text-sm text-gray-500 font-medium">開催回数</p>
             </div>
             <div className="bg-white rounded-2xl p-4 md:p-5 text-center border border-gray-100">
-              <p className="text-3xl md:text-4xl font-black text-rose-600 mb-1">191</p>
+              <p className="text-3xl md:text-4xl font-black text-rose-600 mb-1">{pastTotals.participants}</p>
               <p className="text-sm text-gray-500 font-medium">累計参加者数</p>
             </div>
             <div className="bg-white rounded-2xl p-4 md:p-5 text-center border border-gray-100">
-              <p className="text-3xl md:text-4xl font-black text-rose-600 mb-1">18</p>
+              <p className="text-3xl md:text-4xl font-black text-rose-600 mb-1">{pastTotals.couples}</p>
               <p className="text-sm text-gray-500 font-medium">累計カップル誕生</p>
             </div>
           </div>

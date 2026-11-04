@@ -42,52 +42,8 @@ export interface PastEventItem {
 
 export const events: EventItem[] = [
   {
-    id: 2,
-    date: "10月18日",
-    dayOfWeek: "日",
-    time: "13:00〜16:00",
-    title: "木更津40人街コン",
-    venue: "Y's Table",
-    address: "木更津市富士見1丁目12-32",
-    ageRange: "20〜49歳",
-    maleFee: "12,000円",
-    femaleFee: "2,000円",
-    maleSeats: 0,
-    femaleSeats: 0,
-    totalSeats: 0,
-    tag: "開催終了",
-    finished: true,
-    comment:
-      "皆さまのおかげで無事に終えることができました。\n" +
-      "今回は1周年記念として景品をお出しする、占いの方にお越しいただくなどなど豪華に開催させていただきました。\n" +
-      "参加者、応募者、そしてご協賛いただいた皆様、本当にありがとうございました。\n" +
-      "今後とも、かずさ街コンを宜しくお願い致します。",
-    highlights: [
-      { icon: "ri-sparkling-2-line", text: "会場内で占い師による占いを実施！" },
-      { icon: "ri-goblet-line", text: "同会場でアフターパーティー(16:00〜18:00)開催！", note: "※街コン参加者のみ" },
-    ],
-    tagColor: "bg-gray-500",
-    mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3244.0!2d139.9226!3d35.3748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022a3b0b0b0b0b1%3A0x0!2sY's+Table!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp",
-  },
-  {
-    id: 4,
-    date: "12月某日",
-    time: "13:00〜16:00",
-    title: "木更津40人街コン",
-    venue: "会場調整中",
-    address: "木更津駅 または 五井駅 周辺",
-    ageRange: "20〜49歳",
-    maleFee: "12,000円",
-    femaleFee: "2,000円",
-    maleSeats: 20,
-    femaleSeats: 20,
-    totalSeats: 40,
-    tag: "日程調整中",
-    tagColor: "bg-sky-700",
-  },
-  {
     id: 3,
-    date: "1月某日",
+    date: "1月24日",
     dayOfWeek: "日",
     time: "13:00〜16:00",
     title: "木更津40人街コン",
@@ -102,6 +58,22 @@ export const events: EventItem[] = [
     tag: "受付中",
     tagColor: "bg-rose-600",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3244.0!2d139.9226!3d35.3748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022a3b0b0b0b0b1%3A0x0!2sY's+Table!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp",
+  },
+  {
+    id: 5,
+    date: "2月某日",
+    time: "13:00〜16:00",
+    title: "市原40人街コン",
+    venue: "会場調整中",
+    address: "五井駅 周辺",
+    ageRange: "20〜49歳",
+    maleFee: "12,000円",
+    femaleFee: "2,000円",
+    maleSeats: 20,
+    femaleSeats: 20,
+    totalSeats: 40,
+    tag: "日程調整中",
+    tagColor: "bg-sky-700",
   },
 ];
 
@@ -151,4 +123,20 @@ export const pastEvents: PastEventItem[] = [
     couples: 4,
     comment: "夏祭り前で夏祭りのお約束をするカップルも！それ以外にもアフターパーティーでも更に追加カップリングも！",
   },
+  {
+    id: 6,
+    date: "2026年10月18日",
+    title: "木更津街コン vol.6",
+    venue: "Y's Table",
+    participants: 40,
+    couples: 3,
+    comment: "1周年記念の回。景品や占いもご用意し、アフターパーティーまで賑やかに開催しました。",
+  },
 ];
+
+/** 実績の合計。開催回数・累計参加者・累計カップルを出す場所がずれないよう、ここから計算する */
+export const pastTotals = {
+  count: pastEvents.length,
+  participants: pastEvents.reduce((sum, e) => sum + e.participants, 0),
+  couples: pastEvents.reduce((sum, e) => sum + e.couples, 0),
+};
